@@ -55,11 +55,11 @@
             <div class="card m-1 col-md-5 ">
                 <div class="row g-0">
                     <div class="col-md-2">
-                        <img src="{{ $job->image}}" class="img-fluid mt-4 rounded width=" 100px" alt="...">
+                        <img src="{{ $job->company->logo}}" class="img-fluid mt-4 rounded width=" 100px" alt="...">
                     </div>
                     <div class="col-md-8 ">
                         <div class="card-body ">
-                            <h5 class="card-title"><a href="/job/{{ $job->slug }}">{{ $job->title }} - {{ $job->company }}</a></h5>
+                            <h5 class="card-title"><a href="/job/{{ $job->slug }}">{{ $job->title }} - {{ $job->company->name }}</a></h5>
                             <h6 class="card-text m-0">
 
                                 <a href="/job?category={{ $job->category->name }}">
@@ -120,7 +120,7 @@
                             <img src=" {{ $company->logo }}" class="card-img-top rounded" alt="...">
                             <div class="card-body">
                                 <h5 class="card-title"><a href="/company/{{ $company->slug }}"> {{ $company->name }}</a></h5>
-                                <p class="card-text m-0">{{ $company->companycategory->name }} </p>
+                                <a href="/company?company-category={{ $company->companycategory->slug }}">{{ $company->companycategory->name }} </a>
                             </div>
                         </div>
                         @endforeach

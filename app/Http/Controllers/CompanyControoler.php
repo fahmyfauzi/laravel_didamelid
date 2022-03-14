@@ -9,16 +9,19 @@ class CompanyControoler extends Controller
 {
     public function index()
     {
-        return 'test index company';
-        return view('company', [
-            'companies' => Company::get()
+        // return Company::latest()->filter(request(['category']))->paginate(7)->withQueryString();
+        return view('company.show', [
+            'companies' => Company::latest()->filter(request(['company-category', 'location', 'search']))->paginate(7)->withQueryString()
         ]);
     }
 
     public function show(Company $company)
     {
-        return view('company.show', [
+
+        // return $company->job;
+        return view('company.detail', [
             'company' => $company,
+            'companies' => $company->job
         ]);
     }
 }

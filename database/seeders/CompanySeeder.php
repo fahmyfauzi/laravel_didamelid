@@ -18,14 +18,14 @@ class CompanySeeder extends Seeder
     public function run()
     {
         $faker = Faker::create('id_ID');
-        foreach (range(1, 5) as $item) {
+        foreach (range(1, 15) as $item) {
             Company::create([
                 'companycategory_id' => rand(1, 4),
                 'name' => $faker->company,
                 'slug' => $faker->slug,
-                'status' => 'featured',
                 'email' => $faker->companyEmail,
                 'logo' => $faker->imageUrl($width = 640, $height = 480),
+                'location' => $faker->city,
                 'phone_number' => $faker->e164PhoneNumber,
                 'social_facebook' => 'https://www.facebook.com/fahmy.fauzi.3150/',
                 'social_instagram' => 'https://www.instagram.com/fahmyfauzii/',

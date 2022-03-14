@@ -17,13 +17,12 @@ return new class extends Migration
             $table->id();
             $table->foreignId('user_id');
             $table->foreignId('category_id');
+            $table->foreignId('company_id');
             $table->string('title');
             $table->string('slug')->unique();
-            $table->string('image');
             $table->string('location');
             $table->date('expiration_date');
             $table->string('level_career');
-            $table->string('company');
             $table->string('salary');
             $table->string('time');
             $table->text('body');

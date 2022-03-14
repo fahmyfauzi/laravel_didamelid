@@ -16,6 +16,8 @@ class Jobs extends Model
         $query->when($filters['search'] ?? false, function ($query, $search) {
             return $query->where(function ($query) use ($search) {
                 $query->where('title', 'like', '%' . $search . '%');
+            })->orWhereHas('company', function ($query) use ($search) {
+                $query->where('name', 'like', '%' . $search . '%');
             });
         });
 
@@ -36,8 +38,8 @@ class Jobs extends Model
         return $this->belongsTo(Category::class);
     }
 
-    public function getRouteKeyName()
+    public function company()
     {
-        return 'slug';
+        return $this->belongsTo(Company::class);
     }
 }
