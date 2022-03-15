@@ -18,10 +18,9 @@ class CompanyControoler extends Controller
     public function show(Company $company)
     {
 
-        // return $company->job;
+        // return $company->job->first();
         return view('company.detail', [
             'company' => $company,
-            'companies' => $company->job
         ]);
     }
 }

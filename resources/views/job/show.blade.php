@@ -3,11 +3,18 @@
 @section( 'content')
 <div class="container ">
     <div class="row justify-content-center d-flex  align-items-center text-center">
-        <div class="col-md-8">
-            <h1 class="text-white text-bold">Langkah terbaik awal Karirmu</h1>
-            <p class="text-white mb-5">Temukan lebih dari 10.000 pekerjaan di situs ini</p>
+        <div class="col-md-8 mt-4">
+            <div class="my-4">
 
+                <h1>Lowongan Pekerjaan</h1>
+            </div>
             <form action="/job">
+                @if(request('category'))
+                <input type="hidden" name="category" value="{{ request('category') }}">
+                @endif
+                @if(request('location'))
+                <input type="hidden" name="location" value="{{ request('location') }}">
+                @endif
 
                 <div class="input-group input-group-lg mb-5">
                     <input type=" text" class="form-control" placeholder="Pekerjaan atau nama perusahaan" name="search" value="{{ request('search') }}">
@@ -32,7 +39,7 @@
                         <h5 class="card-title"><a href="/job/{{ $job->slug }}">{{ $job->title }} - {{ $job->company->name }}</a></h5>
                         <h6 class="card-text m-0">
 
-                            <a href="/job?category={{ $job->category->name }}">
+                            <a href="/job?category={{ $job->category->slug }}">
                                 <i class="fa-solid fa-briefcase"></i>
                                 {{ ucfirst($job->category->name) }}
                             </a>

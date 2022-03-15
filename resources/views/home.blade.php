@@ -48,7 +48,7 @@
                 <p>Nilai dirimu dan temukan pekerjaan terbaik untukmu</p>
             </div>
 
-            <h4 class="text-center mt-4">Pekerjaan Terbaru </h4>
+            <h4 class="text-center my-4">Pekerjaan Terbaru </h4>
 
             @foreach($jobs as $job)
 
@@ -84,8 +84,7 @@
 
         </div>
         <div class="row justify-content-center">
-
-            <div class="col-md-4 text-center">
+            <div class="col-md-4 text-center my-4">
                 <a href="/job" class="btn btn-primary">Lebih Banyak</a>
             </div>
         </div>

@@ -66,9 +66,7 @@
         <div class="col-md-8">
 
 
-            @foreach($companies as $company)
-
-            <div class="card m-2 col-md-12">
+            @foreach($company->job->sortByDesc('created_at') as $company) <div class="card m-2 col-md-12">
                 <div class="row g-0">
                     <div class="col-md-2">
                         <img src="{{ $company->company->logo}}" class="img-fluid rounded width=" 100px" alt="...">

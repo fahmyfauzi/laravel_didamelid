@@ -4,11 +4,17 @@
 <div class="container ">
     <div class="row justify-content-center d-flex  align-items-center text-center">
         <div class="col-md-8">
-            <h1 class="text-white text-bold">Langkah terbaik awal Karirmu</h1>
-            <p class="text-white mb-5">Temukan lebih dari 10.000 pekerjaan di situs ini</p>
+            <div class="my-4">
 
+                <h1>Perusahaan</h1>
+            </div>
             <form action="/company">
-
+                @if(request('company-category'))
+                <input type="text" name="company-category" value="{{ request('company-category') }}">
+                @endif
+                @if(request('location'))
+                <input type="text" name="location" value="{{ request('location') }}">
+                @endif
                 <div class="input-group input-group-lg mb-5">
                     <input type=" text" class="form-control" placeholder="Cari Perusahaan" name="search" value="{{ request('search') }}">
                     <button type="submit" class="btn btn-primary">Cari pekerjaan</button>

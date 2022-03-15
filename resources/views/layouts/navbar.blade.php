@@ -28,16 +28,17 @@
              <ul class="navbar-nav ms-auto">
                  <!-- Authentication Links -->
                  @guest
+                 <a href="https://wa.me/+6282118418130" target="_blank" class="btn btn-primary">Kirim Pekerjaan</a>
                  @if (Route::has('login'))
-                 <li class="nav-item">
+                 {{-- <li class="nav-item">
                      <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
-                 </li>
+                 </li> --}}
                  @endif
 
                  @if (Route::has('register'))
-                 <li class="nav-item">
+                 {{-- <li class="nav-item">
                      <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-                 </li>
+                 </li> --}}
                  @endif
                  @else
                  <li class="nav-item dropdown">
