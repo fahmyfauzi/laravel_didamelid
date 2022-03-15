@@ -6,7 +6,5 @@
   <a href="https://twitter.com/FahmyFauzi10"><button style="background-color: #48cae4; color: white">Twitter</button></a>
   <a href="mailto:fahmyfauzii@gmail.com?subject=from%20github"><button style="background-color: #d00000; color: white">E-mail</button></a>
 </div>
-<div>
-  <h5>PHP, HTML, CSS, Bootstrap, Laravel, Javascript</h5>
-</div>
+
 
