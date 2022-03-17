@@ -11,7 +11,7 @@ class JobController extends Controller
     public function index()
     {
         return view('job.show', [
-            'jobs' => Jobs::latest()->filter(request(['search', 'category', 'location']))->paginate(7)->withQueryString(),
+            'jobs' => Jobs::latest()->filter(request(['search', 'category', 'location', 'type']))->paginate(7)->withQueryString(),
         ]);
     }
     public function show(Jobs $job)

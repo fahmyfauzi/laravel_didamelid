@@ -16,9 +16,7 @@
                  <li>
                      <a href="/job" class="nav-link {{ Request::is('job*') ? 'active' : false }}">Lowongan Pekerjaan</a>
                  </li>
-                 <li>
-                     <a href="/category" class="nav-link {{ Request::is('category') ? 'active' : false }}">Kategori Pekerjaan</a>
-                 </li>
+
                  <li>
                      <a href="/company" class="nav-link {{ Request::is('company*') ? 'active' : false }}">Perusahaan</a>
                  </li>

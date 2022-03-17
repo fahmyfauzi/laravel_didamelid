@@ -9,12 +9,7 @@
                 <p class="text-white mb-5">Temukan lebih dari 10.000 pekerjaan di situs ini</p>
 
                 <form action="/job">
-                    @if(request('category'))
-                    <input type="hidden" name="category" value="{{ request('category') }}">
-                    @endif
-                    @if(request('location'))
-                    <input type="hidden" name="location" value="{{ request('location') }}">
-                    @endif
+
                     <div class="input-group input-group-lg mb-5">
                         <input type=" text" class="form-control" placeholder="Pekerjaan atau nama perusahaan" name="search" style="background-image:url('icon/search.png'); background-position:10px 10px;; size: 10px;  background-repeat: no-repeat; padding-left: 40px;">
                         <button type="submit" class="btn btn-primary">Cari pekerjaan</button>
@@ -46,18 +41,17 @@
                 <h2>Rekomendasi Pekerjaan</h2>
 
                 <p>Nilai dirimu dan temukan pekerjaan terbaik untukmu</p>
+                <h4 class="text-center my-4">Pekerjaan Terbaru </h4>
             </div>
-
-            <h4 class="text-center my-4">Pekerjaan Terbaru </h4>
 
             @foreach($jobs as $job)
 
-            <div class="card m-1 col-md-5 ">
+            <div class="card m-2 col-md-5 ">
                 <div class="row g-0">
                     <div class="col-md-2">
                         <img src="{{ $job->company->logo}}" class="img-fluid mt-4 rounded width=" 100px" alt="...">
                     </div>
-                    <div class="col-md-8 ">
+                    <div class="col-md-10 ">
                         <div class="card-body ">
                             <h5 class="card-title"><a href="/job/{{ $job->slug }}">{{ $job->title }} - {{ $job->company->name }}</a></h5>
                             <h6 class="card-text m-0">
@@ -70,12 +64,10 @@
                                 </a>
                             </h6>
                             <p class="card-text m-0"><i class="fa-solid fa-coins"></i>Rp.{{ $job->salary }}/ month</p>
-                            <p class="card-text">{{ $job->time }}</p>
+                            <a href="/job?type={{ Str::slug($job->type, '-') }}" class="card-text btn btn-primary rounded-pill mt-2">{{ $job->type }}</a>
                         </div>
                     </div>
-                    <div class="col-md-2 pt-3 ">
-                        <small><i class="fa-solid fa-clock"></i>{{ $job->created_at->diffForHumans() }}</small>
-                    </div>
+
                 </div>
             </div>
             @endforeach
@@ -111,12 +103,16 @@
                 <h4>Perusahaan Unggulan</h4>
                 <p>Perusahaan yang bekerjasama dengan kami</p>
                 {{-- Corousel slide --}}
-                <div>
-
+                <div class="col-md-12">
                     <div class="slider">
                         @foreach($companies as $company)
-                        <div class="card m-5">
-                            <img src=" {{ $company->logo }}" class="card-img-top rounded" alt="...">
+                        <div class="card col-md-3 m-2">
+                            <div>
+
+                                <p class="bg-success text-white rounded-pill">Featured</p>
+
+                                <img src=" {{ $company->logo }}" class="card-img-top rounded" alt="...">
+                            </div>
                             <div class="card-body">
                                 <h5 class="card-title"><a href="/company/{{ $company->slug }}"> {{ $company->name }}</a></h5>
                                 <a href="/company?company-category={{ $company->companycategory->slug }}">{{ $company->companycategory->name }} </a>

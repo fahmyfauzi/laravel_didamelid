@@ -28,8 +28,10 @@ class JobSeeder extends Seeder
                 'location' => $faker->city,
                 'level_career' => $faker->jobTitle,
                 'salary' =>  "5000.000 - 15.000.000",
-                'time' => 'Fulltime',
-                'body' => $faker->sentence($nbWords = 100, $variableNbWords = true)
+                'type' => 'Fulltime',
+                'body' =>  collect($faker->paragraphs(mt_rand(5, 10)))
+                    ->map(fn ($p) => "<p>$p</p>")
+                    ->implode(''),
 
             ]);
         }

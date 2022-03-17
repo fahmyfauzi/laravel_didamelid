@@ -5,13 +5,24 @@
     <div class="container">
         <div class="row">
             <div class="col-md-2">
-                <img src="{{ $job->company->logo}}" class="img-fluid rounded width=" 100px" alt="...">
+                <img src="{{ $job->company->logo}}" class="img-fluid rounded m-2" alt="...">
             </div>
-            <div class="col-md-8">
+            <div class="col-md-8 mb-4">
                 <h2 class="display-4">{{ $job->title }}</h2>
-                <p class="lead">{{ $job->category->name }} {{ $job->location }} {{ $job->created_at->diffForHumans() }}</p>
-                <hr class="my-4">
-                <p>{{ $job->time }}</p>
+                <a href="/job?category={{ $job->category->slug }}" class="me-3">
+                    <i class="fa-solid fa-briefcase"></i>
+                    {{ ucfirst($job->category->name) }}
+                </a>
+                <a href="/job?location={{ $job->location }}" class="me-3">
+                    <i class="fa-solid fa-location-dot"></i> {{ $job->location }}
+                </a>
+                <span class="me-3"><i class="fa-solid fa-clock"></i>
+                    {{ $job->created_at->diffForHumans() }}
+                </span>
+                <span class="card-text m-0 me-3">
+                    <i class="fa-solid fa-coins"></i>Rp.{{ $job->salary }}/month
+                </span>
+
             </div>
         </div>
 
@@ -40,22 +51,22 @@
 
     <div class="row">
         <div class="col-md-5">
-            <div class="row">
 
 
-                <h6>Share this post</h6>
 
-                <div class="col-md-2">
-                    <a href="#" class="btn btn-primary">Facebook</a>
-                </div>
-                <div class="col-md-2">
-                    <a href="#" class="btn btn-warning">Twitter</a>
-                </div>
-                <div class="col-md-2">
-                    <a href="#" class="btn btn-danger">Pinterest</a>
-                </div>
-            </div>
+            <h6>Share this post</h6>
+
+            <span class="col-md-2">
+                <a href="#" class="btn btn-primary">Facebook</a>
+            </span>
+            <span class="col-md-2">
+                <a href="#" class="btn btn-warning">Twitter</a>
+            </span>
+            <span class="col-md-2">
+                <a href="#" class="btn btn-danger">Pinterest</a>
+            </span>
         </div>
+
     </div>
 
 </div>

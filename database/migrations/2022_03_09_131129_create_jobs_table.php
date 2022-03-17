@@ -24,7 +24,7 @@ return new class extends Migration
             $table->date('expiration_date');
             $table->string('level_career');
             $table->string('salary');
-            $table->string('time');
+            $table->string('type');
             $table->text('body');
             $table->timestamps();
         });

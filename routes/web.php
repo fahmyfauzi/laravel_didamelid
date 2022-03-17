@@ -26,11 +26,10 @@ Route::get('/job/{job:slug}', [JobController::class, 'show']);
 
 Route::get('/job', [JobController::class, 'index']);
 
-Route::get('/category', [CategoryController::class, 'index']);
 Route::get('/job-category/{category:slug}', [CategoryController::class, 'show']);
 
 
-Route::resource('/dashboard', DashboardJobController::class);
+Route::resource('/dashboard', DashboardJobController::class)->middleware('auth');
 
 Route::get('/company', [CompanyControoler::class, 'index']);
 Route::get('/company/{company:slug}', [CompanyControoler::class, 'show']);

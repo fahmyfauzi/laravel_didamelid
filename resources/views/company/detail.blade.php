@@ -1,13 +1,19 @@
 @extends('layouts.app')
 
 @section( 'content')
-<div class="jumbotron bg-secondary mb-5">
+<div class="jumbotron bg-light mb-5">
     <div class="container">
         <div class="row d-flex justify-content-center">
             <div class="col-md-8 text-center">
                 <img src="{{ $company->logo}}" class="rounded mt-3" style="width:200px" alt="...">
-                <h6 class="display-4">{{ $company->name }}</h6>
-                <p class="lead">{{ $company->companycategory->name }}</p>
+                <div>
+                    <span class="display-4">{{ $company->name }} </span>
+                    @if($company->status == '1')
+
+                    <small class="d-inline text-success">Featured</small>
+                    @endif
+                </div>
+                <p class="lead"> <i class="fa-solid fa-briefcase"></i> {{ $company->companycategory->name }}</p>
             </div>
         </div>
     </div>
@@ -54,43 +60,40 @@
                 </div>
             </div>
         </div>
+
         <div class="col-md-8">
             <h2>About Company</h2>
 
             <p>{!! $company->body !!}</p>
 
-        </div>
-    </div>
-
-    <div class="row justify-content-end">
-        <div class="col-md-8">
 
 
-            @foreach($company->job->sortByDesc('created_at') as $company) <div class="card m-2 col-md-12">
+
+            @foreach($company->job->sortByDesc('created_at') as $company) <div class="card mb-3 col-md-12">
                 <div class="row g-0">
-                    <div class="col-md-2">
-                        <img src="{{ $company->company->logo}}" class="img-fluid rounded width=" 100px" alt="...">
+                    <div class="col-md-2 ">
+                        <img src="{{ $company->company->logo}}" class="img-fluid rounded m-2" width=" 150px" alt="...">
                     </div>
-                    <div class="col-md-8">
+
+                    <div class="col-md-10">
                         <div class="card-body">
-                            <h5 class="card-title"><a href="/job/{{ $company->slug }}">{{ $company->title }} - {{ $company->company->name }}</a></h5>
+                            <h5 class="card-title"><a href="/job/{{ $company->slug }}">{{ $company->title }} </a></h5>
                             <h6 class="card-text m-0">
 
-                                <a href="/job?category={{ $company->category->name }}">
+                                <a href="/job?category={{ $company->category->name }}" class="me-2">
                                     <i class="fa-solid fa-briefcase"></i>
                                     {{ ucfirst($company->category->name) }}
                                 </a>
-                                <a href="/job?location={{ $company->location }}">
+                                <a href="/job?location={{ $company->location }}" class="me-2">
                                     <i class="fa-solid fa-location-dot"></i> {{ $company->location }}
                                 </a>
+                                <span class="card-text m-0 me-2"><i class="fa-solid fa-coins"></i>Rp.{{ $company->salary }}/month</span>
                             </h6>
-                            <p class="card-text m-0"><i class="fa-solid fa-coins"></i>Rp.{{ $company->salary }}/ month</p>
-                            <p class="card-text">{{ $company->time }}</p>
+
+                            <small>
+                                <a href="/job?type={{ Str::slug($company->type, '-') }}" class="card-text btn btn-primary rounded-pill mt-2">{{ $company->type }}</a>
+                            </small>
                         </div>
-                    </div>
-                    <div class="col-md-2 pt-3 d-flex justify-content-end">
-                        <small class=""><i class="fa-solid fa-clock"></i>
-                            {{ $company->created_at->diffForHumans() }}</small>
                     </div>
                 </div>
             </div>

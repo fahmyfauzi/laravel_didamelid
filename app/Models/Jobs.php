@@ -2,8 +2,9 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Support\Str;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Jobs extends Model
 {
@@ -29,6 +30,11 @@ class Jobs extends Model
         $query->when($filters['location'] ?? false, function ($query, $location) {
             return $query->where(function ($query) use ($location) {
                 $query->where('location', $location);
+            });
+        });
+        $query->when($filters['type'] ?? false, function ($query, $type) {
+            return $query->where(function ($query) use ($type) {
+                $query->where('type', Str::slug($type, ' '));
             });
         });
     }

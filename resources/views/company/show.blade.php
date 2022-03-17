@@ -10,10 +10,10 @@
             </div>
             <form action="/company">
                 @if(request('company-category'))
-                <input type="text" name="company-category" value="{{ request('company-category') }}">
+                <input type="hidden" name="company-category" value="{{ request('company-category') }}">
                 @endif
                 @if(request('location'))
-                <input type="text" name="location" value="{{ request('location') }}">
+                <input type="hidden" name="location" value="{{ request('location') }}">
                 @endif
                 <div class="input-group input-group-lg mb-5">
                     <input type=" text" class="form-control" placeholder="Cari Perusahaan" name="search" value="{{ request('search') }}">
@@ -23,15 +23,18 @@
         </div>
 
     </div>
-    <div class="row">
-
-
+    <div class="row justify-content-center">
         @foreach($companies as $company)
-
-        <div class="card m-2 col-md-12">
+        <div class="card m-2 col-md-10">
             <div class="row g-0">
-                <div class="col-md-2">
-                    <img src="{{ $company->logo}}" class="img-fluid rounded width=" 100px" alt="...">
+                <div class="card col-md-1 bg-danger m-2">
+                    <img src="{{ $company->logo}}" class="img-fluid rounded" width="130px" alt="...">
+                    @if($company->status == '1')
+
+                    <span class="card-img-overlay text-center  p-1">
+                        <p class="bg-success text-white rounded-pill">Featured</p>
+                    </span>
+                    @endif
                 </div>
                 <div class="col-md-8">
                     <div class="card-body">
@@ -48,6 +51,8 @@
                         </h6>
 
                     </div>
+
+
                 </div>
             </div>
         </div>
@@ -55,9 +60,9 @@
 
 
 
-    </div>
-    <div class="d-flex justify-content-end">
-        {{ $companies->links() }}
+        <div class="d-flex justify-content-end">
+            {{ $companies->links() }}
+        </div>
     </div>
 </div>
 
