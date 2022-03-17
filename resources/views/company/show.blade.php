@@ -27,7 +27,7 @@
         @foreach($companies as $company)
         <div class="card m-2 col-md-10">
             <div class="row g-0">
-                <div class="card col-md-1 bg-danger m-2">
+                <div class="card col-md-1  m-2">
                     <img src="{{ $company->logo}}" class="img-fluid rounded" width="130px" alt="...">
                     @if($company->status == '1')
 

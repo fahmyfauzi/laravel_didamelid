@@ -19,9 +19,9 @@ class JobSeeder extends Seeder
         $faker = Faker::create('id_ID');
         foreach (range(1, 30) as $item) {
             Jobs::create([
-                'user_id' => rand(1, 3),
+                'user_id' => rand(1, 30),
                 'category_id' => rand(1, 6),
-                'company_id' => rand(1, 3),
+                'company_id' => rand(1, 8),
                 'title' => $faker->sentence($nbWords = 6, $variableNbWords = true),
                 'slug' => $faker->unique()->slug,
                 'expiration_date' => $faker->date($format = 'Y-m-d', $max = 'now'),

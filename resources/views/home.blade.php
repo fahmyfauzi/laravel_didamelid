@@ -116,6 +116,8 @@
                             <div class="card-body">
                                 <h5 class="card-title"><a href="/company/{{ $company->slug }}"> {{ $company->name }}</a></h5>
                                 <a href="/company?company-category={{ $company->companycategory->slug }}">{{ $company->companycategory->name }} </a>
+
+                                <small class="d-block">Open Job - {{$company->job->count() }}</small>
                             </div>
                         </div>
                         @endforeach

@@ -21,8 +21,8 @@ return new class extends Migration
             $table->string('status')->default(true);
             $table->string('logo');
             $table->string('location');
-            $table->string('phone_number');
-            $table->string('email');
+            $table->string('phone_number')->unique();
+            $table->string('email')->unique();
             $table->string('social_facebook')->nullable();
             $table->string('social_instagram')->nullable();
             $table->string('social_youtube')->nullable();

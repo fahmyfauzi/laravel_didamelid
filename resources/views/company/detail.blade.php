@@ -4,7 +4,7 @@
 <div class="jumbotron bg-light mb-5">
     <div class="container">
         <div class="row d-flex justify-content-center">
-            <div class="col-md-8 text-center">
+            <div class="col-md-8 text-center my-4">
                 <img src="{{ $company->logo}}" class="rounded mt-3" style="width:200px" alt="...">
                 <div>
                     <span class="display-4">{{ $company->name }} </span>
@@ -13,7 +13,7 @@
                     <small class="d-inline text-success">Featured</small>
                     @endif
                 </div>
-                <p class="lead"> <i class="fa-solid fa-briefcase"></i> {{ $company->companycategory->name }}</p>
+                <small class="d-block">Open Job - {{$company->job->count() }}</small>
             </div>
         </div>
     </div>

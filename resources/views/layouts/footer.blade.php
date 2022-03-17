@@ -3,14 +3,14 @@
     <div class="container">
         <div class="row">
 
-            <div class="col-md-4">
+            <div class="col-lg-3">
                 <h1><a href="#">DIDAMEL.ID</a></h1>
                 <h5>Hubungi Kami</h5>
                 <h6>0851 5716 3559</h6>
                 <p>Jl. Asrama Nyantong No. 9B, Kahuripan, Tawang, Kota Tasikmalaya, Jawa Barat 46115</p>
             </div>
-            <div class="col-md-4"></div>
-            <div class="col-md-2">
+            <div class="col-lg-4"></div>
+            <div class="col-lg-2">
                 <ul style="list-style-type:none;">
                     <h6>Tentang Kami</h6>
                     <li>
@@ -24,7 +24,7 @@
                     </li>
                 </ul>
             </div>
-            <div class="col-md-2">
+            <div class="col-lg-3">
                 <h6>Aplikasi Mobile</h6>
                 <p>Klik di sini untuk menginstal</p>
                 <button class="btn btn-primary">Playstore</button>

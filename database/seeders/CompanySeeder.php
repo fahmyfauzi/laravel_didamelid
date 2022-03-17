@@ -18,7 +18,7 @@ class CompanySeeder extends Seeder
     public function run()
     {
         $faker = Faker::create('id_ID');
-        foreach (range(1, 15) as $item) {
+        foreach (range(1, 8) as $item) {
             Company::create([
                 'companycategory_id' => rand(1, 4),
                 'name' => $faker->company,
