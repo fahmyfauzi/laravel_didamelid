@@ -2,7 +2,9 @@
 
 namespace Database\Seeders;
 
-
+use App\Models\Company;
+use App\Models\Jobs;
+use Illuminate\Contracts\Queue\Job;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -14,14 +16,18 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
+        Company::factory()
+            ->has(Jobs::factory()->count(rand(1, 3)))
+            ->count(5)
+            ->create();
         // \App\Models\User::factory(10)->create();
-        $this->call([
+        // $this->call([
 
-            JobSeeder::class,
-            UserSeeder::class,
-            CategorySeeder::class,
-            CompanySeeder::class,
-            CompanyCategorySeeder::class,
-        ]);
+        //     JobSeeder::class,
+        //     UserSeeder::class,
+        //     CategorySeeder::class,
+        //     CompanySeeder::class,
+        //     CompanyCategorySeeder::class,
+        // ]);
     }
 }
