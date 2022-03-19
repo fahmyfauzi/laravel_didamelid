@@ -17,16 +17,17 @@ return new class extends Migration
             $table->id();
             $table->foreignId('user_id');
             $table->foreignId('category_id');
-            $table->foreignId('company_id');
+            $table->bigInteger('company_id')->unsigned();
             $table->string('title');
             $table->string('slug')->unique();
             $table->string('location');
-            $table->date('expiration_date');
+            $table->string('expiration_date');
             $table->string('level_career');
             $table->string('salary');
             $table->string('type');
             $table->text('body');
             $table->timestamps();
+            $table->foreign('company_id')->references('id')->on('companies')->cascadeOnDelete();
         });
     }
 

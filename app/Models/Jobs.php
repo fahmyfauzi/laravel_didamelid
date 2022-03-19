@@ -4,13 +4,22 @@ namespace App\Models;
 
 use Illuminate\Support\Str;
 use Illuminate\Database\Eloquent\Model;
+use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Jobs extends Model
 {
-    use HasFactory;
-
+    use HasFactory, Sluggable;
     protected $guarded = [];
+
+    public function sluggable(): array
+    {
+        return [
+            'slug' => [
+                'source' => 'title'
+            ]
+        ];
+    }
 
     public function scopeFilter($query, array $filters)
     {
@@ -47,5 +56,9 @@ class Jobs extends Model
     public function company()
     {
         return $this->belongsTo(Company::class);
+    }
+    public function author()
+    {
+        return $this->belongsTo(User::class, 'user_id');
     }
 }

@@ -19,15 +19,15 @@ class JobSeeder extends Seeder
         $faker = Faker::create('id_ID');
         foreach (range(1, 30) as $item) {
             Jobs::create([
-                'user_id' => rand(1, 30),
+                'user_id' => rand(1, 3),
                 'category_id' => rand(1, 6),
                 'company_id' => rand(1, 8),
-                'title' => $faker->sentence($nbWords = 6, $variableNbWords = true),
+                'title' => $faker->sentence($nbWords = 3, $variableNbWords = true),
                 'slug' => $faker->unique()->slug,
                 'expiration_date' => $faker->date($format = 'Y-m-d', $max = 'now'),
                 'location' => $faker->city,
                 'level_career' => $faker->jobTitle,
-                'salary' =>  "5000.000 - 15.000.000",
+                'salary' =>  "Rp10.000.000 - Rp13.000.000",
                 'type' => 'Fulltime',
                 'body' =>  collect($faker->paragraphs(mt_rand(5, 10)))
                     ->map(fn ($p) => "<p>$p</p>")
