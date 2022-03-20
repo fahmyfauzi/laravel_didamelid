@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use App\Models\Company;
+use App\Models\CompanyCategory;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
@@ -16,7 +18,7 @@ class DashboardCompanyController extends Controller
     public function index()
     {
         return view('dashboard.company.index', [
-            'companies' => Company::all()
+            'companies' => Company::latest()->paginate(10)
         ]);
     }
 
@@ -27,6 +29,10 @@ class DashboardCompanyController extends Controller
      */
     public function create()
     {
+        return view('dashboard.company.create', [
+            'companies' => Company::all(),
+            'companycategories' => CompanyCategory::all()
+        ]);
     }
 
     /**
@@ -35,9 +41,32 @@ class DashboardCompanyController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, Company $company)
     {
-        //
+        $validatedData = $request->validate([
+            'name' => 'required',
+            'slug' => 'required',
+            'companycategory_id' => 'required',
+            'location' => 'required',
+            'email' => 'required|unique:companies',
+            'phone_number' => 'required|unique:companies',
+            'social_facebook',
+            'social_instagram',
+            'social_twiiter',
+            'social_youtube',
+            'website',
+            'logo' => 'image|file|max:2048',
+            'body' => 'required',
+        ]);
+        if ($request->slug != $company->slug) {
+            $validatedData['slug'] = 'required|unique:jobs';
+        }
+
+        if ($request->file('logo')) {
+            $validatedData['logo'] = $request->file('logo')->store('logo-company');
+        }
+        Company::create($validatedData);
+        return redirect('/dashboard/company')->with('success', 'Company has been Added!');
     }
 
     /**
@@ -48,6 +77,7 @@ class DashboardCompanyController extends Controller
      */
     public function show(Company $company)
     {
+
         return view('dashboard.company.show', [
             'company' => $company
         ]);
@@ -61,7 +91,11 @@ class DashboardCompanyController extends Controller
      */
     public function edit(Company $company)
     {
-        //
+
+        return view('dashboard.company.edit', [
+            'company' => $company,
+            'companycategories' => CompanyCategory::all(),
+        ]);
     }
 
     /**
@@ -73,7 +107,32 @@ class DashboardCompanyController extends Controller
      */
     public function update(Request $request, Company $company)
     {
-        //
+        $validatedData = $request->validate([
+            'name' => 'required',
+            'companycategory_id' => 'required',
+            'location' => 'required',
+            'slug' => 'required|unique:companies,slug,' . $company->id,
+            'email' => 'required|unique:companies,email,' . $company->id,
+            'phone_number' => 'required|unique:companies,phone_number,' . $company->id,
+            'social_facebook',
+            'social_instagram',
+            'social_twiiter',
+            'social_youtube',
+            'website',
+            'logo' => 'image|file|max:2048',
+            'body' => 'required',
+        ]);
+
+        if ($request->file('logo')) {
+            if ($request->oldImage) {
+                Storage::delete($request->oldImage);
+            }
+            $validatedData['logo'] =  $request->file('logo')->store('logo-company');
+        }
+
+
+        Company::where('id', $company->id)->update($validatedData);
+        return redirect('/dashboard/company')->with('success', 'Company has been updated!');
     }
 
     /**
@@ -84,8 +143,8 @@ class DashboardCompanyController extends Controller
      */
     public function destroy(Company $company)
     {
-        if ($company->image) {
-            Storage::delete($company->image);
+        if ($company->logo) {
+            Storage::delete($company->logo);
         }
         Company::destroy($company->id);
         return redirect('/dashboard/company')->with('success', ' Company has been deleted!');

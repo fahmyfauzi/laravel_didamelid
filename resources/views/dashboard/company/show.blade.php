@@ -5,7 +5,13 @@
     <div class="container">
         <div class="row d-flex justify-content-center">
             <div class="col-md-8 text-center my-4">
-                <img src="{{ $company->logo}}" class="rounded mt-3" style="width:200px" alt="...">
+                @if ($company->logo == null)
+                <img src="{{ asset('img/didamelid.png')}}" class="img-fluid rounded " width=" 150px"
+                    alt="{{ $company->name }}">
+                @else
+                <img src="{{ asset('storage/'.$company->logo)}}" class="img-fluid rounded " width=" 150px"
+                    alt="{{ $company->name }}">
+                @endif
                 <div>
                     <span class="display-4">{{ $company->name }} </span>
                     @if($company->status == '1')
@@ -76,7 +82,13 @@
             @foreach($company->job->sortByDesc('created_at') as $company) <div class="card mb-3 col-md-12">
                 <div class="row g-0">
                     <div class="col-md-2 ">
-                        <img src="{{ $company->company->logo}}" class="img-fluid rounded m-2" width=" 150px" alt="...">
+                        @if ($company->logo == null)
+                        <img src="{{ asset('img/didamelid.png')}}" class="img-fluid mt-4 rounded" width=" 100px"
+                            alt="{{ $company->name }}">
+                        @else
+                        <img src="{{ asset('storage/'.$company->logo)}}" class="img-fluid mt-4 rounded" width=" 100px"
+                            alt="{{ $company->name }}">
+                        @endif
                     </div>
 
                     <div class="col-md-10">

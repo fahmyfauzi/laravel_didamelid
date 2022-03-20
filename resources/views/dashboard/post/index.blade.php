@@ -12,17 +12,17 @@
     </div>
     @endif
     <a href="/dashboard/posts/create" class="btn btn-primary mb-3">Create Post</a>
-    <table class="table table-striped table-sm">
+    <table class="table table-striped table-sm ">
         <thead>
             <tr>
                 <th scope="col">{#}</th>
-                <th scope="col">Title</th>
+                <th scope="col" width="250px">Title</th>
                 <th scope="col">Company</th>
                 <th scope="col">Level Career</th>
                 <th scope="col">Type</th>
                 <th scope="col">Salary</th>
                 <th scope="col">Category</th>
-                <th scope="col">Action</th>
+                <th scope="col" width="150px;">Action</th>
             </tr>
         </thead>
         <tbody>

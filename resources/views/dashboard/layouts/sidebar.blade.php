@@ -11,7 +11,7 @@
             <li class="nav-item">
                 <a class="nav-link {{ Request::is('dashboard/posts*') ? 'active' : false }}" href="/dashboard/posts">
                     <span data-feather="file"></span>
-                    Post
+                    Job
                 </a>
             </li>
             <li class="nav-item">
@@ -19,6 +19,13 @@
                     href="/dashboard/company">
                     <span data-feather="file"></span>
                     Company
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link {{ Request::is('dashboard/category*') ? 'active' : false }}"
+                    href="/dashboard/category">
+                    <span data-feather="file"></span>
+                    Category
                 </a>
             </li>
         </ul>

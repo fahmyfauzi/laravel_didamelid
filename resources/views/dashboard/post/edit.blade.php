@@ -77,7 +77,7 @@
         </div>
         <div class="mb-3">
             <label for="expiration_date" class="form-label">Expiration Date</label>
-            <input type="text" class="form-control @error('expiration_date') is-invalid @enderror" id="expiration_date"
+            <input type="date" class="form-control @error('expiration_date') is-invalid @enderror" id="expiration_date"
                 name="expiration_date" value="{{ old('expiration_date',$job->expiration_date) }}">
             @error('expiration_date')
             <div class="text-danger">

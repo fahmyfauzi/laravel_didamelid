@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Company;
 use Illuminate\Http\Request;
 
-class CompanyControoler extends Controller
+class CompanyController extends Controller
 {
     public function index()
     {

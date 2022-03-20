@@ -1,7 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
-<section id="home" class="mb-5" style="background-image: url('/img/background_didamelid.jpg');  background-repeat: no-repeat; background-size: 100%; ">
+<section id="home" class="mb-5"
+    style="background-image: url('/img/background_didamelid.jpg');  background-repeat: no-repeat; background-size: 100%; ">
     <div class="container ">
         <div class="row justify-content-center d-flex  align-items-center text-center" style="height:100vh;">
             <div class="col-md-8">
@@ -11,7 +12,9 @@
                 <form action="/job">
 
                     <div class="input-group input-group-lg mb-5">
-                        <input type=" text" class="form-control" placeholder="Pekerjaan atau nama perusahaan" name="search" style="background-image:url('icon/search.png'); background-position:10px 10px;; size: 10px;  background-repeat: no-repeat; padding-left: 40px;">
+                        <input type=" text" class="form-control" placeholder="Pekerjaan atau nama perusahaan"
+                            name="search"
+                            style="background-image:url('icon/search.png'); background-position:10px 10px;; size: 10px;  background-repeat: no-repeat; padding-left: 40px;">
                         <button type="submit" class="btn btn-primary">Cari pekerjaan</button>
                     </div>
                 </form>
@@ -49,11 +52,18 @@
             <div class="card m-2 col-md-5 ">
                 <div class="row g-0">
                     <div class="col-md-2">
-                        <img src="{{ $job->company->logo}}" class="img-fluid mt-4 rounded width=" 100px" alt="...">
+                        @if ($job->company->logo == null)
+                        <img src="{{ asset('img/didamelid.png')}}" class="img-fluid mt-4 rounded " width=" 150px"
+                            alt="{{ $job->company->name }}">
+                        @else
+                        <img src="{{ asset('storage/'.$job->company->logo)}}" class="img-fluid  mt-4 rounded "
+                            width=" 150px" alt="{{ $job->company->name }}">
+                        @endif
                     </div>
                     <div class="col-md-10 ">
                         <div class="card-body ">
-                            <h5 class="card-title"><a href="/job/{{ $job->slug }}">{{ $job->title }} - {{ $job->company->name }}</a></h5>
+                            <h5 class="card-title"><a href="/job/{{ $job->slug }}">{{ $job->title }} - {{
+                                    $job->company->name }}</a></h5>
                             <h6 class="card-text m-0">
 
                                 <a href="/job?category={{ $job->category->name }}">
@@ -64,7 +74,8 @@
                                 </a>
                             </h6>
                             <p class="card-text m-0"><i class="fa-solid fa-coins"></i>Rp.{{ $job->salary }}/ month</p>
-                            <a href="/job?type={{ Str::slug($job->type, '-') }}" class="card-text btn btn-primary rounded-pill mt-2">{{ $job->type }}</a>
+                            <a href="/job?type={{ Str::slug($job->type, '-') }}"
+                                class="card-text btn btn-primary rounded-pill mt-2">{{ $job->type }}</a>
                         </div>
                     </div>
 
@@ -108,14 +119,19 @@
                         @foreach($companies as $company)
                         <div class="card col-md-3 m-2">
                             <div>
-
                                 <p class="bg-success text-white rounded-pill">Featured</p>
-
-                                <img src=" {{ $company->logo }}" class="card-img-top rounded" alt="...">
+                                @if ($company->logo == null)
+                                <img src="{{ asset('img/didamelid.png')}}" class="card-img-top rounded" width="100px">
+                                @else
+                                <img src="{{ asset('storage/'.$company->logo)}}" class="card-img-top rounded"
+                                    width="100px">
+                                @endif
                             </div>
                             <div class="card-body">
-                                <h5 class="card-title"><a href="/company/{{ $company->slug }}"> {{ $company->name }}</a></h5>
-                                <a href="/company?company-category={{ $company->companycategory->slug }}">{{ $company->companycategory->name }} </a>
+                                <h5 class="card-title"><a href="/company/{{ $company->slug }}"> {{ $company->name }}</a>
+                                </h5>
+                                <a href="/company?company-category={{ $company->companycategory->slug }}">{{
+                                    $company->companycategory->name }} </a>
 
                                 <small class="d-block">Open Job - {{$company->job->count() }}</small>
                             </div>
@@ -126,9 +142,12 @@
 
 
 
-                    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+                    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+                        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous">
+                    </script>
 
-                    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+                    <script type="text/javascript"
+                        src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
 
                     <script type="text/javascript">
                         $('.slider').slick({
