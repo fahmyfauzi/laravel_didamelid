@@ -7,7 +7,7 @@
 <div class="mb-3">
     <a href="{{ route('companycategory.index') }}" class="btn btn-success"><span data-feather="arrow-left"></span> Back
         to
-        jobs</a>
+        Category</a>
 
 
 </div>
@@ -35,7 +35,7 @@
             @enderror
         </div>
 
-        <button type="submit" class="btn btn-primary">Create Company Category</button>
+        <button type="submit" class="btn btn-primary">Create Category</button>
 </div>
 </form>
 </div>

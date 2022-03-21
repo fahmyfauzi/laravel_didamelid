@@ -18,7 +18,7 @@ class DashboardCompanyController extends Controller
     public function index()
     {
         return view('dashboard.company.index', [
-            'companies' => Company::latest()->paginate(10)
+            'companies' => Company::with(['companycategory', 'job'])->latest()->paginate(10)
         ]);
     }
 
@@ -79,7 +79,7 @@ class DashboardCompanyController extends Controller
     {
 
         return view('dashboard.company.show', [
-            'company' => $company
+            'company' => $company->load('companycategory', 'job')
         ]);
     }
 

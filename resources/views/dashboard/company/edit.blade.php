@@ -6,7 +6,7 @@
 </div>
 <div class="mb-3">
     <a href="{{ route('company.index') }}" class="btn btn-success"><span data-feather="arrow-left"></span> Back to
-        jobs</a>
+        company</a>
 
     <form action="{{ route('company.destroy',[$company->slug]) }}" method="post" class="d-inline">
         @method('delete')

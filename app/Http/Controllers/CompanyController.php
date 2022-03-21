@@ -9,8 +9,7 @@ class CompanyController extends Controller
 {
     public function index()
     {
-        // return Company::latest()->filter(request(['category']))->paginate(7)->withQueryString();
-        return view('company.show', [
+        return view('company.index', [
             'companies' => Company::latest()->filter(request(['company-category', 'location', 'search']))->paginate(7)->withQueryString()
         ]);
     }
@@ -18,8 +17,7 @@ class CompanyController extends Controller
     public function show(Company $company)
     {
 
-        // return $company->job->first();
-        return view('company.detail', [
+        return view('company.show', [
             'company' => $company,
         ]);
     }

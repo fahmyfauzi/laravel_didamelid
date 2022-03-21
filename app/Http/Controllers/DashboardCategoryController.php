@@ -15,7 +15,7 @@ class DashboardCategoryController extends Controller
      */
     public function index()
     {
-        return view('dashboard.category.index', [
+        return view('dashboard.jobcategory.index', [
             'categories' => Category::all(),
         ]);
     }
@@ -27,7 +27,7 @@ class DashboardCategoryController extends Controller
      */
     public function create()
     {
-        return view('dashboard.category.create');
+        return view('dashboard.jobcategory.create');
     }
 
     /**
@@ -66,7 +66,7 @@ class DashboardCategoryController extends Controller
      */
     public function edit(Category $category)
     {
-        return view('dashboard.category.edit', [
+        return view('dashboard.jobcategory.edit', [
             'category' => $category,
         ]);
     }

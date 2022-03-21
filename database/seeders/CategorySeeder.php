@@ -45,5 +45,9 @@ class CategorySeeder extends Seeder
             'slug' => 'otomotif',
             'icon' => 'icon-otomotif.png'
         ]);
+        Category::create([
+            'name' => 'lainnya',
+            'slug' => 'lainnya',
+        ]);
     }
 }

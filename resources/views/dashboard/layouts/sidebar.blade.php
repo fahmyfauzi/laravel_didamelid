@@ -18,7 +18,7 @@
                 <a class="nav-link {{ Request::is('dashboard/category*') ? 'active' : false }}"
                     href="/dashboard/category">
                     <span data-feather="file"></span>
-                    Category Job
+                    Job Category
                 </a>
             </li>
             <li class="nav-item">

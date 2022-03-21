@@ -19,15 +19,9 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         Company::factory()
-            ->has(Jobs::factory()->count(rand(1, 3)))
-            ->count(5)
+            ->has(Jobs::factory()->count(rand(1, 20)))
+            ->count(300)
             ->create();
-
-        // Category::factory()
-        //     ->has(Company::factory()->count(rand(1, 6)))
-        //      ->has(Jobs::factory()->count(rand(1, 3)))
-        //     ->count(5)
-        //     ->create();
 
         User::factory(3)->create();
         $this->call([

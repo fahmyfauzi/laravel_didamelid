@@ -3,7 +3,7 @@
 @section( 'content')
 <div class="my-3">
     <a href="{{ route('company.index') }}" class="btn btn-success"><span data-feather="arrow-left"></span> Back to
-        jobs</a>
+        company</a>
     <a href="{{ route('company.edit',[$company->slug]) }}" class="btn btn-warning"><span data-feather="edit"></span>
         Edit</a>
     <form action="{{ route('company.destroy',[$company->slug]) }}" method="post" class="d-inline">

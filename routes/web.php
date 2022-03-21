@@ -2,13 +2,13 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\JobController;
-use App\Http\Controllers\HomeController;
 use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\DashboardJobController;
 use App\Http\Controllers\DashboardCategoryController;
 use App\Http\Controllers\DashboardCompanyController;;
 
 use App\Http\Controllers\DashboardCompanyCategoryController;
+use App\Http\Controllers\HomeController;
 use App\Models\Category;
 use App\Models\Company;
 use App\Models\CompanyCategory;
@@ -28,7 +28,14 @@ use App\Models\Jobs;
 
 Auth::routes();
 
-Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::get('/', function () {
+
+    return view('home', [
+        'categories' => Category::first()->take(6)->get(),
+        'jobs' => Jobs::with('category', 'company', 'author')->latest()->take(6)->get(),
+        'companies' => Company::with(['companycategory', 'job'])->where('status', 1)->get(),
+    ]);
+});
 Route::get('/job/{job:slug}', [JobController::class, 'show']);
 
 Route::get('/job', [JobController::class, 'index']);

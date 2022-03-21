@@ -32,5 +32,9 @@ class CompanyCategorySeeder extends Seeder
             'name' => 'perusahaan distributor',
             'slug' => 'perusahaan-distributor'
         ]);
+        CompanyCategory::create([
+            'name' => 'perusahaan lainnya',
+            'slug' => 'perusahaan-lainnya'
+        ]);
     }
 }

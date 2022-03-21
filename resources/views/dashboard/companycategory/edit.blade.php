@@ -7,7 +7,7 @@
 <div class="mb-3">
     <a href="{{ route('companycategory.index') }}" class="btn btn-success"><span data-feather="arrow-left"></span> Back
         to
-        jobs</a>
+        Category</a>
     <form action="{{ route('companycategory.destroy',[$companycategory->slug]) }}" method="post" class="d-inline">
         @method('delete')
         @csrf
@@ -39,7 +39,7 @@
             @enderror
         </div>
 
-        <button type="submit" class="btn btn-primary">Update Company Category</button>
+        <button type="submit" class="btn btn-primary">Update Category</button>
 </div>
 </form>
 </div>

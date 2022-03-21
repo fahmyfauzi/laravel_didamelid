@@ -20,6 +20,7 @@ class Company extends Model
     }
 
 
+
     public function scopeFilter($query, array $filters)
     {
         $query->when($filters['company-category'] ?? false, function ($query, $companycategory) {

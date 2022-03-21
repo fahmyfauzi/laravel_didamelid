@@ -65,7 +65,7 @@
                 <h6><i class="fa-solid fa-location-pin fs-6"></i> Lokasi</h6>
                 <p class="lead">{{ $job->location }}</p>
                 <h6><i class="fa-regular fa-hourglass"></i> Expiration Date</h6>
-                <p class="lead">{{ $job->expiration_date }}</p>
+                <p class="lead">{{date('d F Y',strtotime( $job->expiration_date)) }}</p>
                 <h6><i class="fa-solid fa-coins"></i> Offered Salary:</h6>
                 <p class="lead">{{ $job->salary }}</p>
                 <h6><i class="fa-solid fa-user-tie"></i> Level Career</h6>

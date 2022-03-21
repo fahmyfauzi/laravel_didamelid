@@ -19,7 +19,7 @@ class DashboardJobController extends Controller
     public function index()
     {
         return view('dashboard.job.index', [
-            'jobs' => Jobs::where('user_id', auth()->user()->id)->latest()->paginate(10)
+            'jobs' => Jobs::with(['category', 'company', 'author'])->where('user_id', auth()->user()->id)->latest()->paginate(10)
         ]);
     }
 

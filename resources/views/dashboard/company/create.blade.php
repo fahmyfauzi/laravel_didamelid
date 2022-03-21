@@ -6,7 +6,7 @@
 </div>
 <div class="mb-3">
     <a href="{{ route('company.index') }}" class="btn btn-success"><span data-feather="arrow-left"></span> Back to
-        jobs</a>
+        company</a>
 </div>
 <div class="col-lg-8">
     <form method="post" action="/dashboard/company" class="mb-5" enctype="multipart/form-data">
