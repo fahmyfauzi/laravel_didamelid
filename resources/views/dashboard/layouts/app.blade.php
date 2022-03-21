@@ -78,6 +78,34 @@
     </script>
     <script src="{{ asset('js/dashboard.js') }}">
     </script>
+    <script>
+        const title = document.querySelector('#name');
+        const slug = document.querySelector('#slug');
+        title.addEventListener('change', function() {
+            fetch('/checkSlug?title=' + title.value)
+                .then(response => response.json())
+                .then(data => slug.value = data.slug)
+        });
+        document.addEventListener('trix-file-accept', function(e) {
+            e.preventDefault();
+        })
+    
+        function previewImage() {
+            const logo = document.querySelector('#logo');
+            const imgPreview = document.querySelector('.img-preview');
+    
+            imgPreview.style.display = 'block';
+    
+            const oFReader = new FileReader();
+            oFReader.readAsDataURL(logo.files[0]);
+    
+            oFReader.onload = function(oFREvent) {
+                imgPreview.src = oFREvent.target.result;
+            }
+        }
+    
+    
+    </script>
 </body>
 
 </html>

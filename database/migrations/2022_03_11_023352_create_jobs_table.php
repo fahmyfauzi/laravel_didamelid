@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('jobs', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id');
+            // $table->bigInteger('category_id')->unsigned();
             $table->foreignId('category_id');
             $table->bigInteger('company_id')->unsigned();
             $table->string('title');
@@ -27,6 +28,7 @@ return new class extends Migration
             $table->string('type');
             $table->text('body');
             $table->timestamps();
+            // $table->foreign('category_id')->references('id')->on('categories')->cascadeOnDelete();
             $table->foreign('company_id')->references('id')->on('companies')->cascadeOnDelete();
         });
     }

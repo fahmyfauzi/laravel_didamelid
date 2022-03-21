@@ -9,23 +9,30 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link {{ Request::is('dashboard/posts*') ? 'active' : false }}" href="/dashboard/posts">
+                <a class="nav-link {{ Request::is('dashboard/job*') ? 'active' : false }}" href="/dashboard/job">
                     <span data-feather="file"></span>
                     Job
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link {{ Request::is('dashboard/company*') ? 'active' : false }}"
-                    href="/dashboard/company">
-                    <span data-feather="file"></span>
-                    Company
                 </a>
             </li>
             <li class="nav-item">
                 <a class="nav-link {{ Request::is('dashboard/category*') ? 'active' : false }}"
                     href="/dashboard/category">
                     <span data-feather="file"></span>
-                    Category
+                    Category Job
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link {{ Request::is('dashboard/company/*') ? 'active' : false }} 
+                {{ Request::is('dashboard/company') ? 'active' : false }} " href="/dashboard/company">
+                    <span data-feather="file"></span>
+                    Company
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link {{ Request::is('dashboard/companycategory*') ? 'active' : false }}"
+                    href="/dashboard/companycategory">
+                    <span data-feather="file"></span>
+                    Company Category
                 </a>
             </li>
         </ul>

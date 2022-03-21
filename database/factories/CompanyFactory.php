@@ -17,18 +17,17 @@ class CompanyFactory extends Factory
     public function definition()
     {
         return [
-            'name' => $this->faker->company(),
+            'name' => $this->faker->name(),
             'companycategory_id' => rand(1, 4),
             'slug' => $this->faker->slug(),
-            'status' => $this->faker->boolean(),
+            'status' => rand(0, 1),
             'location' => $this->faker->city(),
             'phone_number' => $this->faker->phoneNumber(),
             'email' => $this->faker->email(),
-            'social_facebook' => 'https://www.facebook.com/fahmy.fauzi.3150/',
-            'social_instagram' => 'https://www.instagram.com/fahmyfauzii/',
-            'social_youtube' => 'https://www.youtube.com/channel/UC9WMoCKFXwbkghlx9WK7ABw',
-            'social_twitter' => 'https://twitter.com/FahmyFauzi10',
-            'website' => 'https://fahmyfauzi.github.io/',
+            'social_facebook' => 'https://www.facebook.com/didamel.id',
+            'social_instagram' => 'https://www.instagram.com/didamel.id',
+            'social_youtube' => 'https://www.youtube.com/c/DidamelIndonesia',
+            'website' => 'https://google.com',
             'body' => $this->faker->paragraph(),
         ];
     }

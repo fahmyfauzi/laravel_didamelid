@@ -13,7 +13,7 @@ class HomeController extends Controller
     {
 
         return view('home', [
-            'categories' =>  Category::all(),
+            'categories' =>  Category::first()->take(6)->get(),
             'jobs' => Jobs::latest()->take(6)->get(),
             'companies' => Company::where('status', 1)->get(),
         ]);

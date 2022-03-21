@@ -4,9 +4,15 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\JobController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\CompanyController;
-use App\Http\Controllers\DashboardCategoryController;
 use App\Http\Controllers\DashboardJobController;
+use App\Http\Controllers\DashboardCategoryController;
 use App\Http\Controllers\DashboardCompanyController;;
+
+use App\Http\Controllers\DashboardCompanyCategoryController;
+use App\Models\Category;
+use App\Models\Company;
+use App\Models\CompanyCategory;
+use App\Models\Jobs;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,21 +37,22 @@ Route::get('/company', [CompanyController::class, 'index']);
 Route::get('/company/{company:slug}', [CompanyController::class, 'show']);
 
 Route::get('/dashboard', function () {
-    return view('dashboard.index');
+    return view('dashboard.index', [
+        'company' => Company::all(),
+        'job' => Jobs::all(),
+        'category' => Category::all(),
+        'companycategory' => CompanyCategory::all(),
+    ]);
 });
 
 Route::middleware('auth')->group(function () {
 
-    Route::get('/dashboard/posts', [DashboardJobController::class, 'index']);
-    Route::get('/dashboard/posts/create', [DashboardJobController::class, 'create']);
-    Route::get('/dashboard/posts/{jobs:slug}', [DashboardJobController::class, 'show']);
-    Route::delete('/dashboard/posts/{jobs:slug}', [DashboardJobController::class, 'destroy']);
-    Route::post('/dashboard/posts', [DashboardJobController::class, 'store']);
-    Route::get('/dashboard/posts/edit/{jobs:slug}', [DashboardJobController::class, 'edit']);
-    Route::post('/dashboard/posts/{jobs:slug}', [DashboardJobController::class, 'update']);
+    Route::resource('/dashboard/job', DashboardJobController::class);
     Route::get('/checkSlug', [DashboardJobController::class, 'checkSlug']);
 
     Route::resource('/dashboard/company', DashboardCompanyController::class);
 
     Route::resource('/dashboard/category', DashboardCategoryController::class)->except('show');
+
+    Route::resource('/dashboard/companycategory', DashboardCompanyCategoryController::class)->except('show');
 });

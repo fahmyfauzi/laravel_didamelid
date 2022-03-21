@@ -4,6 +4,18 @@
 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
     <h1 class="h2">Show Job</h1>
 </div>
+<div class="mb-3">
+    <a href="{{ route('job.index') }}" class="btn btn-success"><span data-feather="arrow-left"></span> Back to
+        jobs</a>
+    <a href="{{ route('job.edit',[$job->slug]) }}" class="btn btn-warning"><span data-feather="edit"></span>
+        Edit</a>
+    <form action="{{ route('job.destroy',[$job->slug]) }}" method="post" class="d-inline">
+        @method('delete')
+        @csrf
+        <button class="btn btn-danger " onClick="return confirm('Are you sure?')"><i
+                data-feather="x-circle"></i>Delete</button>
+    </form>
+</div>
 <div class="jumbotron bg-light mb-5">
     <div class="container">
         <div class="row">

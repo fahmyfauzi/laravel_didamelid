@@ -4,8 +4,20 @@
 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
     <h1>Update Job</h1>
 </div>
+<div class="mb-3">
+    <a href="{{ route('job.index') }}" class="btn btn-success"><span data-feather="arrow-left"></span> Back to
+        jobs</a>
+
+    <form action="{{ route('job.destroy',[$job->slug]) }}" method="post" class="d-inline">
+        @method('delete')
+        @csrf
+        <button class="btn btn-danger " onClick="return confirm('Are you sure?')"><i
+                data-feather="x-circle"></i>Delete</button>
+    </form>
+</div>
 <div class="col-lg-8">
-    <form method="post" action="/dashboard/posts/{{ $job->slug }}" class="mb-5">
+    <form method="post" action="{{ route('job.update',[$job->slug]) }}" class="mb-5">
+        @method('put')
         @csrf
         <div class="mb-3">
             <label for="title" class="form-label">Title</label>
@@ -104,7 +116,7 @@
             @enderror
             <select class="form-select" name="salary">
                 <option selected hidden>Open this select menu</option>
-                <option value="Rp1.000.000 - Rp3.000.000" {{ old('type',$job->salary)=='Rp1.000.000 - Rp3.000.000'
+                <option value="Rp1.000.000 - Rp3.000.000" {{ old('salary',$job->salary)=='Rp1.000.000 - Rp3.000.000'
                     ? 'selected' : '' }}>
                     Rp1.000.000 - Rp3.000.000
                 </option>
@@ -159,8 +171,6 @@
 </form>
 </div>
 
-
-
 <script>
     const title = document.querySelector('#title');
     const slug = document.querySelector('#slug');
@@ -172,8 +182,6 @@
     document.addEventListener('trix-file-accept', function(e) {
         e.preventDefault();
     })
-
-
 
 </script>
 @endsection

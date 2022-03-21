@@ -1,6 +1,18 @@
 @extends('dashboard.layouts.app')
 
 @section( 'content')
+<div class="my-3">
+    <a href="{{ route('company.index') }}" class="btn btn-success"><span data-feather="arrow-left"></span> Back to
+        jobs</a>
+    <a href="{{ route('company.edit',[$company->slug]) }}" class="btn btn-warning"><span data-feather="edit"></span>
+        Edit</a>
+    <form action="{{ route('company.destroy',[$company->slug]) }}" method="post" class="d-inline">
+        @method('delete')
+        @csrf
+        <button class="btn btn-danger " onClick="return confirm('Are you sure?')"><i
+                data-feather="x-circle"></i>Delete</button>
+    </form>
+</div>
 <div class="jumbotron bg-light mb-5">
     <div class="container">
         <div class="row d-flex justify-content-center">
@@ -48,24 +60,36 @@
                             <td><a href="mailto:{{ $company->email}}">{{ $company->email}}</a></td>
                         </tr>
                         <tr>
+
                             <td>Social</td>
                             <td>:</td>
                             <td>
+                                @if ($company->social_instagram)
                                 <a href="{{ $company->social_instagram }}" target="_blank"><i
                                         class="fa-brands fa-instagram"></i></a>
+                                @endif
+                                @if ( $company->social_facebook )
                                 <a href="{{ $company->social_facebook }}" target="_blank"><i
                                         class="fa-brands fa-facebook-f"></i></a>
+                                @endif
+                                @if ($company->social_twitter )
                                 <a href="{{ $company->social_twitter }}" target="_blank"><i
                                         class="fa-brands fa-twitter"></i></a>
+                                @endif
+                                @if ($company->social_youtube)
                                 <a href="{{ $company->social_youtube }}" target="_blank"><i
                                         class="fa-brands fa-youtube"></i></a>
+                                @endif
                             </td>
                         </tr>
+                        @if ($company->website)
                         <tr>
                             <td colspan="3" class="text-center">
                                 <a class="btn btn-primary" href="{{ $company->website }}">{{ $company->website }}</a>
                             </td>
                         </tr>
+
+                        @endif
                     </table>
                 </div>
             </div>

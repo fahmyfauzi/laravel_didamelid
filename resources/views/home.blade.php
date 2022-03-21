@@ -8,9 +8,7 @@
             <div class="col-md-8">
                 <h1 class="text-white text-bold">Langkah terbaik awal Karirmu</h1>
                 <p class="text-white mb-5">Temukan lebih dari 10.000 pekerjaan di situs ini</p>
-
                 <form action="/job">
-
                     <div class="input-group input-group-lg mb-5">
                         <input type=" text" class="form-control" placeholder="Pekerjaan atau nama perusahaan"
                             name="search"
@@ -66,9 +64,12 @@
                                     $job->company->name }}</a></h5>
                             <h6 class="card-text m-0">
 
+
                                 <a href="/job?category={{ $job->category->name }}">
                                     <i class="fa-solid fa-briefcase"></i>{{ ucfirst($job->category->name) }}
                                 </a>
+
+
                                 <a href="/job?location={{ $job->location }}">
                                     <i class="fa-solid fa-location-dot"></i> {{ $job->location }}
                                 </a>

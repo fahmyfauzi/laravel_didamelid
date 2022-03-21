@@ -11,7 +11,7 @@
         {{ session('success') }}
     </div>
     @endif
-    <a href="/dashboard/posts/create" class="btn btn-primary mb-3">Create Post</a>
+    <a href="{{ route('job.create') }}" class="btn btn-primary mb-3">Create Post</a>
     <table class="table table-striped table-sm ">
         <thead>
             <tr>
@@ -37,10 +37,11 @@
                 <td>{{ $job->salary }}</td>
                 <td>{{ $job->category->name}}</td>
                 <td>
-                    <a href="/dashboard/posts/{{ $job->slug }}" class="badge bg-primary"><i data-feather="eye"></i></a>
-                    <a href="/dashboard/posts/edit/{{ $job->slug }}" class="badge bg-warning"><i
+                    <a href="{{ route('job.show',[$job->slug]) }}" class="badge bg-primary"><i
+                            data-feather="eye"></i></a>
+                    <a href="{{ route('job.edit',[$job->slug]) }}" class="badge bg-warning"><i
                             data-feather="edit"></i></a>
-                    <form action="/dashboard/posts/{{ $job->slug }}" method="post" class="d-inline">
+                    <form action="{{ route('job.destroy',[$job->slug]) }}" method="post" class="d-inline">
                         @method('delete')
                         @csrf
                         <button class="badge bg-danger border-0" onClick="return confirm('Are you sure?')"><i

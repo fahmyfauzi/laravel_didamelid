@@ -11,26 +11,39 @@ use Cviebrock\EloquentSluggable\Services\SlugService;
 
 class DashboardJobController extends Controller
 {
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function index()
     {
-        return view('dashboard.post.index', [
+        return view('dashboard.job.index', [
             'jobs' => Jobs::where('user_id', auth()->user()->id)->latest()->paginate(10)
         ]);
     }
 
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function create()
     {
-        return view('dashboard.post.create', [
+        return view('dashboard.job.create', [
             'companies' => Company::all(),
             'categories' => Category::all(),
         ]);
     }
 
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
     public function store(Request $request)
     {
-
-        // return $request;
-
         $validatedData = $request->validate([
             'title' => 'required',
             'slug' => 'required',
@@ -46,36 +59,55 @@ class DashboardJobController extends Controller
 
         $validatedData['user_id'] = auth()->user()->id;
         Jobs::create($validatedData);
-        return redirect('/dashboard/posts')->with('success', 'New job has been added!');
+        return redirect('/dashboard/job')->with('success', 'New job has been added!');
     }
 
-    public function show(Jobs $jobs)
+    /**
+     * Display the specified resource.
+     *
+     * @param  \App\Models\Jobs  $jobs
+     * @return \Illuminate\Http\Response
+     */
+    public function show(Jobs $job)
     {
-        if ($jobs->author->id !== auth()->user()->id) {
+        if ($job->author->id !== auth()->user()->id) {
             abort(403);
         }
-        return view('dashboard.post.show', [
-            'job' => $jobs
+        return view('dashboard.job.show', [
+            'job' => $job
         ]);
     }
 
-    public function edit(Jobs $jobs)
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  \App\Models\Jobs  $jobs
+     * @return \Illuminate\Http\Response
+     */
+    public function edit(Jobs $job)
     {
-        if ($jobs->author->id !== auth()->user()->id) {
+        if ($job->author->id !== auth()->user()->id) {
             abort(403);
         }
-        return view('dashboard.post.edit', [
+        return view('dashboard.job.edit', [
             'companies' => Company::all(),
             'categories' => Category::all(),
-            'job' => $jobs,
+            'job' => $job,
         ]);
     }
 
-    public function update(Request $request, Jobs $jobs)
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Models\Jobs  $jobs
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, Jobs $job)
     {
-
         $validatedData = $request->validate([
             'title' => 'required',
+            'slug' => 'required|unique:jobs,slug,' . $job->id,
             'company_id' => 'required',
             'category_id' => 'required',
             'location' => 'required',
@@ -85,23 +117,24 @@ class DashboardJobController extends Controller
             'type' => 'required',
             'body' => 'required',
         ]);
-        if ($request->slug != $jobs->slug) {
-            $validatedData['slug'] = 'required|unique:jobs';
-        }
+
         $validatedData['user_id'] = auth()->user()->id;
-        Jobs::where('id', $jobs->id)->update($validatedData);
-        return redirect('/dashboard/posts')->with('success', 'Job has been updated!');
+        Jobs::where('id', $job->id)->update($validatedData);
+        return redirect('/dashboard/job')->with('success', 'Job has been updated!');
     }
 
-    public function destroy(Jobs $jobs)
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  \App\Models\Jobs  $jobs
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy(Jobs $job)
     {
-        if ($jobs->image) {
-            Storage::delete($jobs->image);
-        }
-        Jobs::destroy($jobs->id);
-        return redirect('/dashboard/posts')->with('success', ' Post has been deleted!');
-    }
 
+        Jobs::destroy($job->id);
+        return redirect('/dashboard/job')->with('success', ' Post has been deleted!');
+    }
     public function checkSlug(Request $request)
     {
         $slug = SlugService::createSlug(Jobs::class, 'slug', $request->title);

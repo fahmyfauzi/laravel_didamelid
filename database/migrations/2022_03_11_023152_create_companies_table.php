@@ -18,7 +18,7 @@ return new class extends Migration
             $table->foreignId('companycategory_id');
             $table->string('name');
             $table->string('slug')->unique();
-            $table->string('status')->default(true);
+            $table->boolean('status')->default(false);
             $table->string('logo')->nullable();
             $table->string('location');
             $table->string('phone_number')->unique();

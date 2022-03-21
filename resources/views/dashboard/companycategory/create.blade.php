@@ -5,11 +5,14 @@
     <h1>Create New Job</h1>
 </div>
 <div class="mb-3">
-    <a href="{{ route('category.index') }}" class="btn btn-success"><span data-feather="arrow-left"></span> Back to
+    <a href="{{ route('companycategory.index') }}" class="btn btn-success"><span data-feather="arrow-left"></span> Back
+        to
         jobs</a>
+
+
 </div>
-<div class="col-lg-6">
-    <form method="post" action="{{ route('category.store') }}" class="mb-5">
+<div class="col-lg-8">
+    <form method="post" action="{{ route('companycategory.store') }}" class="mb-5">
         @csrf
         <div class="mb-3">
             <label for="name" class="form-label">Name</label>
@@ -32,9 +35,12 @@
             @enderror
         </div>
 
-        <button type="submit" class="btn btn-primary">Create Category</button>
+        <button type="submit" class="btn btn-primary">Create Company Category</button>
 </div>
 </form>
 </div>
+
+
+
 
 @endsection

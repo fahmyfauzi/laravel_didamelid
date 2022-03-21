@@ -5,7 +5,13 @@
     <div class="container">
         <div class="row d-flex justify-content-center">
             <div class="col-md-8 text-center my-4">
-                <img src="{{ $company->logo}}" class="rounded mt-3" style="width:200px" alt="...">
+                @if ($company->logo == null)
+                <img src="{{ asset('img/didamelid.png')}}" class="img-fluid rounded " width=" 150px"
+                    alt="{{ $company->name }}">
+                @else
+                <img src="{{ asset('storage/'.$company->logo)}}" class="img-fluid rounded " width=" 150px"
+                    alt="{{ $company->name }}">
+                @endif
                 <div>
                     <span class="display-4">{{ $company->name }} </span>
                     @if($company->status == '1')
@@ -45,17 +51,32 @@
                             <td>Social</td>
                             <td>:</td>
                             <td>
-                                <a href="{{ $company->social_instagram }}" target="_blank"><i class="fa-brands fa-instagram"></i></a>
-                                <a href="{{ $company->social_facebook }}" target="_blank"><i class="fa-brands fa-facebook-f"></i></a>
-                                <a href="{{ $company->social_twitter }}" target="_blank"><i class="fa-brands fa-twitter"></i></a>
-                                <a href="{{ $company->social_youtube }}" target="_blank"><i class="fa-brands fa-youtube"></i></a>
+                                @if ($company->social_instagram)
+                                <a href="{{ $company->social_instagram }}" target="_blank"><i
+                                        class="fa-brands fa-instagram"></i></a>
+                                @endif
+                                @if ( $company->social_facebook )
+                                <a href="{{ $company->social_facebook }}" target="_blank"><i
+                                        class="fa-brands fa-facebook-f"></i></a>
+                                @endif
+                                @if ($company->social_twitter )
+                                <a href="{{ $company->social_twitter }}" target="_blank"><i
+                                        class="fa-brands fa-twitter"></i></a>
+                                @endif
+                                @if ($company->social_youtube)
+                                <a href="{{ $company->social_youtube }}" target="_blank"><i
+                                        class="fa-brands fa-youtube"></i></a>
+                                @endif
                             </td>
                         </tr>
+                        @if ($company->website)
                         <tr>
+
                             <td colspan="3" class="text-center">
                                 <a class="btn btn-primary" href="{{ $company->website }}">{{ $company->website }}</a>
                             </td>
                         </tr>
+                        @endif
                     </table>
                 </div>
             </div>
@@ -72,7 +93,13 @@
             @foreach($company->job->sortByDesc('created_at') as $company) <div class="card mb-3 col-md-12">
                 <div class="row g-0">
                     <div class="col-md-2 ">
-                        <img src="{{ $company->company->logo}}" class="img-fluid rounded m-2" width=" 150px" alt="...">
+                        @if ($company->logo == null)
+                        <img src="{{ asset('img/didamelid.png')}}" class="card-img rounded " width="100px"
+                            alt="{{ $company->name }}">
+                        @else
+                        <img src="{{ asset('storage/'.$company->logo)}}" class="img-fluid  rounded" width="100px"
+                            alt="{{ $company->name }}">
+                        @endif
                     </div>
 
                     <div class="col-md-10">
@@ -87,11 +114,13 @@
                                 <a href="/job?location={{ $company->location }}" class="me-2">
                                     <i class="fa-solid fa-location-dot"></i> {{ $company->location }}
                                 </a>
-                                <span class="card-text m-0 me-2"><i class="fa-solid fa-coins"></i>Rp.{{ $company->salary }}/month</span>
+                                <span class="card-text m-0 me-2"><i class="fa-solid fa-coins"></i>Rp.{{ $company->salary
+                                    }}/month</span>
                             </h6>
 
                             <small>
-                                <a href="/job?type={{ Str::slug($company->type, '-') }}" class="card-text btn btn-primary rounded-pill mt-2">{{ $company->type }}</a>
+                                <a href="/job?type={{ Str::slug($company->type, '-') }}"
+                                    class="card-text btn btn-primary rounded-pill mt-2">{{ $company->type }}</a>
                             </small>
                         </div>
                     </div>

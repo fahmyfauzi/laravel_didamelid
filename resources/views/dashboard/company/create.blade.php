@@ -4,6 +4,10 @@
 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
     <h1>Add Company</h1>
 </div>
+<div class="mb-3">
+    <a href="{{ route('company.index') }}" class="btn btn-success"><span data-feather="arrow-left"></span> Back to
+        jobs</a>
+</div>
 <div class="col-lg-8">
     <form method="post" action="/dashboard/company" class="mb-5" enctype="multipart/form-data">
         @csrf
@@ -173,34 +177,4 @@
 </form>
 </div>
 
-
-
-<script>
-    const title = document.querySelector('#name');
-    const slug = document.querySelector('#slug');
-    title.addEventListener('change', function() {
-        fetch('/checkSlug?title=' + title.value)
-            .then(response => response.json())
-            .then(data => slug.value = data.slug)
-    });
-    document.addEventListener('trix-file-accept', function(e) {
-        e.preventDefault();
-    })
-
-    function previewImage() {
-        const logo = document.querySelector('#logo');
-        const imgPreview = document.querySelector('.img-preview');
-
-        imgPreview.style.display = 'block';
-
-        const oFReader = new FileReader();
-        oFReader.readAsDataURL(logo.files[0]);
-
-        oFReader.onload = function(oFREvent) {
-            imgPreview.src = oFREvent.target.result;
-        }
-    }
-
-
-</script>
 @endsection

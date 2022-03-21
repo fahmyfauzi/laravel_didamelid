@@ -111,6 +111,7 @@ class DashboardCompanyController extends Controller
             'name' => 'required',
             'companycategory_id' => 'required',
             'location' => 'required',
+            'status' => 'required',
             'slug' => 'required|unique:companies,slug,' . $company->id,
             'email' => 'required|unique:companies,email,' . $company->id,
             'phone_number' => 'required|unique:companies,phone_number,' . $company->id,

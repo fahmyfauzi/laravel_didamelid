@@ -14,4 +14,8 @@ class CompanyCategory extends Model
     {
         return $this->hasMany(Company::class);
     }
+    public function getRouteKeyName()
+    {
+        return 'slug';
+    }
 }

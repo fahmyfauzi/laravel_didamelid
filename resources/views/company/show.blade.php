@@ -16,7 +16,8 @@
                 <input type="hidden" name="location" value="{{ request('location') }}">
                 @endif
                 <div class="input-group input-group-lg mb-5">
-                    <input type=" text" class="form-control" placeholder="Cari Perusahaan" name="search" value="{{ request('search') }}">
+                    <input type=" text" class="form-control" placeholder="Cari Perusahaan" name="search"
+                        value="{{ request('search') }}">
                     <button type="submit" class="btn btn-primary">Cari pekerjaan</button>
                 </div>
             </form>
@@ -28,7 +29,13 @@
         <div class="card m-2 col-md-10">
             <div class="row g-0">
                 <div class="card col-md-1  m-2">
-                    <img src="{{ $company->logo}}" class="img-fluid rounded" width="130px" alt="...">
+                    @if ($company->logo == null)
+                    <img src="{{ asset('img/didamelid.png')}}" class="card-img rounded " width="100px"
+                        alt="{{ $company->name }}">
+                    @else
+                    <img src="{{ asset('storage/'.$company->logo)}}" class="img-fluid  rounded" width="100px"
+                        alt="{{ $company->name }}">
+                    @endif
                     @if($company->status == '1')
 
                     <span class="card-img-overlay text-center  p-1">

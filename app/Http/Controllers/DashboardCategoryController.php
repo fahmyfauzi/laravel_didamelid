@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use App\Models\Jobs;
 use Illuminate\Http\Request;
 
 class DashboardCategoryController extends Controller
@@ -96,6 +97,9 @@ class DashboardCategoryController extends Controller
      */
     public function destroy(Category $category)
     {
+        if ($category->id) {
+            Jobs::where('category_id', $category->id)->update(['category_id' => 7]);
+        }
         Category::destroy('id', $category->id);
         return redirect('/dashboard/category')->with('success', 'Category has been Deleted!');
     }
