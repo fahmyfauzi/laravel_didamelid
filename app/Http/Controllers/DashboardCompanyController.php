@@ -79,7 +79,7 @@ class DashboardCompanyController extends Controller
     {
 
         return view('dashboard.company.show', [
-            'company' => $company->load('companycategory', 'job')
+            'company' => $company->load('job')
         ]);
     }
 

@@ -11,6 +11,7 @@ class Jobs extends Model
 {
     use HasFactory, Sluggable;
     protected $guarded = [];
+    protected $with = ['category', 'company', 'author'];
 
     public function sluggable(): array
     {

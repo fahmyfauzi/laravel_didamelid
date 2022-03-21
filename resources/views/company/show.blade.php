@@ -88,9 +88,8 @@
             <p>{!! $company->body !!}</p>
 
 
-
-
-            @foreach($company->job->sortByDesc('created_at') as $company) <div class="card mb-3 col-md-12">
+            @foreach($company->job->sortByDesc('created_at') as $company)
+            <div class="card mb-3 col-md-12">
                 <div class="row g-0">
                     <div class="col-md-2 ">
                         @if ($company->logo == null)
