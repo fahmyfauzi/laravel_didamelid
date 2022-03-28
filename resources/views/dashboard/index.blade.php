@@ -7,36 +7,48 @@
 <div class="container">
     <div class="row d-flex justify-content-evenly">
         <div class="col-lg-3">
-            <div class="card">
-                <div class="card-body text-center">
-                    <h5>Company</h5>
-                    <h1>{{ count($company) }}</h1>
+            <a href="{{ route('company.index') }}">
+
+                <div class="card">
+                    <div class="card-body text-center">
+                        <h5>Company</h5>
+                        <h1>{{ count($company) }}</h1>
+                    </div>
                 </div>
-            </div>
+            </a>
         </div>
         <div class="col-lg-3">
-            <div class="card">
-                <div class="card-body text-center">
-                    <h5>Job</h5>
-                    <h1>{{ count($job) }}</h1>
+            <a href="{{ route('job.index') }}">
+
+                <div class="card">
+                    <div class="card-body text-center">
+                        <h5>Job</h5>
+                        <h1>{{ count($job) }}</h1>
+                    </div>
                 </div>
-            </div>
+            </a>
         </div>
         <div class="col-lg-3">
-            <div class="card">
-                <div class="card-body text-center">
-                    <h5>Category Job</h5>
-                    <h1>{{ count($category) }}</h1>
+            <a href="{{ route('category.index') }}">
+
+                <div class="card">
+                    <div class="card-body text-center">
+                        <h5>Category Job</h5>
+                        <h1>{{ count($category) }}</h1>
+                    </div>
                 </div>
-            </div>
+            </a>
         </div>
         <div class="col-lg-3">
-            <div class="card">
-                <div class="card-body text-center">
-                    <h5>Category Company</h5>
-                    <h1>{{ count($companycategory) }}</h1>
+            <a href="{{ route('companycategory.index') }}">
+
+                <div class="card">
+                    <div class="card-body text-center">
+                        <h5>Category Company</h5>
+                        <h1>{{ count($companycategory) }}</h1>
+                    </div>
                 </div>
-            </div>
+            </a>
         </div>
     </div>
 </div>

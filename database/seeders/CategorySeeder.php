@@ -18,32 +18,32 @@ class CategorySeeder extends Seeder
         Category::create([
             'name' => 'keuangan',
             'slug' => 'keuangan',
-            'icon' => 'icon-keuangan.png'
+            'icon' => 'flaticon-money-1'
         ]);
         Category::create([
             'name' => 'multimedia',
             'slug' => 'multimedia',
-            'icon' => 'icon-multimedia.png'
+            'icon' => 'flaticon-vector'
         ]);
         Category::create([
             'name' => 'teknologi informasi',
             'slug' => 'teknologi-informasi',
-            'icon' => 'icon-teknologi-informasi.png'
+            'icon' => 'flaticon-web-programming'
         ]);
         Category::create([
             'name' => 'pemerintahan',
             'slug' => 'pemerintahan',
-            'icon' => 'icon-pemerintahan.png'
+            'icon' => 'flaticon-man'
         ]);
         Category::create([
             'name' => 'kesehatan',
             'slug' => 'kesehatan',
-            'icon' => 'icon-kesehatan.png'
+            'icon' => 'flaticon-first-aid-kit'
         ]);
         Category::create([
             'name' => 'otomotif',
             'slug' => 'otomotif',
-            'icon' => 'icon-otomotif.png'
+            'icon' => 'flaticon-car'
         ]);
         Category::create([
             'name' => 'lainnya',

@@ -1,0 +1,129 @@
+/*==========================
+Owl Carousel Dots
+===========================*/
+
+.default-dots .owl-dots{
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.default-dots .owl-dot{
+  position: relative;
+  height: 8px;
+  width: 8px;
+  background: #BFC8CB;
+  border-radius: 10px;
+  -webkit-transition: all 300ms ease;
+  -o-transition: all 300ms ease;
+  transition: all 300ms ease;
+  margin: 0 5px;
+}
+
+.default-dots .owl-dot.active{
+  background: #202124;
+  width: 20px;
+}
+
+.default-dots.light .owl-dot{
+  background: #BFC8CB;
+}
+
+.default-dots.light .owl-dot.active{
+  background: #FFFFFF;
+}
+
+/*==========================
+Owl Carousel Default Nav
+===========================*/
+
+.owl-carousel.no-arrows .owl-nav {
+  display: none;
+}
+
+.owl-carousel.no-dots .owl-dots {
+  display: none;
+}
+
+.default-nav .owl-nav {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  width: 100%;
+  margin-top: -25px;
+  -webkit-transition: all 500ms ease;
+  -o-transition: all 500ms ease;
+  transition: all 500ms ease;
+}
+
+.default-nav .owl-next,
+.default-nav .owl-prev {
+  position: absolute;
+  left: -80px;
+  top: 0;
+  height: 50px;
+  width: 50px;
+  color: #021f4a;
+  background: #ffffff;
+  font-size: 20px;
+  text-align: center;
+  line-height: 50px;
+  border-radius: 50%;
+  -webkit-box-shadow: 0 0 4px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.1);
+  -webkit-transition: all 500ms ease;
+  -o-transition: all 500ms ease;
+  transition: all 500ms ease;
+}
+
+.default-nav .owl-next {
+  left: auto;
+  right: -80px;
+}
+
+.default-nav .owl-next:hover,
+.default-nav .owl-prev:hover {
+  color: #ffffff;
+  background-color: #021f4a;
+}
+
+/*== Owl Dots ===*/
+
+.default-nav .owl-dots {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.default-nav .owl-dot {
+  position: relative;
+  height: 14px;
+  width: 14px;
+  border: 2px solid #b9c1d0;
+  border-radius: 50%;
+  margin: 0 8px;
+  -webkit-transition: all 300ms ease;
+  -o-transition: all 300ms ease;
+  transition: all 300ms ease;
+}
+
+.default-nav .owl-dot.active,
+.default-nav .owl-dot:hover {
+  background: #b9c1d0;
+}

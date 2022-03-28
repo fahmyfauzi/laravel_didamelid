@@ -22,10 +22,11 @@ return new class extends Migration
             $table->string('title');
             $table->string('slug')->unique();
             $table->string('location');
-            $table->string('expiration_date');
+            $table->date('expiration_date');
             $table->string('level_career');
             $table->string('salary');
             $table->string('type');
+            $table->string('image')->nullable();
             $table->text('body');
             $table->timestamps();
             // $table->foreign('category_id')->references('id')->on('categories')->cascadeOnDelete();

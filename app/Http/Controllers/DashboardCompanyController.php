@@ -18,7 +18,7 @@ class DashboardCompanyController extends Controller
     public function index()
     {
         return view('dashboard.company.index', [
-            'companies' => Company::with(['companycategory', 'job'])->latest()->paginate(10)
+            'companies' => Company::with(['companycategory', 'job'])->latest()->filter(request(['search', 'category', 'location', 'type']))->paginate(10)->withQueryString(),
         ]);
     }
 

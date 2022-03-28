@@ -1,64 +1,86 @@
-<nav class="navbar navbar-expand-md navbar-light bg-transparent shadow-sm">
-    <div class="container">
-        <a class="navbar-brand" href="{{ url('/') }}">
-            {{ config('app.name', 'Laravel') }}
-        </a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
-            <span class="navbar-toggler-icon"></span>
-        </button>
+<div class="container">
+    <!-- Main box -->
+    <div class="main-box">
+        <!--Nav Outer -->
+        <div class="nav-outer">
 
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <!-- Left Side Of Navbar -->
-            <ul class="navbar-nav me-auto">
-                <li>
-                    <a href="/" class="nav-link {{ Request::is('/') ? 'active' : false }}">Beranda</a>
-                </li>
-                <li>
-                    <a href="/job" class="nav-link {{ Request::is('job*') ? 'active' : false }}">Lowongan Pekerjaan</a>
-                </li>
+            <div class="logo-box">
+                <div class="logo"><a href="/"><img src="images/logo-didamelid-1.png" alt="" title=""></a>
+                </div>
+            </div>
+            <nav class="nav main-menu">
+                <ul class="navigation" id="navbar">
+                    <li class="">
+                        <a href="/">Beranda</a>
+                    </li>
+                    <li class="">
+                        <a href="/job">Lowongan Pekerjaan</a>
+                    </li>
 
 
-            </ul>
+                    <!-- Only for Mobile View -->
+                    <li class="mm-add-listing">
+                        <a href="https://wa.me/6282118418130" target="_blank" class="theme-btn btn-style-one">Kirim
+                            Pekerjaan</a>
+                        <span>
+                            <span class="contact-info">
+                                <span class="phone-num"><span>Hubungi Kami</span><a href="tel:085157163559">0851 5716
+                                        3559</a></span>
+                                <span class="address">Jl. Asrama Nyantong No. 9B, Kahuripan, Tawang, <br>Kota
+                                    Tasikmalaya, Jawa Barat 46115
+                                </span>
+                            </span>
+                            <span class="social-links">
+                                <a href="#"><span class="fab fa-facebook-f"></span></a>
+                                <a href="#"><span class="fab fa-twitter"></span></a>
+                                <a href="#"><span class="fab fa-instagram"></span></a>
+                                <a href="#"><span class="fab fa-linkedin-in"></span></a>
+                            </span>
+                        </span>
+                    </li>
+                </ul>
+            </nav>
+            <!-- Main Menu End-->
+        </div>
 
-            <!-- Right Side Of Navbar -->
-            <ul class="navbar-nav ms-auto">
-                <!-- Authentication Links -->
-                @guest
-                <a href="https://wa.me/+6282118418130" target="_blank" class="btn btn-primary">Kirim Pekerjaan</a>
-                @if (Route::has('login'))
-                {{-- <li class="nav-item">
-                    <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
-                </li> --}}
-                @endif
+        <div class="outer-box">
 
-                @if (Route::has('register'))
-                {{-- <li class="nav-item">
-                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-                </li> --}}
-                @endif
-                @else
-                <li class="nav-item dropdown">
-                    <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
-                        data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                        {{ Auth::user()->name }}
-                    </a>
-
-                    <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                            {{ __('Logout') }}
-                        </a>
-
-                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                            @csrf
-                        </form>
-
-                        <a href="/dashboard" class="dropdown-item">My Dashboard</a>
-                    </div>
-                </li>
-                @endguest
-            </ul>
+            <div class="btn-box">
+                <a href="https://wa.me/6282118418130" target="_blank" class="theme-btn btn-style-five">Kirim
+                    Pekerjaan</a>
+            </div>
         </div>
     </div>
-</nav>
+</div>
+<!-- Sticky Header  -->
+<div class="sticky-header">
+    <div class="auto-container">
+
+        <div class="main-box">
+            <div class="logo-box">
+                <div class="sticky-logo"><a href="index.html"><img src="images/logo.svg" alt="" title=""></a></div>
+            </div>
+
+            <!--Keep This Empty / Menu will come through Javascript-->
+        </div>
+    </div>
+</div>
+<!-- End Sticky Menu -->
+
+
+<!-- Mobile Header -->
+<div class="mobile-header">
+    <div class="logo"><a href="/"><img src="images/logo-didamelid-2.png" alt="" title=""></a></div>
+
+    <!--Nav Box-->
+    <div class="nav-outer clearfix">
+
+        <div class="outer-box">
+
+            <a href="#nav-mobile" class="mobile-nav-toggler navbar-trigger"><span class="flaticon-menu-1"></span></a>
+        </div>
+    </div>
+</div>
+
+<!-- Mobile Nav -->
+<div id="nav-mobile"></div>

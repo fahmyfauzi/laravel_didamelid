@@ -9,7 +9,7 @@
         jobs</a>
 </div>
 <div class="col-lg-8">
-    <form method="post" action="{{ route('job.store') }}" class="mb-5">
+    <form method="post" action="{{ route('job.store') }}" class="mb-5" enctype="multipart/form-data">
         @csrf
         <div class="mb-3">
             <label for="title" class="form-label">Title</label>
@@ -101,27 +101,14 @@
         </div>
         <div class="mb-3">
             <label for="salary" class="form-label @error('salary') is-invalid @enderror">Salary</label>
+            <input type="text" class="form-control @error('salary') is-invalid @enderror" id="salary" name="salary"
+                value="{{ old('salary') }}">
             @error('salary')
             <div class="text-danger">
                 {{ $message }}
             </div>
             @enderror
-            <select class="form-select" name="salary">
-                <option selected hidden>Open this select menu</option>
-                <option value="Rp. 500.0000 - Rp. 2.000.0000" {{ old('salary')=='Rp. 500.0000 - Rp. 2.000.0000'
-                    ? 'selected' : '' }}>
-                    Rp. 500.0000 - Rp. 2.000.0000
-                </option>
-                <option value="Rp. 1.000.0000 - Rp. 3.000.0000" {{ old('salary')=='Rp. 1.000.0000 - Rp. 3.000.0000'
-                    ? 'selected' : '' }}>
-                    Rp. 1.000.0000 - Rp. 3.000.0000
-                </option>
-                <option value=" Rp. 4.000.0000 - Rp. 6.000.0000" {{ old('salary')==' Rp. 4.000.0000 - Rp. 6.000.0000'
-                    ? 'selected' : '' }}>
-                    Rp. 4.000.0000 - Rp. 6.000.0000
-                </option>
 
-            </select>
         </div>
         <div class="mb-3">
             <label for="type" class="form-label @error('type') is-invalid @enderror">Type Job</label>
@@ -131,8 +118,7 @@
             </div>
             @enderror
             <select class="form-select" name="type">
-
-                <option selected hidden>Open this select menu</option>
+                <option selected hidden>select type job</option>
                 <option value="Fulltime" {{ old('type')=='Fulltime' ? 'selected' : '' }}>
                     Fulltime
                 </option>
@@ -144,6 +130,17 @@
                 </option>
 
             </select>
+        </div>
+        <div class="mb-3">
+            <label for="img" class="form-label">Image</label>
+            <img class="img-preview img-fluid mb-3 col-lg-5">
+            <input class="form-control  @error('image') is-invalid @enderror" type="file" id="image" name="image"
+                onchange="previewImage()">
+            @error('image')
+            <div class="text-danger">
+                {{ $message }}
+            </div>
+            @enderror
         </div>
         <div class="mb-3">
             <label for="body" class="form-label">Body</label>

@@ -1,90 +1,145 @@
 @extends('layouts.app')
 
 @section( 'content')
-<div class="container ">
-    <div class="row justify-content-center d-flex  align-items-center text-center">
-        <div class="col-md-8 mt-4">
-            <div class="my-4">
+<!--Page Title-->
+<section class="page-title style-three">
+  <div class="auto-container">
+    <!-- Job Search Form -->
+    <div class="job-search-form">
+      <form action="/job">
+        <div class="row">
+          <!-- Form Group -->
 
-                <h1>Lowongan Pekerjaan</h1>
-            </div>
-            <form action="/job">
-                @if(request('category'))
-                <input type="hidden" name="category" value="{{ request('category') }}">
-                @endif
-                @if(request('location'))
-                <input type="hidden" name="location" value="{{ request('location') }}">
-                @endif
-                @if(request('type'))
-                <input type="hidden" name="type" value="{{ request('type') }}">
-                @endif
+          <div class="form-group col-lg-4 col-md-12 col-sm-12">
 
-                <div class="input-group input-group-lg mb-5">
-                    <input type=" text" class="form-control" placeholder="Pekerjaan atau nama perusahaan" name="search"
-                        value="{{ request('search') }}">
-                    <button type="submit" class="btn btn-primary">Cari pekerjaan</button>
-                </div>
-            </form>
+            <span class="icon flaticon-search-1"></span>
+            <input type="text" name="search" placeholder="Job title, keywords, or company">
+
+          </div>
+
+
+          <!-- Form Group -->
+
+
+          <div class="form-group col-lg-3 col-md-12 col-sm-12 location">
+            <span class="icon flaticon-map-locator"></span>
+            <input type="text" name="location" placeholder="City or postcode">
+          </div>
+
+
+          <!-- Form Group -->
+
+
+          <div class="form-group col-lg-3 col-md-12 col-sm-12 category">
+            <span class="icon flaticon-briefcase"></span>
+            <select class="chosen-select" name="category">
+              <option hidden></option>
+              @foreach ($categories as $item)
+              @if (old('category') == $item->slug)
+              <option value="{{ $item->slug }}" selected>{{ $item->name }}</option>
+              @else
+              <option value="{{ $item->slug }}">{{ $item->name }}</option>
+              @endif
+              @endforeach
+            </select>
+          </div>
+
+
+          <!-- Form Group -->
+          <div class="form-group col-lg-2 col-md-12 col-sm-12 text-right">
+            <button type="submit" class="theme-btn btn-style-one">Find Jobs</button>
+          </div>
         </div>
-
+      </form>
     </div>
+    <!-- Job Search Form -->
+
+  </div>
+</section>
+<!--End Page Title-->
+
+<!-- Listing Section -->
+<section class="ls-section style-three">
+  <div class="auto-container">
+    <div class="filters-backdrop"></div>
+
     <div class="row">
-
-
-        @foreach($jobs as $job)
-
-        <div class="card m-2 col-md-12">
-            <div class="row g-0">
-                <div class="col-md-1 m-2">
-                    @if ($job->company->logo == null)
-                    <img src="{{ asset('img/didamelid.png')}}" class="card-img-top rounded" width="100px">
-                    @else
-                    <img src="{{ asset('storage/'.$job->company->logo)}}" class="card-img-top rounded" width="100px">
-                    @endif
-                </div>
-                <div class="col-md-8 ">
-                    <div class="card-body">
-                        <h5 class="card-title"><a href="/job/{{ $job->slug }}">{{ $job->title }} - {{
-                                $job->company->name }}</a></h5>
-                        <h6 class="card-text m-0">
-
-                            <a href="/job?category={{ $job->category->slug }}" class="me-3">
-                                <i class="fa-solid fa-briefcase"></i>
-                                {{ ucfirst($job->category->name) }}
-                            </a>
-                            <a href="/job?location={{ $job->location }}" class="me-3">
-                                <i class="fa-solid fa-location-dot"></i> {{ $job->location }}
-                            </a>
-                            <span class="me-3"><i class="fa-solid fa-clock"></i>
-                                {{ $job->created_at->diffForHumans() }}
-                            </span>
-                            <span class="card-text m-0 me-3"><i class="fa-solid fa-coins"></i>Rp.{{ $job->salary }}/
-                                month</span>
-
-
-
-                        </h6>
-
-
-                    </div>
-                </div>
-                <div class="col d-flex align-items-center justify-content-end">
-                    <a href="/job?type={{ Str::slug($job->type, '-') }}" class="btn btn-primary rounded-pill ">
-                        {{ $job->type }}
-                    </a>
-                </div>
-
+      <!-- Content Column -->
+      <div class="content-column col-lg-12">
+        <div class="ls-outer">
+          <!-- ls Switcher -->
+          <div class="ls-switcher">
+            <div class="showing-result">
+              <div class="text">Showing <strong>41-60</strong> of <strong>944</strong> jobs</div>
             </div>
+
+            <div class="sort-by">
+              <select class="chosen-select">
+                <option>New Jobs</option>
+                <option>Freelance</option>
+                <option>Full Time</option>
+                <option>Internship</option>
+                <option>Part Time</option>
+                <option>Temporary</option>
+              </select>
+
+              <select class="chosen-select">
+                <option>Show 10</option>
+                <option>Show 20</option>
+                <option>Show 30</option>
+                <option>Show 40</option>
+                <option>Show 50</option>
+                <option>Show 60</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="row">
+            <!-- Job Block-two -->
+            @foreach ($jobs as $item)
+
+            <div class="job-block-two col-lg-12">
+              <div class="inner-box">
+                <div class="content">
+                  <span class="company-logo"><img src="images/resource/company-logo/1-1.png" alt=""></span>
+                  <h4><a href="/job/{{ $item->slug }}">{{ $item->title }}</a></h4>
+                  <ul class="job-info">
+                    <li><a href="job?category={{$item->category->slug  }}"><span class="icon flaticon-briefcase"></span>
+                        {{ ucfirst($item->category->name) }}</a></li>
+                    <li><a href="/job?location={{ $item->location }}"><span class="icon flaticon-map-locator"></span> {{
+                        $item->location }}</a></li>
+                    <li><span class="icon flaticon-clock-3"></span> {{ $item->created_at->diffForHumans() }}</li>
+                    <li><span class="icon flaticon-money"></span>{{$item->salary}}</li>
+                  </ul>
+                </div>
+                <ul class="job-other-info">
+                  <li class="time"><a href="/job?type={{ Str::slug($item->type, '-') }}">{{ $item->type }}</a></li>
+                </ul>
+              </div>
+            </div>
+            @endforeach
+
+
+          </div>
+
+          <!-- Listing Show More -->
+          <!-- Pagination -->
+          {{ $jobs->links('vendor.pagination.bootstrap-5') }}
+          <nav class="ls-pagination">
+            <ul>
+              <li class="prev"><a href="#"><i class="fa fa-arrow-left"></i></a></li>
+              <li><a href="#">1</a></li>
+              <li><a href="#" class="current-page"></a></li>
+              <li><a href="#">3</a></li>
+              <li class="next"><a href="#"><i class="fa fa-arrow-right"></i></a></li>
+            </ul>
+          </nav>
+
         </div>
-        @endforeach
-
-
-
+      </div>
     </div>
-    <div class="d-flex justify-content-end">
-        {{ $jobs->links() }}
-    </div>
-</div>
+  </div>
+</section>
+<!--End Listing Page Section -->
 
-@include('layouts.footer')
 @endsection

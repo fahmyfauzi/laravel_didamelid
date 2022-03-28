@@ -20,7 +20,7 @@ class DatabaseSeeder extends Seeder
     {
         Company::factory()
             ->has(Jobs::factory()->count(rand(1, 20)))
-            ->count(300)
+            ->count(10)
             ->create();
 
         User::factory(3)->create();

@@ -40,6 +40,7 @@
 
     <!-- Custom styles for this template -->
     <link href="dashboard.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
 
     {{-- trix --}}
     <link rel="stylesheet" type="text/css" href="{{ asset('css/trix.css') }}">

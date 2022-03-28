@@ -109,31 +109,14 @@
         </div>
         <div class="mb-3">
             <label for="salary" class="form-label @error('salary') is-invalid @enderror">Salary</label>
+            <input type="text" class="form-control @error('salary') is-invalid @enderror" id="salary" name="salary"
+                value="{{ old('salary') }}">
             @error('salary')
             <div class="text-danger">
                 {{ $message }}
             </div>
             @enderror
-            <select class="form-select" name="salary">
-                <option selected hidden>Open this select menu</option>
-                <option value="Rp1.000.000 - Rp3.000.000" {{ old('salary',$job->salary)=='Rp1.000.000 - Rp3.000.000'
-                    ? 'selected' : '' }}>
-                    Rp1.000.000 - Rp3.000.000
-                </option>
-                <option value="Rp4.000.000 - Rp6.000.000" {{ old('salary',$job->salary)=='Rp4.000.000 - Rp6.000.000'
-                    ? 'selected' : '' }}>
-                    Rp4.000.000 - Rp6.000.000
-                </option>
-                <option value="Rp7.000.000 - Rp9.000.000" {{ old('salary',$job->salary)=='Rp7.000.000 - Rp9.000.000'
-                    ? 'selected' : '' }}>
-                    Rp7.000.000 - Rp9.000.000
-                </option>
-                <option value="Rp10.000.000 - Rp13.000.000" {{ old('salary',$job->salary)=='Rp10.000.000 - Rp13.000.000'
-                    ? 'selected' : '' }}>
-                    Rp10.000.000 - Rp13.000.000
-                </option>
 
-            </select>
         </div>
         <div class="mb-3">
             <label for="type" class="form-label @error('type') is-invalid @enderror">Type Job</label>
@@ -144,7 +127,7 @@
             @enderror
             <select class="form-select" name="type">
 
-                <option selected hidden>Open this select menu</option>
+                <option selected hidden> select type job</option>
                 <option value="Fulltime" {{ old('type',$job->type)=='Fulltime' ? 'selected' : '' }}>
                     Fulltime
                 </option>

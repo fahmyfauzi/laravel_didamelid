@@ -54,6 +54,7 @@
 <div class="container">
     <div class="row">
         <div class="col-md-8">
+            <img src="{{ asset('storage/'.$job->image) }}" width="750px" class="mb-3">
             {!! $job->body !!}
         </div>
         <div class="col-md-4">

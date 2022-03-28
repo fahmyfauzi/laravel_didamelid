@@ -19,7 +19,8 @@ class DashboardJobController extends Controller
     public function index()
     {
         return view('dashboard.job.index', [
-            'jobs' => Jobs::with(['category', 'company', 'author'])->where('user_id', auth()->user()->id)->latest()->paginate(10)
+            'jobs' => Jobs::with(['category', 'company', 'author'])->where('user_id', auth()->user()->id)->latest()->filter(request(['search', 'category', 'location', 'type']))->paginate(10)->withQueryString(),
+
         ]);
     }
 
@@ -50,14 +51,18 @@ class DashboardJobController extends Controller
             'company_id' => 'required',
             'category_id' => 'required',
             'location' => 'required',
-            'expiration_date' => 'required',
+            'expiration_date' => 'required|date|after:now',
             'level_career' => 'required',
             'salary' => 'required',
             'type' => 'required',
+            'image' => 'image|file|max:2048',
             'body' => 'required',
         ]);
 
         $validatedData['user_id'] = auth()->user()->id;
+        if ($request->file('image')) {
+            $validatedData['image'] = $request->file('image')->store('image-job');
+        }
         Jobs::create($validatedData);
         return redirect('/dashboard/job')->with('success', 'New job has been added!');
     }
@@ -111,7 +116,7 @@ class DashboardJobController extends Controller
             'company_id' => 'required',
             'category_id' => 'required',
             'location' => 'required',
-            'expiration_date' => 'required',
+            'expiration_date' => 'required|date|after:now',
             'level_career' => 'required',
             'salary' => 'required',
             'type' => 'required',

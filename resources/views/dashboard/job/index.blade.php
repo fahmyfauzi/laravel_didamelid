@@ -1,7 +1,8 @@
 @extends('dashboard.layouts.app')
 
 @section('content')
-<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+<div class="d-flex flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3
+            border-bottom">
     <h1 class="h2">Post Job</h1>
 </div>
 
@@ -11,7 +12,20 @@
         {{ session('success') }}
     </div>
     @endif
-    <a href="{{ route('job.create') }}" class="btn btn-primary mb-3">Create Post</a>
+    <div class="row">
+        <div class="col-lg-10">
+            <a href="{{ route('job.create') }}" class="btn btn-primary mb-3"><i class="fa-solid fa-plus"></i> Add
+                Job</a>
+        </div>
+        <div class="col-lg-2 justify-content-end">
+            <form action="/dashboard/job">
+                <input type="text" name="search" placeholder="cari pekerjaan"
+                    class="d-inline form-control justify-content-end" value="{{ request('search') }}">
+            </form>
+
+        </div>
+
+    </div>
     <table class="table table-striped table-sm ">
         <thead>
             <tr>

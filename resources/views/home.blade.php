@@ -1,174 +1,170 @@
 @extends('layouts.app')
 
 @section('content')
-<section id="home" class="mb-5"
-    style="background-image: url('/img/background_didamelid.jpg');  background-repeat: no-repeat; background-size: 100%; ">
-    <div class="container ">
-        <div class="row justify-content-center d-flex  align-items-center text-center" style="height:100vh;">
-            <div class="col-md-8">
-                <h1 class="text-white text-bold">Langkah terbaik awal Karirmu</h1>
-                <p class="text-white mb-5">Temukan lebih dari 10.000 pekerjaan di situs ini</p>
+<!-- Banner Section-->
+<section class="banner-section-four -type-16" style="background-image: url(images/index-16/header/1920x940.jpg);">
+    <div class="auto-container">
+        <div class="content-box">
+            <div class="title-box wow fadeInUp" data-wow-delay="500ms">
+                <h3>Langkah terbaik awal karirmu</h3>
+                <p>Temukan lebih dari 10.000 pekerjaan di situs ini</p>
+            </div>
+
+            <!-- Job Search Form -->
+            <div class="job-search-form wow fadeInUp" data-wow-delay="1000ms">
                 <form action="/job">
-                    <div class="input-group input-group-lg mb-5">
-                        <input type=" text" class="form-control" placeholder="Pekerjaan atau nama perusahaan"
-                            name="search"
-                            style="background-image:url('icon/search.png'); background-position:10px 10px;; size: 10px;  background-repeat: no-repeat; padding-left: 40px;">
-                        <button type="submit" class="btn btn-primary">Cari pekerjaan</button>
+                    <div class="row justify-content-center justify-content-md-between">
+                        <!-- Form Group -->
+                        <div class="form-group col-lg-9">
+                            <span class="icon flaticon-search-1"></span>
+                            <input type="text" name="search" placeholder="Pekerjaan atau nama perusahaan">
+                        </div>
+
+                        <!-- Form Group -->
+                        <div class="form-group col-auto">
+                            <button type="submit" class="theme-btn btn-style-two">Find Jobs</button>
+                        </div>
                     </div>
                 </form>
+            </div>
+            <!-- Job Search Form -->
 
-                <ul class="list-group list-group-horizontal text-white" style="list-style-type:none;">
-                    @foreach($categories as $category)
-                    <li>
+            <div class="features-icons">
 
-                        <a href="/job?category={{ $category->slug }}" class="list-group-item bg-transparent border-0 ">
-                            <img src="/icon/{{ $category->icon }}" width="30px">
-                            <p class="text-white mt-2">{{ $category->name }}</p>
-                        </a>
-                    </li>
-                    @endforeach
+                @foreach ($categories as $item)
+                <a href="job?category={{ $item->slug }}">
 
+
+                    <div class="item">
+                        <div class="icon-wrap">
+                            <div class="icon {{ $item->icon }}"></div>
+                        </div>
+
+                        <div class="title">
+                            {{ $item->name }}
+                        </div>
+                    </div>
+                </a>
+                @endforeach
+
+            </div>
+        </div>
+    </div>
+</section>
+<!-- End Banner Section-->
+
+<!-- Job Section -->
+<section class="layout-pt-120 layout-pb-120">
+    <div class="auto-container">
+        <div class="sec-title text-center">
+            <h2>Rekomendasi Pekerjaan</h2>
+            <div class="text">Nilai dirimu dan temukan pekerjaan terbaik untukmu</div>
+        </div>
+
+        <div class="default-tabs tabs-box">
+            <!--Tabs Box-->
+            <div class="tab-buttons-wrap">
+                <ul class="tab-buttons -pills-condensed -blue">
+                    <li class="tab-btn active-btn" data-tab="#tab2">Pekerjaan Terbaru</li>
                 </ul>
             </div>
 
-        </div>
-    </div>
-</section>
-
-<section>
-    <div class="container">
-        <div class="row justify-content-center  align-items-center">
-            <div class="col-md-12 text-center">
-                <h2>Rekomendasi Pekerjaan</h2>
-
-                <p>Nilai dirimu dan temukan pekerjaan terbaik untukmu</p>
-                <h4 class="text-center my-4">Pekerjaan Terbaru </h4>
-            </div>
-
-            @foreach($jobs as $job)
-
-            <div class="card m-2 col-md-5 ">
-                <div class="row g-0">
-                    <div class="col-md-2">
-                        @if ($job->company->logo == null)
-                        <img src="{{ asset('img/didamelid.png')}}" class="img-fluid mt-4 rounded " width=" 150px"
-                            alt="{{ $job->company->name }}">
-                        @else
-                        <img src="{{ asset('storage/'.$job->company->logo)}}" class="img-fluid  mt-4 rounded "
-                            width=" 150px" alt="{{ $job->company->name }}">
-                        @endif
-                    </div>
-                    <div class="col-md-10 ">
-                        <div class="card-body ">
-                            <h5 class="card-title"><a href="/job/{{ $job->slug }}">{{ $job->title }} - {{
-                                    $job->company->name }}</a></h5>
-                            <h6 class="card-text m-0">
+            <div class="tabs-content pt-50 wow fadeInUp">
 
 
-                                <a href="/job?category={{ $job->category->name }}">
-                                    <i class="fa-solid fa-briefcase"></i>{{ ucfirst($job->category->name) }}
-                                </a>
+                <!--Tab-->
+                <div class="tab active-tab" id="tab2">
+                    <div class="row">
+                        @foreach ($jobs as $item)
 
-
-                                <a href="/job?location={{ $job->location }}">
-                                    <i class="fa-solid fa-location-dot"></i> {{ $job->location }}
-                                </a>
-                            </h6>
-                            <p class="card-text m-0"><i class="fa-solid fa-coins"></i>Rp.{{ $job->salary }}/ month</p>
-                            <a href="/job?type={{ Str::slug($job->type, '-') }}"
-                                class="card-text btn btn-primary rounded-pill mt-2">{{ $job->type }}</a>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-            @endforeach
-
-
-
-        </div>
-        <div class="row justify-content-center">
-            <div class="col-md-4 text-center my-4">
-                <a href="/job" class="btn btn-primary">Lebih Banyak</a>
-            </div>
-        </div>
-
-</section>
-
-<section class="bg-secondary mt-4">
-    <div class="container">
-        <div class="row justify-content-center  align-items-center text-center" style="height: 50vh;">
-            <div class="col-md-8 text-center">
-                <h2>Pekerjaan Impianmu Di Depan Mata</h2>
-                <p>Sudah lebih dari 1.000 kandididat mendapatkan pekerjaan terbaiknya</p>
-                <a href="/job" type="button" class="btn btn-primary rounded">Cari Pekerjaan</a>
-            </div>
-
-        </div>
-    </div>
-</section>
-
-<section style="background-color:#F3F3F3;">
-    <div class="container">
-        <div class="row justify-content-center  align-items-center text-center" style="height: 100vh;">
-            <div class="col-md-10 ">
-                <h4>Perusahaan Unggulan</h4>
-                <p>Perusahaan yang bekerjasama dengan kami</p>
-                {{-- Corousel slide --}}
-                <div class="col-md-12">
-                    <div class="slider">
-                        @foreach($companies as $company)
-                        <div class="card col-md-3 m-2">
-                            <div>
-                                <p class="bg-success text-white rounded-pill">Featured</p>
-                                @if ($company->logo == null)
-                                <img src="{{ asset('img/didamelid.png')}}" class="card-img-top rounded" width="100px">
-                                @else
-                                <img src="{{ asset('storage/'.$company->logo)}}" class="card-img-top rounded"
-                                    width="100px">
-                                @endif
-                            </div>
-                            <div class="card-body">
-                                <h5 class="card-title"><a href="/company/{{ $company->slug }}"> {{ $company->name }}</a>
-                                </h5>
-                                <a href="/company?company-category={{ $company->companycategory->slug }}">{{
-                                    $company->companycategory->name }} </a>
-
-                                <small class="d-block">Open Job - {{$company->job->count() }}</small>
+                        <!-- Job Block -->
+                        <div class="job-block col-lg-4 col-md-6 col-sm-12">
+                            <div class="inner-box">
+                                <div class="content">
+                                    <span class="company-logo"><img class="rounded-full"
+                                            src="images/resource/company-logo/1-1.png" alt="">
+                                    </span>
+                                    <h4><a href="job/{{ $item->slug }}">{{ $item->title }} - {{ $item->company->name
+                                            }}</a></h4>
+                                    <ul class="job-info">
+                                        <li><a href="job?category={{ $item->category->slug }}"><span
+                                                    class="icon flaticon-briefcase"></span>{{ucfirst($item->category->name)}}</a>
+                                        </li>
+                                        <li><a href="job?location={{ $item->location }}"><span
+                                                    class="icon flaticon-map-locator"></span> {{ $item->location }}</a>
+                                        </li>
+                                    </ul>
+                                    <ul class="job-other-info">
+                                        <li class="time"><a href="/job?type={{ Str::slug($item->type, '-') }}">{{
+                                                $item->type }}</a></li>
+                                    </ul>
+                                </div>
                             </div>
                         </div>
                         @endforeach
-
                     </div>
-
-
-
-                    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
-                        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous">
-                    </script>
-
-                    <script type="text/javascript"
-                        src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
-
-                    <script type="text/javascript">
-                        $('.slider').slick({
-                            slidesToShow: 3
-                            , slidesToScroll: 1
-                            , autoplay: true
-                            , autoplaySpeed: 5000
-                            , dots: false
-
-                        });
-
-                    </script>
-                    <!-- akhi slider -->
 
                 </div>
             </div>
-
         </div>
 </section>
+<!-- End Job Section -->
+
+<!-- Call To Action Two -->
+<section class="call-to-action-two -type-4" style="background-image: url(images/index-16/cta/bg.png);">
+    <div class="auto-container wow fadeInUp">
+        <div class="sec-title light text-center">
+            <h2>Pekerjaan Impianmu Di Depan Mata</h2>
+            <div class="text">Sudah lebih dari 1.000 kandididat mendapatkan pekerjaan terbaiknya</div>
+        </div>
+
+        <div class="btn-box">
+            <a href="/job" class="theme-btn btn-one">Cari Pekerjaan</a>
+        </div>
+    </div>
+</section>
+<!-- End Call To Action -->
 
 
-@include('layouts.footer')
+<!-- Candidates Section -->
+<section class="layout-pt-120 layout-pb-120 section-bg-color">
+    <div class="section-bg-color__item -full -very-light-blue"></div>
+
+    <div class="auto-container">
+        <div class="sec-title text-center">
+            <h2>Perusahaan Unggulan</h2>
+            <div class="text">Perusahaan yang bekerjasama dengan kami</div>
+        </div>
+
+        <div class="carousel-outer wow fadeInUp">
+            <div class="candidates-carousel owl-carousel owl-theme default-dots">
+                <!-- Candidate Block -->
+                @foreach ($companies as $item)
+
+                <div class="candidate-block">
+                    <div class="inner-box">
+                        <figure class="image"><img src="images/resource/candidate-1.png" alt=""></figure>
+                        <a href="/company/{{ $item->slug }}">
+                            <h4 class="name">{{ $item->name }}</h4>
+                        </a>
+                        <a href="/company?company-category={{ $item->companycategory->slug }}"><span
+                                class="designation text-dark-3">{{ $item->companycategory->name }}</span>
+                        </a>
+                        <a href="/company?location={{ $item->location }}">
+                            <div class="location"><i class="flaticon-map-locator"></i>{{ $item->location }}</div>
+                        </a>
+                        <a href="/company/{{ $item->slug }}" class="theme-btn btn-style-one"><span
+                                class="btn-title">View
+                                Profile</span></a>
+                    </div>
+                </div>
+                @endforeach
+
+            </div>
+        </div>
+    </div>
+</section>
+<!-- End Candidates Section -->
+
+
 @endsection

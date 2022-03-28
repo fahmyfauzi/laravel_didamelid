@@ -11,7 +11,8 @@
         {{ session('success') }}
     </div>
     @endif
-    <a href="{{ route('companycategory.create') }}" class="btn btn-primary mb-3">Add Category</a>
+    <a href="{{ route('companycategory.create') }}" class="btn btn-primary mb-3"><i class="fa-solid fa-plus"></i> Add
+        Category</a>
     <table class="table table-striped table-sm">
         <thead>
             <tr>

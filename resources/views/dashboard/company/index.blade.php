@@ -11,7 +11,21 @@
         {{ session('success') }}
     </div>
     @endif
-    <a href="/dashboard/company/create" class="btn btn-primary mb-3">Add Company</a>
+    <div class="row">
+        <div class="col-lg-10">
+            <a href="/dashboard/company/create" class="btn btn-primary mb-3"><i class="fa-solid fa-plus"></i> Add
+                Company</a>
+        </div>
+        <div class="col-lg-2 justify-content-end">
+            <form action="/dashboard/company">
+                <input type="text" name="search" placeholder="cari pekerjaan"
+                    class="d-inline form-control justify-content-end" value="{{ request('search') }}">
+            </form>
+
+        </div>
+
+    </div>
+
     <table class="table table-striped table-sm">
         <thead>
             <tr>
