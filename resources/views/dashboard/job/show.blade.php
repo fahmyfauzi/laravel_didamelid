@@ -1,80 +1,128 @@
 @extends('dashboard.layouts.app')
 
-@section( 'content')
-<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-    <h1 class="h2">Show Job</h1>
-</div>
-<div class="mb-3">
-    <a href="{{ route('job.index') }}" class="btn btn-success"><span data-feather="arrow-left"></span> Back to
-        jobs</a>
-    <a href="{{ route('job.edit',[$job->slug]) }}" class="btn btn-warning"><span data-feather="edit"></span>
-        Edit</a>
-    <form action="{{ route('job.destroy',[$job->slug]) }}" method="post" class="d-inline">
-        @method('delete')
-        @csrf
-        <button class="btn btn-danger " onClick="return confirm('Are you sure?')"><i
-                data-feather="x-circle"></i>Delete</button>
-    </form>
-</div>
-<div class="jumbotron bg-light mb-5">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-2">
-                @if ($job->company->logo == null)
-                <img src="{{ asset('img/didamelid.png')}}" class="img-fluid mt-4 rounded" width=" 100px"
-                    alt="{{ $job->company->name }}">
-                @else
-                <img src="{{ asset('storage/'.$job->company->logo)}}" class="img-fluid mt-4 rounded" width=" 100px"
-                    alt="{{ $job->company->name }}">
-                @endif
-            </div>
-            <div class="col-md-8 mb-4">
-                <h2 class="display-4">{{ $job->title }}</h2>
-                <a href="/job?category={{ $job->category->slug }}" class="me-3">
-                    <i class="fa-solid fa-briefcase"></i>
-                    {{ ucfirst($job->category->name) }}
-                </a>
-                <a href="/job?location={{ $job->location }}" class="me-3">
-                    <i class="fa-solid fa-location-dot"></i> {{ $job->location }}
-                </a>
-                <span class="me-3"><i class="fa-solid fa-clock"></i>
-                    {{ $job->created_at->diffForHumans() }}
-                </span>
-                <span class="card-text m-0 me-3">
-                    <i class="fa-solid fa-coins"></i>Rp.{{ $job->salary }}/month
-                </span>
+@section('content')
+<!-- Job Detail Section -->
+<section class="job-detail-section style-two">
+    <div class="job-detail-outer">
+        <div class="auto-container">
+            <div class="row">
+                <div class="content-column col-lg-8 col-md-12 col-sm-12">
+                    <div class="job-block-outer">
+                        <!-- Job Block -->
+                        <div class="job-block-seven style-two">
+                            <div class="inner-box">
+                                <div class="content">
+                                    <h4>{{ $job->title }}</h4>
+                                    <ul class="job-info">
+                                        <li><span class="icon flaticon-briefcase"></span> {{
+                                            ucfirst($job->category->name) }}
+                                        </li>
+                                        <li><span class="icon flaticon-map-locator"></span> {{ $job->location }}</li>
+                                        <li><span class="icon flaticon-clock-3"></span> {{
+                                            $job->created_at->diffForHumans() }}</li>
+                                        <li><span class="icon flaticon-money"></span>{{ $job->salary }}</li>
+                                    </ul>
+                                    <ul class="job-other-info">
+                                        <li class="time">{{ $job->type }}</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
+
+                    <div class="job-detail">
+                        @if ($job->image)
+
+                        <figure class="image"><img src="{{ asset('storage/'.$job->image) }}" alt="">
+                        </figure>
+                        @endif
+                        {!! $job->body !!}
+                    </div>
+
+                    <!-- Other Options -->
+                    <div class="other-options">
+                        <div class="social-share">
+                            <h5>Share this job</h5>
+                            <a href="#" class="facebook"><i class="fab fa-facebook-f"></i> Facebook</a>
+                            <a href="#" class="twitter"><i class="fab fa-twitter"></i> Twitter</a>
+                            <a href="#" class="google"><i class="fab fa-google"></i> Google+</a>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="sidebar-column col-lg-4 col-md-12 col-sm-12">
+                    <aside class="sidebar">
+
+                        <div class="sidebar-widget">
+                            <!-- Job Overview -->
+                            <h4 class="widget-title">Detail Pekerjaan</h4>
+                            <div class="widget-content">
+                                <ul class="job-overview">
+                                    <li>
+                                        <i class="icon icon-calendar"></i>
+                                        <h5>Date Posted:</h5>
+                                        <span>Posted {{ $job->created_at->diffForHumans() }}</span>
+                                    </li>
+                                    <li>
+                                        <i class="icon icon-expiry"></i>
+                                        <h5>Expiration date:</h5>
+                                        <span>{{date('d F Y',strtotime( $job->expiration_date)) }}</span>
+                                    </li>
+                                    <li>
+                                        <i class="icon icon-location"></i>
+                                        <h5>Location:</h5>
+                                        <span>{{ $job->location }}</span>
+                                    </li>
+                                    <li>
+                                        <i class="icon icon-user-2"></i>
+                                        <h5>Level Career:</h5>
+                                        <span>{{ $job->level_career }}</span>
+                                    </li>
+
+                                    <li>
+                                        <i class="icon icon-salary"></i>
+                                        <h5>Salary:</h5>
+                                        <span>{{ $job->salary }}</span>
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <!-- Map Widget -->
+                            <h4 class="widget-title">Job Location</h4>
+                            <div class="widget-content">
+                                <div class="map-outer">
+                                    <div class="map-canvas" data-zoom="12" data-lat="-37.817085" data-lng="144.955631"
+                                        data-type="roadmap" data-hue="#ffc400" data-title="Envato"
+                                        data-icon-path="images/resource/map-marker.png"
+                                        data-content="Melbourne VIC 3000, Australia<br><a href='mailto:info@youremail.com'>info@youremail.com</a>">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Job Skills -->
+                            <h4 class="widget-title">Job Skills</h4>
+                            <div class="widget-content">
+                                <ul class="job-skills">
+                                    <li><a href="#">app</a></li>
+                                    <li><a href="#">administrative</a></li>
+                                    <li><a href="#">android</a></li>
+                                    <li><a href="#">wordpress</a></li>
+                                    <li><a href="#">design</a></li>
+                                    <li><a href="#">react</a></li>
+                                </ul>
+                            </div>
+                        </div>
+
+                    </aside>
+                </div>
             </div>
         </div>
-
     </div>
-</div>
+</section>
+<!-- End Job Detail Section -->
 
 
-<div class="container">
-    <div class="row">
-        <div class="col-md-8">
-            <img src="{{ asset('storage/'.$job->image) }}" width="750px" class="mb-3">
-            {!! $job->body !!}
-        </div>
-        <div class="col-md-4">
-            <div class="card p-3 bg-light border-0">
-                <h4>Detail Pekerjaan</h4>
 
-                <h6><i class="fa-solid fa-calendar-check fs-6"></i> Date Post</h6>
-                <p class="lead">{{ $job->created_at->diffForHumans() }}</p>
-                <h6><i class="fa-solid fa-location-pin fs-6"></i> Lokasi</h6>
-                <p class="lead">{{ $job->location }}</p>
-                <h6><i class="fa-regular fa-hourglass"></i> Expiration Date</h6>
-                <p class="lead">{{date('d F Y',strtotime( $job->expiration_date)) }}</p>
-                <h6><i class="fa-solid fa-coins"></i> Offered Salary:</h6>
-                <p class="lead">{{ $job->salary }}</p>
-                <h6><i class="fa-solid fa-user-tie"></i> Level Career</h6>
-                <p class="lead">{{ $job->level_career }}</p>
-
-            </div>
-        </div>
-    </div>
-
-
-    @endsection
+@endsection

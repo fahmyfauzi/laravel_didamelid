@@ -1,77 +1,168 @@
 @extends('layouts.app')
 
-@section( 'content')
-<div class="container ">
-    <div class="row justify-content-center d-flex  align-items-center text-center">
-        <div class="col-md-8">
-            <div class="my-4">
+@section('content')
 
-                <h1>Perusahaan</h1>
-            </div>
+<!--Page Title-->
+<section class="page-title">
+  <div class="auto-container">
+    <div class="title-outer">
+      <h1>Companies</h1>
+      <ul class="page-breadcrumb">
+        <li><a href="/">Beranda</a></li>
+        <li>Companies</li>
+      </ul>
+    </div>
+  </div>
+</section>
+<!--End Page Title-->
+
+<!-- Listing Section -->
+<section class="ls-section">
+  <div class="auto-container">
+    <div class="filters-backdrop"></div>
+
+    <div class="row">
+
+      <!-- Filters Column -->
+      <div class="filters-column col-lg-4 col-md-12 col-sm-12">
+        <div class="inner-column pd-right">
+          <div class="filters-outer">
+            <button type="button" class="theme-btn close-filters">X</button>
             <form action="/company">
-                @if(request('company-category'))
-                <input type="hidden" name="company-category" value="{{ request('company-category') }}">
-                @endif
-                @if(request('location'))
-                <input type="hidden" name="location" value="{{ request('location') }}">
-                @endif
-                <div class="input-group input-group-lg mb-5">
-                    <input type=" text" class="form-control" placeholder="Cari Perusahaan" name="search"
-                        value="{{ request('search') }}">
-                    <button type="submit" class="btn btn-primary">Cari pekerjaan</button>
-                </div>
-            </form>
-        </div>
 
-    </div>
-    <div class="row justify-content-center">
-        @foreach($companies as $company)
-        <div class="card m-2 col-md-10">
-            <div class="row g-0">
-                <div class="card col-md-1  m-2">
-                    @if ($company->logo == null)
-                    <img src="{{ asset('img/didamelid.png')}}" class="card-img rounded " width="100px"
-                        alt="{{ $company->name }}">
+              <!-- Filter Block -->
+              <div class="filter-block">
+                <h4>Search by Keywords</h4>
+                <div class="form-group">
+                  <input type="text" name="search" placeholder="Job title, keywords, or company">
+                  <span class="icon flaticon-search-3"></span>
+                </div>
+              </div>
+
+              <!-- Filter Block -->
+              <div class="filter-block">
+                <h4>Location</h4>
+                <div class="form-group">
+                  <input type="text" name="listing-search" name="location" placeholder="City or postcode">
+                  <span class="icon flaticon-map-locator"></span>
+                </div>
+                <p>Radius around selected destination</p>
+                <div class="range-slider-one">
+                  <div class="area-range-slider"></div>
+                  <div class="input-outer">
+                    <div class="amount-outer"><span class="area-amount"></span>km</div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Filter Block -->
+              <div class="filter-block">
+                <h4>Category</h4>
+                <div class="form-group">
+                  <select class="chosen-select" name="company-category">
+                    <option hidden></option>
+                    @foreach ($company_categories as $item)
+                    @if (old('category') == $item->slug)
+                    <option value="{{ $item->slug }}" selected>{{ $item->name }}</option>
                     @else
-                    <img src="{{ asset('storage/'.$company->logo)}}" class="img-fluid  rounded" width="100px"
-                        alt="{{ $company->name }}">
+                    <option value="{{ $item->slug }}">{{ $item->name }}</option>
                     @endif
-                    @if($company->status == '1')
-
-                    <span class="card-img-overlay text-center  p-1">
-                        <p class="bg-success text-white rounded-pill">Featured</p>
-                    </span>
-                    @endif
+                    @endforeach
+                  </select>
+                  <span class="icon flaticon-briefcase"></span>
                 </div>
-                <div class="col-md-8">
-                    <div class="card-body">
-                        <h5 class="card-title"><a href="/company/{{ $company->slug }}">{{ $company->name }}</a></h5>
-                        <h6 class="card-text m-0">
-
-                            <a href="/company?company-category={{ $company->companycategory->slug }}">
-                                <i class="fa-solid fa-briefcase"></i>
-                                {{ ucfirst($company->companycategory->name) }}
-                            </a>
-                            <a href="/company?location={{ $company->location }}">
-                                <i class="fa-solid fa-location-dot"></i> {{ $company->location }}
-                            </a>
-                        </h6>
-
-                    </div>
+              </div>
 
 
+              <!-- Filter Block -->
+              <div class="filter-block">
+                <h4>Founded Date</h4>
+                <div class="range-slider-one">
+                  <div class="range-slider"></div>
+                  <div class="input-outer">
+                    <div class="amount-outer"><span class="count"></span></div>
+                  </div>
                 </div>
+              </div>
+
+              <button type="submit" class="theme-btn btn-style-one">Find Jobs</button>
+            </form>
+
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Content Column -->
+      <div class="content-column col-lg-8 col-md-12 col-sm-12">
+        <div class="ls-outer">
+          <button type="button" class="theme-btn btn-style-two toggle-filters">Show Filters</button>
+
+          <!-- ls Switcher -->
+          <div class="ls-switcher">
+            <div class="showing-result">
+              <div class="text">Showing <strong>41-60</strong> of <strong>944</strong> employer</div>
             </div>
+            <div class="sort-by">
+              <select class="chosen-select">
+                <option>Most Recent</option>
+                <option>Freelance</option>
+                <option>Full Time</option>
+                <option>Internship</option>
+                <option>Part Time</option>
+                <option>Temporary</option>
+              </select>
+
+              <select class="chosen-select">
+                <option>Show 10</option>
+                <option>Show 20</option>
+                <option>Show 30</option>
+                <option>Show 40</option>
+                <option>Show 50</option>
+                <option>Show 60</option>
+              </select>
+            </div>
+          </div>
+
+
+          <!-- Block Block -->
+          @foreach ($companies as $item)
+          <div class="company-block-three">
+            <div class="inner-box">
+              <div class="content">
+                <div class="content-inner">
+                  <span class="company-logo"><img src="{{ asset('storage/'.$item->logo) }}" alt=""></span>
+                  <h4><a href="/company/{{ $item->slug }}">{{ $item->name }}</a></h4>
+                  <ul class="job-info">
+                    <li><span class="icon flaticon-map-locator"></span> {{ $item->location }}</li>
+                    <li><span class="icon flaticon-briefcase"></span> {{ $item->companycategory->name }}</li>
+                  </ul>
+                </div>
+
+                <ul class="job-other-info">
+                  @if ($item->status == '1')
+                  <li class="privacy">Featured</li>
+
+                  @endif
+                  <li class="time">Open Jobs – {{$item->job->count() }}</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          @endforeach
+
+
+          <!-- Listing Show More -->
+          <div class="ls-show-more">
+            <p>Showing 36 of 497 Jobs</p>
+            <div class="bar"><span class="bar-inner" style="width: 40%"></span></div>
+            <button class="show-more">Show More</button>
+          </div>
         </div>
-        @endforeach
-
-
-
-        <div class="d-flex justify-content-end">
-            {{ $companies->links() }}
-        </div>
+      </div>
     </div>
-</div>
+  </div>
+</section>
+<!--End Listing Page Section -->
 
-@include('layouts.footer')
 @endsection

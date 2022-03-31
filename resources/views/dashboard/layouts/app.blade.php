@@ -9,38 +9,19 @@
     <meta name="generator" content="Hugo 0.88.1">
     <title>Dashboard</title>
 
-    <link rel="canonical" href="https://getbootstrap.com/docs/5.1/examples/dashboard/">
-
-    <link href="{{ asset('css/dashboard.css') }}" rel="stylesheet">
-
-    {{-- bootstrap --}}
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
-    </script>
+    <!-- Stylesheets -->
+    <link href="{{ asset('css/bootstrap.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/style.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/responsive.css') }}" rel="stylesheet">
 
 
-    <style>
-        .bd-placeholder-img {
-            font-size: 1.125rem;
-            text-anchor: middle;
-            -webkit-user-select: none;
-            -moz-user-select: none;
-            user-select: none;
-        }
 
-        @media (min-width: 768px) {
-            .bd-placeholder-img-lg {
-                font-size: 3.5rem;
-            }
-        }
-    </style>
+    <link rel="shortcut icon" href="{{ asset('images/title-didamelid.png') }}" type="image/x-icon">
+    <link rel="icon" href="{{ asset('images/title-didamelid.png') }}" type="image/x-icon">
 
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
 
-    <!-- Custom styles for this template -->
-    <link href="dashboard.css" rel="stylesheet">
-    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
 
     {{-- trix --}}
     <link rel="stylesheet" type="text/css" href="{{ asset('css/trix.css') }}">
@@ -51,62 +32,65 @@
             display: none;
         }
     </style>
-
-    {{-- fa awesome --}}
-    <script src="https://kit.fontawesome.com/a6e2a0359e.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
-    @include('dashboard.layouts.navbar')
+    <div class="page-wrapper dashboard ">
 
+        <!-- Preloader -->
+        <div class="preloader"></div>
 
-    <div class="container-fluid">
-        <div class="row">
-            @include('dashboard.layouts.sidebar')
+        <!-- Header Span -->
+        <span class="header-span"></span>
 
-            <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+        <!-- Main Header-->
+        @include('dashboard.layouts.navbar')
+        <!--End Main Header -->
 
-                @yield('content')
+        <!-- Sidebar Backdrop -->
+        <div class="sidebar-backdrop"></div>
 
+        <!-- User Sidebar -->
+        @include('dashboard.layouts.sidebar')
+        <!-- End User Sidebar -->
 
-            </main>
+        <!-- Dashboard -->
+        @yield('content')
+        <!-- End Dashboard -->
+
+        <!-- Copyright -->
+        <div class="copyright-text">
+            <p>© 2021 Superio. All Right Reserved.</p>
         </div>
-    </div>
+
+    </div><!-- End Page Wrapper -->
 
 
-    <script src="https://cdn.jsdelivr.net/npm/feather-icons@4.28.0/dist/feather.min.js"
-        integrity="sha384-uO3SXW5IuS1ZpFPKugNNWqTZRRglnUJK6UAZ/gxOX80nxEkN9NcGZTftn6RzhGWE" crossorigin="anonymous">
+    <script src="{{ asset( 'js/jquery.js') }}"></script>
+    <script src="{{ asset('js/popper.min.js') }}"></script>
+    <script src="{{ asset('js/jquery-ui.min.js') }}"></script>
+    <script src="{{ asset('js/chosen.min.js') }}"></script>
+    <script src="{{ asset('js/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('js/jquery.fancybox.js') }}"></script>
+    <script src="{{ asset('js/jquery.modal.min.js') }}"></script>
+    <script src="{{ asset('js/mmenu.polyfills.js') }}"></script>
+    <script src="{{ asset('js/mmenu.js') }}"></script>
+    <script src="{{ asset('js/appear.js') }}"></script>
+    <script src="{{ asset('js/anm.min.js') }}"></script>
+    <script src="{{ asset('js/ScrollMagic.min.js') }}"></script>
+    <script src="{{ asset('js/rellax.min.js') }}"></script>
+    <script src="{{ asset('js/owl.js') }}"></script>
+    <script src="{{ asset('js/wow.js') }}"></script>
+    <script src="{{ asset('js/script.js') }}"></script>
+
+    <!--Google Map APi Key-->
+    <script src="http://maps.google.com/maps/api/js?key=AIzaSyDaaCBm4FEmgKs5cfVrh3JYue3Chj1kJMw&#038;ver=5.2.4">
     </script>
-    <script src="{{ asset('js/dashboard.js') }}">
-    </script>
-    <script>
-        const title = document.querySelector('#name');
-        const slug = document.querySelector('#slug');
-        title.addEventListener('change', function() {
-            fetch('/checkSlug?title=' + title.value)
-                .then(response => response.json())
-                .then(data => slug.value = data.slug)
-        });
-        document.addEventListener('trix-file-accept', function(e) {
-            e.preventDefault();
-        })
-    
-        function previewImage() {
-            const logo = document.querySelector('#logo');
-            const imgPreview = document.querySelector('.img-preview');
-    
-            imgPreview.style.display = 'block';
-    
-            const oFReader = new FileReader();
-            oFReader.readAsDataURL(logo.files[0]);
-    
-            oFReader.onload = function(oFREvent) {
-                imgPreview.src = oFREvent.target.result;
-            }
-        }
-    
-    
-    </script>
+    <script src="{{ asset('js/map-script.js') }}"></script>
+    <!--End Google Map APi-->
+
+    {{-- js --}}
+    <script type="text/javascript" src="{{ asset('js/main.js') }}"></script>
 </body>
 
 </html>

@@ -45,7 +45,7 @@ class DashboardCompanyController extends Controller
     {
         $validatedData = $request->validate([
             'name' => 'required',
-            'slug' => 'required',
+            'slug' => 'required|unique:companies',
             'companycategory_id' => 'required',
             'location' => 'required',
             'email' => 'required|unique:companies',
@@ -58,9 +58,6 @@ class DashboardCompanyController extends Controller
             'logo' => 'image|file|max:2048',
             'body' => 'required',
         ]);
-        if ($request->slug != $company->slug) {
-            $validatedData['slug'] = 'required|unique:jobs';
-        }
 
         if ($request->file('logo')) {
             $validatedData['logo'] = $request->file('logo')->store('logo-company');
@@ -108,20 +105,20 @@ class DashboardCompanyController extends Controller
     public function update(Request $request, Company $company)
     {
         $validatedData = $request->validate([
-            'name' => 'required',
+            'name'               => 'required',
             'companycategory_id' => 'required',
-            'location' => 'required',
-            'status' => 'required',
-            'slug' => 'required|unique:companies,slug,' . $company->id,
-            'email' => 'required|unique:companies,email,' . $company->id,
-            'phone_number' => 'required|unique:companies,phone_number,' . $company->id,
-            'social_facebook',
-            'social_instagram',
-            'social_twiiter',
-            'social_youtube',
-            'website',
-            'logo' => 'image|file|max:2048',
-            'body' => 'required',
+            'location'           => 'required',
+            'status'             => 'required',
+            'slug'               => 'required|unique:companies,slug,' . $company->id,
+            'email'              => 'required|unique:companies,email,' . $company->id,
+            'phone_number'       => 'required|max:13|unique:companies,phone_number,' . $company->id,
+            'social_facebook'    => 'nullable|unique:companies,social_facebook,' . $company->id,
+            'social_instagram'   => 'nullable|unique:companies,social_instagram,' . $company->id,
+            'social_twiiter'     => 'nullable|unique:companies,social_twitter,' . $company->id,
+            'social_youtube'     => 'nullable|unique:companies,social_youtube,' . $company->id,
+            'website'            => 'nullable|unique:companies,social_website,' . $company->id,
+            'logo'               => 'image|file|max:2048',
+            'body'               => 'required',
         ]);
 
         if ($request->file('logo')) {

@@ -2,7 +2,8 @@
 
 @section('content')
 <!-- Banner Section-->
-<section class="banner-section-four -type-16" style="background-image: url(images/index-16/header/1920x940.jpg);">
+<section class="banner-section-four -type-16"
+    style="background-image: url({{ asset('images/bg-home-didamelid.jpg') }});">
     <div class="auto-container">
         <div class="content-box">
             <div class="title-box wow fadeInUp" data-wow-delay="500ms">
@@ -82,7 +83,7 @@
                             <div class="inner-box">
                                 <div class="content">
                                     <span class="company-logo"><img class="rounded-full"
-                                            src="images/resource/company-logo/1-1.png" alt="">
+                                            src="{{ asset('storage/'.$item->company->logo) }}" alt="">
                                     </span>
                                     <h4><a href="job/{{ $item->slug }}">{{ $item->title }} - {{ $item->company->name
                                             }}</a></h4>
@@ -143,7 +144,7 @@
 
                 <div class="candidate-block">
                     <div class="inner-box">
-                        <figure class="image"><img src="images/resource/candidate-1.png" alt=""></figure>
+                        <figure class="image"><img src="{{ asset('storage/'.$item->logo) }}" alt=""></figure>
                         <a href="/company/{{ $item->slug }}">
                             <h4 class="name">{{ $item->name }}</h4>
                         </a>

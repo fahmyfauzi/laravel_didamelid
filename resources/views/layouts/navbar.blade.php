@@ -5,8 +5,13 @@
         <div class="nav-outer">
 
             <div class="logo-box">
-                <div class="logo"><a href="/"><img src="images/logo-didamelid-1.png" alt="" title=""></a>
+                @if(request('/'))
+                <div class="logo"><a href="/"><img src="{{ asset('images/logo-didamelid-1.png') }}" alt="" title=""></a>
                 </div>
+                @else
+                <div class="logo"><a href="/"><img src="{{ asset('images/logo-didamelid-2.png') }}" alt="" title=""></a>
+                </div>
+                @endif
             </div>
             <nav class="nav main-menu">
                 <ul class="navigation" id="navbar">
@@ -20,8 +25,10 @@
 
                     <!-- Only for Mobile View -->
                     <li class="mm-add-listing">
+
                         <a href="https://wa.me/6282118418130" target="_blank" class="theme-btn btn-style-one">Kirim
                             Pekerjaan</a>
+
                         <span>
                             <span class="contact-info">
                                 <span class="phone-num"><span>Hubungi Kami</span><a href="tel:085157163559">0851 5716
@@ -46,8 +53,15 @@
         <div class="outer-box">
 
             <div class="btn-box">
+                @if (Request::is('job'))
+
+                <a href="https://wa.me/6282118418130" target="_blank" class="heme-btn btn-style-three call-modal">Kirim
+                    Pekerjaan</a>
+                @else
+
                 <a href="https://wa.me/6282118418130" target="_blank" class="theme-btn btn-style-five">Kirim
                     Pekerjaan</a>
+                @endif
             </div>
         </div>
     </div>

@@ -11,7 +11,9 @@
 
                 <div class="row text-center justify-content">
                     <div class="form-floating">
-                        <input type="email" name="email" class="form-control @error('email') is-invalid @enderror" id="floatingInput" placeholder="name@example.com" value="{{ old('email') }}" required autocomplete="email" autofocus>
+                        <input type="email" name="email" class="form-control @error('email') is-invalid @enderror"
+                            id="floatingInput" placeholder="name@example.com" value="{{ old('email') }}" required
+                            autocomplete="email" autofocus>
                         <label for="floatingInput">Email address</label>
                         @error('email')
                         <div class="alert alert-danger">{{ $message }}
@@ -19,7 +21,8 @@
                         @enderror
                     </div>
                     <div class="form-floating">
-                        <input type="password" name="password" class="form-control @error('email') is-invalid @enderror" id="floatingPassword" placeholder="Password" required>
+                        <input type="password" name="password" class="form-control @error('email') is-invalid @enderror"
+                            id="floatingPassword" placeholder="Password" required>
                         <label for="floatingPassword">Password</label>
                         @error('password')
                         <div class="alert alert-danger">{{ $message }}
@@ -34,7 +37,7 @@
             </form>
 
             <div class="text-center">
-                <small class="mt-2 text-center">Not Registed?<a href="/register">Register Now!</a> OR
+                <small class="mt-2 text-center">
                     <a href="{{ route('password.request') }}">
                         {{ __('Forgot Your Password?') }}
                     </a>

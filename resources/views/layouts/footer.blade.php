@@ -44,8 +44,8 @@
                                 <div class="widget-content">
                                     <div class="download-btns">
                                         <div class="text">Klik di sini untuk menginstal</div>
-                                        <a href="#"><img src="images/icons/apple-2.png" alt=""></a>
-                                        <a href="#"><img src="images/icons/google-2.png" alt=""></a>
+                                        <a href="#"><img src="{{ asset('images/icons/apple-2.png') }}" alt=""></a>
+                                        <a href="#"><img src="{{ asset('images/icons/google-2.png') }}" alt=""></a>
                                     </div>
                                 </div>
                             </div>

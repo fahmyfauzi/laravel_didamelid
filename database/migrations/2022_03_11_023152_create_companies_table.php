@@ -23,11 +23,11 @@ return new class extends Migration
             $table->string('location');
             $table->string('phone_number')->unique();
             $table->string('email')->unique();
-            $table->string('social_facebook')->nullable();
-            $table->string('social_instagram')->nullable();
-            $table->string('social_youtube')->nullable();
-            $table->string('social_twitter')->nullable();
-            $table->string('website')->nullable();
+            $table->string('social_facebook')->unique()->nullable();
+            $table->string('social_instagram')->unique()->nullable();
+            $table->string('social_youtube')->unique()->nullable();
+            $table->string('social_twitter')->unique()->nullable();
+            $table->string('website')->unique()->nullable();
             $table->text('body');
             $table->timestamps();
         });

@@ -1,76 +1,106 @@
 @extends('dashboard.layouts.app')
 
 @section('content')
-<div class="d-flex flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3
-            border-bottom">
-    <h1 class="h2">Post Job</h1>
-</div>
+<!-- Dashboard -->
+<section class="user-dashboard">
+  <div class="dashboard-outer">
+    <div class="upper-title-box">
+      <h3>Manage Jobs</h3>
+      <div class="text">Ready to jump back in?</div>
+    </div>
+    <!-- Input -->
 
-<div class="table-responsive col-lg-12">
     @if(session()->has('success'))
     <div class="alert alert-success" role="alert">
-        {{ session('success') }}
+      {{ session('success') }}
     </div>
     @endif
+    <div class="form-group col-lg-12 col-md-12 mb-2">
+      <a href="{{ route('job.create') }}" class="theme-btn btn-style-three">Add Job</a>
+    </div>
     <div class="row">
-        <div class="col-lg-10">
-            <a href="{{ route('job.create') }}" class="btn btn-primary mb-3"><i class="fa-solid fa-plus"></i> Add
-                Job</a>
+      <div class="col-lg-12">
+        <!-- Ls widget -->
+        <div class="ls-widget">
+          <div class="tabs-box">
+            <div class="widget-title">
+              <h4>My Job Listings</h4>
+
+              <!--search box-->
+              <div class="search-box">
+                <form action="{{ route('job.index') }}">
+                  <div class="form-group form-control">
+                    <span class="icon flaticon-search-1"></span>
+                    <input type="text" name="search" value="{{ old('search') }} {{ request('search') }}"
+                      placeholder="keywords" required="">
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+
+          <div class="widget-content">
+            <div class="table-outer">
+              <table class="default-table manage-job-table">
+                <thead>
+                  <tr>
+                    <th>Title</th>
+                    <th>Type</th>
+                    <th>Created & Expired</th>
+                    <th>Level Career</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+
+                <tbody>
+                  @foreach ($jobs as $item)
+
+                  <tr>
+                    <td>
+                      <h6>{{ $item->title }}</h6>
+                      <span class="info"><i class="icon flaticon-map-locator"></i> {{ $item->location }}</span>
+                    </td>
+                    <td class="status">{{ $item->type }}</td>
+                    <td>{{date('d F Y',strtotime( $item->created_at)) }}<br>{{date('d F Y',strtotime(
+                      $item->expiration_date)) }}</td>
+                    <td class="info">{{ $item->level_career }}</td>
+                    <td>
+                      <div class="option-box">
+                        <ul class="option-list">
+                          <a href="{{ route('job.show',[$item->slug]) }}">
+                            <li><button data-text="View Aplication"><span class="la la-eye"></span></button></li>
+                          </a>
+                          <a href="{{ route('job.edit',[$item->slug]) }}">
+
+                            <li><button data-text="Reject Aplication"><span class="la la-pencil"></span></button></li>
+                          </a>
+                          <a href="{{ route('job.destroy',[$item->slug]) }}">
+                            <form action="{{ route('job.destroy',[$item->slug]) }}" method="post" class="d-inline">
+                              @method('delete')
+                              @csrf
+                              <li><button data-text="Delete Aplication" onClick="return confirm('Are you sure?')"><span
+                                    class="la la-trash"></span></button>
+                              </li>
+                            </form>
+                          </a>
+                        </ul>
+                      </div>
+                    </td>
+                  </tr>
+                  @endforeach
+
+                </tbody>
+              </table>
+            </div>
+          </div>
+          {{ $jobs->links() }}
         </div>
-        <div class="col-lg-2 justify-content-end">
-            <form action="/dashboard/job">
-                <input type="text" name="search" placeholder="cari pekerjaan"
-                    class="d-inline form-control justify-content-end" value="{{ request('search') }}">
-            </form>
-
-        </div>
-
+      </div>
     </div>
-    <table class="table table-striped table-sm ">
-        <thead>
-            <tr>
-                <th scope="col">{#}</th>
-                <th scope="col" width="250px">Title</th>
-                <th scope="col">Company</th>
-                <th scope="col">Level Career</th>
-                <th scope="col">Type</th>
-                <th scope="col">Salary</th>
-                <th scope="col">Category</th>
-                <th scope="col" width="150px;">Action</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach($jobs as $job)
 
-            <tr>
-                <td>{{ $loop->iteration }}</td>
-                <td>{{ $job->title }}</td>
-                <td>{{ $job->company->name}}</td>
-                <td>{{ $job->level_career }}</td>
-                <td>{{ $job->type }}</td>
-                <td>{{ $job->salary }}</td>
-                <td>{{ $job->category->name}}</td>
-                <td>
-                    <a href="{{ route('job.show',[$job->slug]) }}" class="badge bg-primary"><i
-                            data-feather="eye"></i></a>
-                    <a href="{{ route('job.edit',[$job->slug]) }}" class="badge bg-warning"><i
-                            data-feather="edit"></i></a>
-                    <form action="{{ route('job.destroy',[$job->slug]) }}" method="post" class="d-inline">
-                        @method('delete')
-                        @csrf
-                        <button class="badge bg-danger border-0" onClick="return confirm('Are you sure?')"><i
-                                data-feather="x-circle"></i></button>
-                    </form>
-                </td>
 
-            </tr>
-            @endforeach
-        </tbody>
-    </table>
-    <div class="d-flex justify-content-end">
-
-        {{ $jobs->links() }}
-    </div>
-</div>
-
+  </div>
+  </div>
+</section>
+<!-- End Dashboard -->
 @endsection

@@ -13,7 +13,7 @@
           <div class="form-group col-lg-4 col-md-12 col-sm-12">
 
             <span class="icon flaticon-search-1"></span>
-            <input type="text" name="search" placeholder="Job title, keywords, or company">
+            <input type="text" name="search" id="search" placeholder="Job title, keywords, or company">
 
           </div>
 
@@ -33,7 +33,7 @@
           <div class="form-group col-lg-3 col-md-12 col-sm-12 category">
             <span class="icon flaticon-briefcase"></span>
             <select class="chosen-select" name="category">
-              <option hidden></option>
+              <option selected disabled>Select Category</option>
               @foreach ($categories as $item)
               @if (old('category') == $item->slug)
               <option value="{{ $item->slug }}" selected>{{ $item->name }}</option>
@@ -101,7 +101,7 @@
             <div class="job-block-two col-lg-12">
               <div class="inner-box">
                 <div class="content">
-                  <span class="company-logo"><img src="images/resource/company-logo/1-1.png" alt=""></span>
+                  <span class="company-logo"><img src="{{ asset('storage/'.$item->company->logo) }}" alt=""></span>
                   <h4><a href="/job/{{ $item->slug }}">{{ $item->title }}</a></h4>
                   <ul class="job-info">
                     <li><a href="job?category={{$item->category->slug  }}"><span class="icon flaticon-briefcase"></span>

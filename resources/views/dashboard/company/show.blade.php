@@ -1,148 +1,128 @@
 @extends('dashboard.layouts.app')
 
-@section( 'content')
-<div class="my-3">
-    <a href="{{ route('company.index') }}" class="btn btn-success"><span data-feather="arrow-left"></span> Back to
-        company</a>
-    <a href="{{ route('company.edit',[$company->slug]) }}" class="btn btn-warning"><span data-feather="edit"></span>
-        Edit</a>
-    <form action="{{ route('company.destroy',[$company->slug]) }}" method="post" class="d-inline">
-        @method('delete')
-        @csrf
-        <button class="btn btn-danger " onClick="return confirm('Are you sure?')"><i
-                data-feather="x-circle"></i>Delete</button>
-    </form>
-</div>
-<div class="jumbotron bg-light mb-5">
-    <div class="container">
-        <div class="row d-flex justify-content-center">
-            <div class="col-md-8 text-center my-4">
-                @if ($company->logo == null)
-                <img src="{{ asset('img/didamelid.png')}}" class="img-fluid rounded " width=" 150px"
-                    alt="{{ $company->name }}">
-                @else
-                <img src="{{ asset('storage/'.$company->logo)}}" class="img-fluid rounded " width=" 150px"
-                    alt="{{ $company->name }}">
-                @endif
-                <div>
-                    <span class="display-4">{{ $company->name }} </span>
-                    @if($company->status == '1')
+@section('content')
 
-                    <small class="d-inline text-success">Featured</small>
-                    @endif
-                </div>
-                <small class="d-block">Open Job - {{$company->job->count() }}</small>
-            </div>
-        </div>
-    </div>
-</div>
+<!-- Job Detail Section -->
+<section class="job-detail-section">
+    <!-- Upper Box -->
+    <div class="upper-box">
+        <div class="auto-container">
+            <!-- Job Block -->
+            <div class="job-block-seven style-three">
+                <div class="inner-box">
+                    <div class="content">
+                        <span class="company-logo"><img src="{{ asset('storage/'.$company->logo) }}" alt=""></span>
+                        <div>
 
-<div class="container">
-    <div class="row">
-        <div class="col-md-4">
-            <div class="card">
-                <div class="card-body">
-                    <h5 class="card-title">Tentangn Perusahaan</h5>
-                    <table class="table table-borderless">
-                        <tr>
-                            <td>Kategori</td>
-                            <td>:</td>
-                            <td>{{ $company->companycategory->name }}</td>
-                        </tr>
-                        <tr>
-                            <td>Nomor Telephone</td>
-                            <td>:</td>
-                            <td><a href="tel:{{ $company->phone_number}}">{{ $company->phone_number}}</a></td>
-                        </tr>
-                        <tr>
-                            <td>Email</td>
-                            <td>:</td>
-                            <td><a href="mailto:{{ $company->email}}">{{ $company->email}}</a></td>
-                        </tr>
-                        <tr>
-
-                            <td>Social</td>
-                            <td>:</td>
-                            <td>
-                                @if ($company->social_instagram)
-                                <a href="{{ $company->social_instagram }}" target="_blank"><i
-                                        class="fa-brands fa-instagram"></i></a>
-                                @endif
-                                @if ( $company->social_facebook )
-                                <a href="{{ $company->social_facebook }}" target="_blank"><i
-                                        class="fa-brands fa-facebook-f"></i></a>
-                                @endif
-                                @if ($company->social_twitter )
-                                <a href="{{ $company->social_twitter }}" target="_blank"><i
-                                        class="fa-brands fa-twitter"></i></a>
-                                @endif
-                                @if ($company->social_youtube)
-                                <a href="{{ $company->social_youtube }}" target="_blank"><i
-                                        class="fa-brands fa-youtube"></i></a>
-                                @endif
-                            </td>
-                        </tr>
-                        @if ($company->website)
-                        <tr>
-                            <td colspan="3" class="text-center">
-                                <a class="btn btn-primary" href="{{ $company->website }}">{{ $company->website }}</a>
-                            </td>
-                        </tr>
-
-                        @endif
-                    </table>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-md-8">
-            <h2>About Company</h2>
-
-            <p>{!! $company->body !!}</p>
-
-
-
-
-            @foreach($company->job->sortByDesc('created_at') as $company)
-            <div class="card mb-3 col-md-12">
-                <div class="row g-0">
-                    <div class="col-md-2 ">
-                        @if ($company->logo == null)
-                        <img src="{{ asset('img/didamelid.png')}}" class="img-fluid mt-4 rounded" width=" 100px"
-                            alt="{{ $company->name }}">
-                        @else
-                        <img src="{{ asset('storage/'.$company->logo)}}" class="img-fluid mt-4 rounded" width=" 100px"
-                            alt="{{ $company->name }}">
-                        @endif
-                    </div>
-
-                    <div class="col-md-10">
-                        <div class="card-body">
-                            <h5 class="card-title"><a href="/job/{{ $company->slug }}">{{ $company->title }} </a></h5>
-                            <h6 class="card-text m-0">
-
-                                <a href="/job?category={{ $company->category->name }}" class="me-2">
-                                    <i class="fa-solid fa-briefcase"></i>
-                                    {{ ucfirst($company->category->name) }}
-                                </a>
-                                <a href="/job?location={{ $company->location }}" class="me-2">
-                                    <i class="fa-solid fa-location-dot"></i> {{ $company->location }}
-                                </a>
-                                <span class="card-text m-0 me-2"><i class="fa-solid fa-coins"></i>Rp.{{ $company->salary
-                                    }}/month</span>
-                            </h6>
-
-                            <small>
-                                <a href="/job?type={{ Str::slug($company->type, '-') }}"
-                                    class="card-text btn btn-primary rounded-pill mt-2">{{ $company->type }}</a>
-                            </small>
+                            <span class="display-4">{{ $company->name }}
+                            </span>
+                            @if($company->status == '1')
+                            <small class="d-inline text-success">Featured</small>
+                            @endif
                         </div>
+                        <ul class="job-other-info">
+                            <li class="time">Open Jobs – {{$company->job->count() }}</li>
+                        </ul>
                     </div>
                 </div>
             </div>
-            @endforeach
-
         </div>
     </div>
-</div>
+
+    <div class="job-detail-outer">
+        <div class="auto-container">
+            <div class="row">
+                <div class="content-column col-lg-8 col-md-12 col-sm-12 order-2">
+                    <div class="job-detail">
+                        <h4>About Company</h4>
+                        {!! $company->body !!}
+                    </div>
+
+                    <!-- Related Jobs -->
+                    <div class="related-jobs">
+                        <div class="title-box">
+                            <h3>{{ count($company->job) }} jobs at {{ $company->name }}</h3>
+                            <div class="text">2020 jobs live - 293 added today.</div>
+                        </div>
+
+                        <!-- Job Block -->
+                        @foreach ($company->job->sortByDesc('created_at') as $item)
+
+                        <div class="job-block">
+                            <div class="inner-box">
+                                <div class="content">
+                                    <span class="company-logo"><img src="{{ asset('storage/'.$item->company->logo) }}"
+                                            alt=""></span>
+                                    <h4><a href="/job/{{ $item->slug }}">{{ $item->title }}</a></h4>
+                                    <ul class="job-info">
+                                        <li><span class="icon flaticon-briefcase"></span> {{ $item->category->name }}
+                                        </li>
+                                        <li><span class="icon flaticon-map-locator"></span> {{ $item->location }}</li>
+                                        <li><span class="icon flaticon-clock-3"></span> {{
+                                            $item->created_at->diffForHumans() }}</li>
+                                        <li><span class="icon flaticon-money"></span> {{ $item->salary }}</li>
+                                    </ul>
+                                    <ul class="job-other-info">
+                                        <li class="time">{{ $item->type }}</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        @endforeach
+
+
+                    </div>
+                </div>
+
+                <div class="sidebar-column col-lg-4 col-md-12 col-sm-12">
+                    <aside class="sidebar pd-right">
+
+                        <div class="sidebar-widget company-widget">
+                            <div class="widget-content">
+                                <ul class="company-info mt-0">
+                                    <li>Kategori: <span>{{ $company->companycategory->name }}</span></li>
+                                    <li>Phone: <span>{{ $company->phone_number }}</span></li>
+                                    <li>Email: <span>{{ $company->email }}</span></li>
+                                    <li>Location: <span>{{ $company->location }}</span></li>
+                                    <li>Social media:
+                                        <div class="social-links">
+                                            @if ($company->social_facebook )
+
+                                            <a href="{{ $company->social_facebook }}" target="_blink"><i
+                                                    class="fab fa-facebook-f"></i></a>
+                                            @endif
+                                            @if ($company->social_twitter )
+
+                                            <a href="{{ $company->social_twitter }}" target="_blink"><i
+                                                    class="fab fa-twitter"></i></a>
+                                            @endif
+                                            @if ($company->social_instagram)
+
+                                            <a href="{{ $company->social_instagram }}" target="_blink"><i
+                                                    class="fab fa-instagram"></i></a>
+                                            @endif
+                                            @if ($company->social_youtube)
+
+                                            <a href="{{ $company->social_youtube }}" target="_blink"><i
+                                                    class="fab fa-youtube"></i></a>
+                                            @endif
+                                        </div>
+                                    </li>
+                                </ul>
+                                @if ($company->website)
+
+                                <div class="btn-box"><a href="#" class="theme-btn btn-style-three">{{ $company->website
+                                        }}</a></div>
+                                @endif
+                            </div>
+                        </div>
+
+
+                    </aside>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- End Job Detail Section -->
 @endsection

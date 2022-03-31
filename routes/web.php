@@ -43,16 +43,16 @@ Route::get('/job', [JobController::class, 'index'])->name('job.index');
 Route::get('/company', [CompanyController::class, 'index']);
 Route::get('/company/{company:slug}', [CompanyController::class, 'show']);
 
-Route::get('/dashboard', function () {
-    return view('dashboard.index', [
-        'company' => Company::all(),
-        'job' => Jobs::all(),
-        'category' => Category::all(),
-        'companycategory' => CompanyCategory::all(),
-    ]);
-});
 
 Route::middleware('auth')->group(function () {
+    Route::get('/dashboard', function () {
+        return view('dashboard.index', [
+            'company' => Company::all(),
+            'job' => Jobs::all(),
+            'category' => Category::all(),
+            'companycategory' => CompanyCategory::all(),
+        ]);
+    });
 
     Route::resource('/dashboard/job', DashboardJobController::class);
     Route::get('/checkSlug', [DashboardJobController::class, 'checkSlug']);

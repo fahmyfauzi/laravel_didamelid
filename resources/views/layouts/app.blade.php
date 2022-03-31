@@ -12,12 +12,12 @@
 
 
     <!-- Stylesheets -->
-    <link href="css/bootstrap.css" rel="stylesheet">
-    <link href="css/style.css" rel="stylesheet">
-    <link href="css/responsive.css" rel="stylesheet">
+    <link href="{{ asset('css/bootstrap.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/style.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/responsive.css') }}" rel="stylesheet">
 
-    <link rel="shortcut icon" href="images/favicon.png" type="image/x-icon">
-    <link rel="icon" href="images/favicon.png" type="image/x-icon">
+    <link rel="shortcut icon" href="{{ asset('images/title-didamelid.png') }}" type="image/x-icon">
+    <link rel="icon" href="{{ asset('images/title-didamelid.png') }}'" type="image/x-icon">
 
     <!-- Responsive -->
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -37,7 +37,7 @@
 
         <!-- Main Header-->
 
-
+        @if(Request::is('/'))
         <header class="main-header header-style-four -type-16">
             <!--Navbar -->
 
@@ -45,9 +45,9 @@
 
             <!--End Navbar -->
         </header>
-        @if( Request::is('job*') )
+        @else
         <span class="header-span"></span>
-        <header class="main-header header-style-four -type-16">
+        <header class="main-header ">
             <!--Navbar -->
             @include('layouts.navbar')
             <!--End Navbar -->
@@ -67,22 +67,28 @@
     </div><!-- End Page Wrapper -->
 
 
-    <script src=" js/jquery.js">
+    <script src="{{ asset( 'js/jquery.js') }}"></script>
+    <script src="{{ asset('js/popper.min.js') }}"></script>
+    <script src="{{ asset('js/jquery-ui.min.js') }}"></script>
+    <script src="{{ asset('js/chosen.min.js') }}"></script>
+    <script src="{{ asset('js/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('js/jquery.fancybox.js') }}"></script>
+    <script src="{{ asset('js/jquery.modal.min.js') }}"></script>
+    <script src="{{ asset('js/mmenu.polyfills.js') }}"></script>
+    <script src="{{ asset('js/mmenu.js') }}"></script>
+    <script src="{{ asset('js/appear.js') }}"></script>
+    <script src="{{ asset('js/anm.min.js') }}"></script>
+    <script src="{{ asset('js/ScrollMagic.min.js') }}"></script>
+    <script src="{{ asset('js/rellax.min.js') }}"></script>
+    <script src="{{ asset('js/owl.js') }}"></script>
+    <script src="{{ asset('js/wow.js') }}"></script>
+    <script src="{{ asset('js/script.js') }}"></script>
+
+    <!--Google Map APi Key-->
+    <script src="http://maps.google.com/maps/api/js?key=AIzaSyDaaCBm4FEmgKs5cfVrh3JYue3Chj1kJMw&#038;ver=5.2.4">
     </script>
-    <script src="js/popper.min.js"></script>
-    <script src="js/chosen.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/jquery.fancybox.js"></script>
-    <script src="js/jquery.modal.min.js"></script>
-    <script src="js/mmenu.polyfills.js"></script>
-    <script src="js/mmenu.js"></script>
-    <script src="js/appear.js"></script>
-    <script src="js/anm.min.js"></script>
-    <script src="js/ScrollMagic.min.js"></script>
-    <script src="js/rellax.min.js"></script>
-    <script src="js/owl.js"></script>
-    <script src="js/wow.js"></script>
-    <script src="js/script.js"></script>
+    <script src="{{ asset('js/map-script.js') }}"></script>
+    <!--End Google Map APi-->
 
 </body>
 

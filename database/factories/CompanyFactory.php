@@ -24,10 +24,6 @@ class CompanyFactory extends Factory
             'location' => $this->faker->city(),
             'phone_number' => $this->faker->phoneNumber(),
             'email' => $this->faker->email(),
-            'social_facebook' => 'https://www.facebook.com/didamel.id',
-            'social_instagram' => 'https://www.instagram.com/didamel.id',
-            'social_youtube' => 'https://www.youtube.com/c/DidamelIndonesia',
-            'website' => 'https://google.com',
             'body' => $this->faker->paragraph(),
         ];
     }

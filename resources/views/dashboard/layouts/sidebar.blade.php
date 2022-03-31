@@ -1,40 +1,32 @@
-<nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
-    <div class="position-sticky pt-3">
-        <ul class="nav flex-column">
-            <li class="nav-item">
-                <a class="nav-link {{ Request::is('dashboard') ? 'active' : false }}" aria-current="page"
-                    href="/dashboard">
-                    <i class="fa-solid fa-house"></i>
-                    Dashboard
-                </a>
+<div class="user-sidebar">
+
+    <div class="sidebar-inner">
+        <ul class="navigation">
+            <li class="{{ Request::is('dashboard') ? 'active' : false }}"><a href="/dashboard">
+                    <i class="la la-home"></i> Dashboard</a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link {{ Request::is('dashboard/job*') ? 'active' : false }}" href="/dashboard/job">
-                    <span class="fa-solid fa-briefcase"></span>
-                    Job
-                </a>
+            <li class=" {{ Request::is('dashboard/job*') ? 'active' : false }}"><a href="{{ route('job.index') }}">
+                    <i class="la la-briefcase"></i> Manage Jobs </a></li>
+            <li class="{{ Request::is('dashboard/category*') ? 'active' : false }}"><a
+                    href="{{ route('category.index') }}"><i class="la la-briefcase"></i>
+                    Manage Category </a></li>
+            <li
+                class="{{ Request::is('dashboard/company/*') ? 'active' : false }} {{ Request::is('dashboard/company') ? 'active' : false }} ">
+                <a href="{{ route('company.index') }}"> <i class="la la-briefcase"></i> Manage
+                    Company </a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link {{ Request::is('dashboard/category*') ? 'active' : false }}"
-                    href="/dashboard/category">
-                    <span class="fa-solid fa-align-justify"></span>
-                    Job Category
-                </a>
+            <li class=" {{ Request::is('dashboard/companycategory*') ? 'active' : false }} "><a
+                    href="{{ route('companycategory.index') }}"><i class="la la-briefcase"></i> Manage
+                    Category Company </a></li>
+
+
+            <li><a href="{{ route('logout') }}" onclick="event.preventDefault();
+                document.getElementById('logout-form').submit();"><i class="la la-sign-out"></i>Logout</a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link {{ Request::is('dashboard/company/*') ? 'active' : false }} 
-                {{ Request::is('dashboard/company') ? 'active' : false }} " href="/dashboard/company">
-                    <span class="fa-solid fa-building"></span>
-                    Company
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link {{ Request::is('dashboard/companycategory*') ? 'active' : false }}"
-                    href="/dashboard/companycategory">
-                    <span class="fa-solid fa-align-justify"></span>
-                    Company Category
-                </a>
-            </li>
+            <form id="logout-form" action="{{ route('logout') }}" method="POST">
+                @csrf
+            </form>
+
         </ul>
     </div>
-</nav>
+</div>
