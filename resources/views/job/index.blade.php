@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.app', ['title' => 'Lowongan Pekerjaan '])
 
 @section( 'content')
 <!--Page Title-->

@@ -13,7 +13,7 @@ class JobController extends Controller
     {
         return view('job.index', [
             'jobs' => Jobs::with(['category', 'company', 'author'])->latest()->filter(request(['search', 'category', 'location', 'type']))->paginate(7)->withQueryString(),
-            'categories' => Category::all()
+            'categories' => Category::all(),
         ]);
     }
     public function show(Jobs $job)

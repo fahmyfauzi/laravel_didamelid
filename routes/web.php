@@ -34,6 +34,7 @@ Route::get('/', function () {
         'categories' => Category::first()->take(6)->get(),
         'jobs' => Jobs::with('category', 'company', 'author')->take(9)->latest()->get(),
         'companies' => Company::with(['companycategory', 'job'])->where('status', 1)->get(),
+        'title' => 'Situs Lowongan Pekerjaan Terlengkap'
     ]);
 });
 Route::get('/job/{job:slug}', [JobController::class, 'show']);
