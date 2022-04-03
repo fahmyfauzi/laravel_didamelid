@@ -21,7 +21,11 @@
               @endif
             </div>
             <ul class="job-other-info">
+<<<<<<< HEAD
               <li class="time">Open Jobs – {{$company->job->where('expiration_date', $expiration_date->count()) }}</li>
+=======
+              <li class="time">Open Jobs – {{$company->job->count() }}</li>
+>>>>>>> 260a9c744cbf87be20e3a46c3af00d7794c1cfdd
             </ul>
           </div>
         </div>
@@ -51,7 +55,11 @@
               <div class="inner-box">
                 <div class="content">
                   <span class="company-logo"><img src="{{ asset('storage/'.$item->company->logo) }}" alt=""></span>
+<<<<<<< HEAD
                   <h4><a href="/job/{{ $item->slug }}">{{ $item->title }}</a></h4>
+=======
+                  <h4><a href="#">{{ $item->title }}</a></h4>
+>>>>>>> 260a9c744cbf87be20e3a46c3af00d7794c1cfdd
                   <ul class="job-info">
                     <li><span class="icon flaticon-briefcase"></span> {{ $item->category->name }}</li>
                     <li><span class="icon flaticon-map-locator"></span> {{ $item->location }}</li>

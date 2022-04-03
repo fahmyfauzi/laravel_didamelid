@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 @extends('layouts.app',['title' => 'Login'])
+=======
+@extends('layouts.app')
+>>>>>>> 260a9c744cbf87be20e3a46c3af00d7794c1cfdd
 
 @section('content')
 <div class="container">

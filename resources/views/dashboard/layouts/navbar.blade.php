@@ -25,6 +25,7 @@
                         <li class=" {{ Request::is('dashboard/job*') ? 'active' : false }}"><a
                                 href="{{ route('job.index') }}"><i class="la la-briefcase"></i> Manage Jobs </a></li>
                         <li class="{{ Request::is('dashboard/category*') ? 'active' : false }}"><a href=" {{
+<<<<<<< HEAD
                             route('category.index') }}"><i class="la la-file-invoice"></i> Manage Category </a></li>
                         <li
                             class="{{ Request::is('dashboard/company/*') ? 'active' : false }} {{ Request::is('dashboard/company') ? 'active' : false }} ">
@@ -34,6 +35,12 @@
                             class="{{ Request::is('dashboard/companycategory/*') ? 'active' : false }} {{ Request::is('dashboard/companycategory') ? 'active' : false }} ">
                             <a href="{{ route('company.index') }}"><i class="la la-list-alt"></i> Manage Company
                                 Category</a>
+=======
+                            route('category.index') }}"><i class="la la-briefcase"></i> Manage Category </a></li>
+                        <li
+                            class="{{ Request::is('dashboard/company/*') ? 'active' : false }} {{ Request::is('dashboard/company') ? 'active' : false }} ">
+                            <a href="{{ route('company.index') }}"><i class="la la-briefcase"></i> Manage Company </a>
+>>>>>>> 260a9c744cbf87be20e3a46c3af00d7794c1cfdd
                         </li>
 
                         <li><a href="{{ route('logout') }}" onclick="event.preventDefault();

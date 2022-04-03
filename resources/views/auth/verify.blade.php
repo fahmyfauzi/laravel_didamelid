@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 @extends('layouts.app',['title'=> 'Verify'])
+=======
+@extends('layouts.app')
+>>>>>>> 260a9c744cbf87be20e3a46c3af00d7794c1cfdd
 
 @section('content')
 <div class="container">
@@ -18,12 +22,20 @@
                     {{ __('If you did not receive the email') }},
                     <form class="d-inline" method="POST" action="{{ route('verification.resend') }}">
                         @csrf
+<<<<<<< HEAD
                         <button type="submit" class="btn btn-link p-0 m-0 align-baseline">{{ __('click here to request
                             another') }}</button>.
+=======
+                        <button type="submit" class="btn btn-link p-0 m-0 align-baseline">{{ __('click here to request another') }}</button>.
+>>>>>>> 260a9c744cbf87be20e3a46c3af00d7794c1cfdd
                     </form>
                 </div>
             </div>
         </div>
     </div>
 </div>
+<<<<<<< HEAD
 @endsection
+=======
+@endsection
+>>>>>>> 260a9c744cbf87be20e3a46c3af00d7794c1cfdd

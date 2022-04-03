@@ -70,7 +70,11 @@
           <!-- ls Switcher -->
           <div class="ls-switcher">
             <div class="showing-result">
+<<<<<<< HEAD
 
+=======
+              <div class="text">Showing <strong>41-60</strong> of <strong>944</strong> jobs</div>
+>>>>>>> 260a9c744cbf87be20e3a46c3af00d7794c1cfdd
             </div>
 
             <div class="sort-by">
@@ -83,6 +87,17 @@
                 <option>Temporary</option>
               </select>
 
+<<<<<<< HEAD
+=======
+              <select class="chosen-select">
+                <option>Show 10</option>
+                <option>Show 20</option>
+                <option>Show 30</option>
+                <option>Show 40</option>
+                <option>Show 50</option>
+                <option>Show 60</option>
+              </select>
+>>>>>>> 260a9c744cbf87be20e3a46c3af00d7794c1cfdd
             </div>
           </div>
 

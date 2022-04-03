@@ -98,7 +98,35 @@
         <div class="ls-outer">
           <button type="button" class="theme-btn btn-style-two toggle-filters">Show Filters</button>
 
+<<<<<<< HEAD
 
+=======
+          <!-- ls Switcher -->
+          <div class="ls-switcher">
+            <div class="showing-result">
+              <div class="text">Showing <strong>41-60</strong> of <strong>944</strong> employer</div>
+            </div>
+            <div class="sort-by">
+              <select class="chosen-select">
+                <option>Most Recent</option>
+                <option>Freelance</option>
+                <option>Full Time</option>
+                <option>Internship</option>
+                <option>Part Time</option>
+                <option>Temporary</option>
+              </select>
+
+              <select class="chosen-select">
+                <option>Show 10</option>
+                <option>Show 20</option>
+                <option>Show 30</option>
+                <option>Show 40</option>
+                <option>Show 50</option>
+                <option>Show 60</option>
+              </select>
+            </div>
+          </div>
+>>>>>>> 260a9c744cbf87be20e3a46c3af00d7794c1cfdd
 
 
           <!-- Block Block -->
@@ -130,7 +158,13 @@
 
           <!-- Listing Show More -->
           <div class="ls-show-more">
+<<<<<<< HEAD
             {{$companies->links()}}
+=======
+            <p>Showing 36 of 497 Jobs</p>
+            <div class="bar"><span class="bar-inner" style="width: 40%"></span></div>
+            <button class="show-more">Show More</button>
+>>>>>>> 260a9c744cbf87be20e3a46c3af00d7794c1cfdd
           </div>
         </div>
       </div>

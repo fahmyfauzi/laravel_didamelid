@@ -44,12 +44,18 @@
                     <div class="other-options">
                         <div class="social-share">
                             <h5>Share this job</h5>
+<<<<<<< HEAD
                             <a href="http://www.facebook.com/sharer.php?u={{ url()->current() }}" target="_blank"
                                 class="facebook"><i class="fab fa-facebook-f"></i> Facebook</a>
                             <a href="http://twitter.com/share?url={{ url()->current() }}" target="_blank"
                                 class="twitter"><i class="fab fa-twitter"></i> Twitter</a>
                             <a href="https://plus.google.com/share?url={{ url()->current() }}" target="_blank"
                                 class="google"><i class="fab fa-google"></i> Google+</a>
+=======
+                            <a href="#" class="facebook"><i class="fab fa-facebook-f"></i> Facebook</a>
+                            <a href="#" class="twitter"><i class="fab fa-twitter"></i> Twitter</a>
+                            <a href="#" class="google"><i class="fab fa-google"></i> Google+</a>
+>>>>>>> 260a9c744cbf87be20e3a46c3af00d7794c1cfdd
                         </div>
                     </div>
 

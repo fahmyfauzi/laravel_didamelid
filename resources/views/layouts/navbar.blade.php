@@ -5,12 +5,20 @@
         <div class="nav-outer">
 
             <div class="logo-box">
+<<<<<<< HEAD
                 @if(Request::is('/'))
                 <div class="logo"><a href="/"><img src="{{ asset('images/logo-didamelid-1.png') }}" alt="" title=""></a>
                 </div>
                 @else
                 <div class="logo"><a href="job"><img src="{{ asset('images/logo-didamelid-2.png') }}" alt=""
                             title=""></a>
+=======
+                @if(request('/'))
+                <div class="logo"><a href="/"><img src="{{ asset('images/logo-didamelid-1.png') }}" alt="" title=""></a>
+                </div>
+                @else
+                <div class="logo"><a href="/"><img src="{{ asset('images/logo-didamelid-2.png') }}" alt="" title=""></a>
+>>>>>>> 260a9c744cbf87be20e3a46c3af00d7794c1cfdd
                 </div>
                 @endif
             </div>
@@ -27,7 +35,10 @@
                     <!-- Only for Mobile View -->
                     <li class="mm-add-listing">
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 260a9c744cbf87be20e3a46c3af00d7794c1cfdd
                         <a href="https://wa.me/6282118418130" target="_blank" class="theme-btn btn-style-one">Kirim
                             Pekerjaan</a>
 
@@ -55,6 +66,7 @@
         <div class="outer-box">
 
             <div class="btn-box">
+<<<<<<< HEAD
                 @if (Request::is('/'))
 
                 <a href="https://wa.me/6282118418130" target="_blank" class="theme-btn btn-style-five">Kirim
@@ -63,6 +75,16 @@
                 <a href="https://wa.me/6282118418130" target="_blank" class="heme-btn btn-style-three call-modal">Kirim
                     Pekerjaan</a>
 
+=======
+                @if (Request::is('job'))
+
+                <a href="https://wa.me/6282118418130" target="_blank" class="heme-btn btn-style-three call-modal">Kirim
+                    Pekerjaan</a>
+                @else
+
+                <a href="https://wa.me/6282118418130" target="_blank" class="theme-btn btn-style-five">Kirim
+                    Pekerjaan</a>
+>>>>>>> 260a9c744cbf87be20e3a46c3af00d7794c1cfdd
                 @endif
             </div>
         </div>
