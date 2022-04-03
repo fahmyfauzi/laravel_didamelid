@@ -1,0 +1,190 @@
+/* 
+Superio | Just another HTML Template
+
+Template Name: Superio
+Author: Creative Layers
+Version: 1.0.0
+
+/************ TABLE OF CONTENTS ***************
+1. Fonts
+2. Reset
+3. Global
+4. Content Elements 
+5. Main Header / Two / Three / Four / Five
+6. Sticky Header
+7. Mobile Header
+8. Login Popup
+9. Page Title
+10. Section Title
+11. Banner Section / One to Ten
+12. Work Section
+13. Job Categories
+14. Job Section / Two / Three / Four / Five / Six
+15. Job Detail Section / Style two
+16. Features Section
+17. Testimonial Section / Two / Three / Four
+18. Clients Section / Two
+19. About Section / Two / Three
+20. Fun Fact Section
+21. Recruiter Section 
+22. Jobseeker Section
+23. Candidates Section / Two
+24. Candidate Detail Section
+25. Listing Section 
+26. Listing Show More
+27. Listing Pagination
+28. Listing Section Two / Three / Four
+29. Listing Maps
+30. Top Companies
+31. Ads Section
+32. Registeration Banners
+33. News Section / Two / Three
+34. Blog Grid
+35. Blog Single
+36. Products Section
+37. Shop Single
+38. Product Tabs
+39. Cart Section
+40. CheckOut Page
+41. Order Slip
+42. App Section
+43. Pricing Section
+44. Process Section
+45. steps Section
+46. Call To Action / Two / Three / Four
+47. Browse Jobs
+48. Subscribe Section / Two
+49. Faqs Section
+50. TNC Section
+51. Map Section
+52. Contact Section
+53. Login Section
+54. Invoice Section
+55. Main Footer / Two / Three / Four / Five / Six
+56. Dashboard
+57. User Sidebar
+58. Chat Widget
+**********************************************/
+
+/*** 
+
+====================================================================
+Fonts
+====================================================================
+
+***/
+@import url("icons.css");
+@import url("flaticon.css");
+@import url("fontawesome-all.css");
+@import url("animate.css");
+@import url("owl.css");
+@import url("jquery-ui.min.css");
+@import url("select2.min.css");
+@import url("jquery.modal.min.css");
+@import url("chosen.css");
+@import url("line-awesome.css");
+@import url("mmenu.css");
+@import url("jquery.fancybox.min.css");
+
+@import url('https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+
+
+/*** 
+
+====================================================================
+Reset
+====================================================================
+
+***/
+
+
+
+/*** 
+
+====================================================================
+Global Settings
+====================================================================
+
+***/
+
+
+
+@import './base/base.scss';
+@import './base/forms.scss';
+@import './base/typography.scss';
+@import './base/utilities.scss';
+
+@import './components/about.scss';
+@import './components/accordion.scss';
+@import './components/ads.scss';
+@import './components/banner-box.scss';
+@import './components/button.scss';
+@import './components/Callout.scss';
+@import './components/clients.scss';
+@import './components/companies.scss';
+@import './components/contact.scss';
+@import './components/dashboard.scss';
+@import './components/feature.scss';
+@import './components/footer.scss';
+@import './components/fun-fact.scss';
+@import './components/header.scss';
+@import './components/job.scss';
+@import './components/list.scss';
+@import './components/login.scss';
+@import './components/map.scss';
+@import './components/menu.scss';
+@import './components/message-box.scss';
+@import './components/owl.scss';
+@import './components/page-title.scss';
+@import './components/pie-graph.scss';
+@import './components/portfolio.scss';
+@import './components/preloader.scss';
+@import './components/progress-bar.scss';
+@import './components/registr-banner.scss';
+@import './components/resume.scss';
+@import './components/section-title.scss';
+@import './components/select.scss';
+@import './components/sidebar.scss';
+@import './components/social.scss';
+@import './components/socialIcons.scss';
+@import './components/table.scss';
+@import './components/tabs.scss';
+@import './components/testimonials.scss';
+@import './components/tooltip.scss';
+@import './components/uploadings.scss';
+
+@import './components/sections/app.scss';
+@import './components/sections/browse.scss';
+@import './components/sections/candidates.scss';
+@import './components/sections/cta.scss';
+@import './components/sections/faq.scss';
+@import './components/sections/invoice.scss';
+@import './components/sections/jobseeker.scss';
+@import './components/sections/ls-section.scss';
+@import './components/sections/news.scss';
+@import './components/sections/pricing.scss';
+@import './components/sections/process.scss';
+@import './components/sections/recruiter.scss';
+@import './components/sections/steps.scss';
+@import './components/sections/subscribe.scss';
+@import './components/sections/tnc.scss';
+@import './components/job-search.scss';
+
+@import './layout/blog-sidebar.scss';
+@import './layout/blog-single.scss';
+@import './layout/shop/cart.scss';
+@import './layout/shop/order.scss';
+@import './layout/shop/products.scss';
+@import './layout/shop/single.scss';
+@import './layout/shop/tabs.scss';
+
+@import './components/new/index-11.scss';
+@import './components/new/index-12.scss';
+@import './components/new/index-13.scss';
+@import './components/new/index-14.scss';
+@import './components/new/index-15.scss';
+@import './components/new/index-16.scss';
+@import './components/new/index-17.scss';
+
+@import './components/shame.scss';
