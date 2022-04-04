@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 @extends('layouts.app',['title'=> 'Reset Password '])
-=======
-@extends('layouts.app')
->>>>>>> 260a9c744cbf87be20e3a46c3af00d7794c1cfdd
 
 @section('content')
 <div class="container">
@@ -19,13 +15,9 @@
                 <h2 class="text-center">{{ __('Reset Password') }}</h2>
                 @csrf
                 <div class="form-floating">
-<<<<<<< HEAD
                     <input type="email" name="email" class="form-control @error('email') is-invalid @enderror"
                         id="floatingInput" placeholder="name@example.com" value="{{ old('email') }}" required
                         autocomplete="email" autofocus>
-=======
-                    <input type="email" name="email" class="form-control @error('email') is-invalid @enderror" id="floatingInput" placeholder="name@example.com" value="{{ old('email') }}" required autocomplete="email" autofocus>
->>>>>>> 260a9c744cbf87be20e3a46c3af00d7794c1cfdd
                     <label for="floatingInput">Email address</label>
                     @error('email')
                     <span class="invalid-feedback" role="alert">
@@ -43,8 +35,4 @@
     </div>
 
 </div>
-<<<<<<< HEAD
 @endsection
-=======
-@endsection
->>>>>>> 260a9c744cbf87be20e3a46c3af00d7794c1cfdd

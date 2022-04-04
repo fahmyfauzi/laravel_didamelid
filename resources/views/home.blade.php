@@ -53,10 +53,6 @@
     </div>
 </section>
 <!-- End Banner Section-->
-<<<<<<< HEAD
-=======
-
->>>>>>> 260a9c744cbf87be20e3a46c3af00d7794c1cfdd
 <!-- Job Section -->
 <section class="layout-pt-120 layout-pb-120">
     <div class="auto-container">

@@ -40,18 +40,6 @@
                         {!! $job->body !!}
                     </div>
 
-<<<<<<< HEAD
-=======
-                    <!-- Other Options -->
-                    <div class="other-options">
-                        <div class="social-share">
-                            <h5>Share this job</h5>
-                            <a href="#" class="facebook"><i class="fab fa-facebook-f"></i> Facebook</a>
-                            <a href="#" class="twitter"><i class="fab fa-twitter"></i> Twitter</a>
-                            <a href="#" class="google"><i class="fab fa-google"></i> Google+</a>
-                        </div>
-                    </div>
->>>>>>> 260a9c744cbf87be20e3a46c3af00d7794c1cfdd
 
                 </div>
 
