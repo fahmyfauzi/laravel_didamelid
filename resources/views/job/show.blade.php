@@ -236,7 +236,39 @@
     </div>
 </section>
 <!-- End Job Detail Section -->
-
+<script type="application/ld+json">
+    {
+      "@context" : "https://schema.org/",
+      "@type" : "JobPosting",
+      "title" : "{{ $job->title }}",
+      "description" : "{{ Str::limit(strip_tags(html_entity_decode($job->body)), 500, '...') }}",
+      "identifier": {
+        "@type": "PropertyValue",
+        "name": "{{ $job->company->name }}",
+        "value": "{{ $job->id }}"
+      },
+      "datePosted" : "{{ $job->created_at }}",
+      "validThrough" : "{{ $job->expiration_date }}",
+      "employmentType" : "{{ $job->type }}",
+      "hiringOrganization" : {
+        "@type" : "Organization",
+        "name" : "{{ $job->company->name }}",
+        "sameAs" : "{{ $job->company->website }}",
+        "logo" : "{{ url('/').'/storage/'.$job->company->logo }}"
+      },
+      "jobLocation": {
+      "@type": "Place",
+        "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "{{ $job->location }}",
+        "addressLocality": "{{ $job->location }}",
+        "addressRegion": "IDR",
+        "postalCode": "",
+        "addressCountry": "{{ $job->location }}"
+        }
+      }
+    }
+</script>
 
 
 @endsection
