@@ -1,4 +1,4 @@
-@extends('layouts.app',['title'=> 'Lowongan Pekerjaan di '.$company->name])
+@extends('layouts.app')
 
 @section('content')
 
