@@ -8,3 +8,14 @@
 </div>
 
 
+<div>
+belum fix 
+Footer .
+search.
+pagination
+map.
+tag
+contact us.
+radius search company
+    
+</div
