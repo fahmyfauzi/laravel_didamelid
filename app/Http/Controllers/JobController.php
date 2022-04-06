@@ -35,6 +35,12 @@ class JobController extends Controller
         SEOMeta::addMeta('article:section', $job->category->name, 'property');
         SEOMeta::addKeyword(['Kerja', 'Turu', 'Mager']);
 
+        SEOTools::setTitle($job->title);
+        SEOTools::setDescription(Str::limit(strip_tags(html_entity_decode($job->body)), 500, '...'));
+        SEOTools::opengraph()->setUrl(url()->current());
+        SEOTools::setCanonical(url()->current());
+        SEOTools::opengraph()->addProperty('type', 'JobPosting');
+
         OpenGraph::setTitle($job->title . ' - ' . $job->company->name)
             ->setDescription(Str::limit(strip_tags(html_entity_decode($job->body)), 500, '...'))
             ->setType('JobPosting')

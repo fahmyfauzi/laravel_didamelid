@@ -238,35 +238,76 @@
 <!-- End Job Detail Section -->
 <script type="application/ld+json">
     {
-      "@context" : "https://schema.org/",
-      "@type" : "JobPosting",
-      "title" : "{{ $job->title }}",
-      "description" : "{{ Str::limit(strip_tags(html_entity_decode($job->body)), 500, '...') }}",
-      "identifier": {
-        "@type": "PropertyValue",
-        "name": "{{ $job->company->name }}",
-        "value": "{{ $job->id }}"
-      },
-      "datePosted" : "{{ $job->created_at }}",
-      "validThrough" : "{{ $job->expiration_date }}",
-      "employmentType" : "{{ $job->type }}",
-      "hiringOrganization" : {
-        "@type" : "Organization",
-        "name" : "{{ $job->company->name }}",
-        "sameAs" : "{{ $job->company->website }}",
-        "logo" : "{{ url('/').'/storage/'.$job->company->logo }}"
-      },
-      "jobLocation": {
-      "@type": "Place",
-        "address": {
-        "@type": "PostalAddress",
-        "streetAddress": "{{ $job->location }}",
-        "addressLocality": "{{ $job->location }}",
-        "addressRegion": "IDR",
-        "postalCode": "",
-        "addressCountry": "{{ $job->location }}"
+        "@context" : "https://schema.org/",
+        "@type" : "JobPosting",
+        "title" : "{{ $job->title }}",
+        "description" : "{{ Str::limit(strip_tags(html_entity_decode($job->body)), 500, '...') }}",
+        "identifier": {
+            "@type": "PropertyValue",
+            "name": "{{ $job->company->name }}",
+            "value": "{{ $job->id }}"
+        },
+        "datePosted" : "{{ $job->created_at }}",
+        "validThrough" : "{{ $job->expiration_date }}",
+        "employmentType" : "{{ $job->type }}",
+        "hiringOrganization" : {
+            "@type" : "Organization",
+            "name" : "{{ $job->company->name }}",
+            "sameAs" : "{{ $job->company->website }}",
+            "logo" : "{{ url('/').'/storage/'.$job->company->logo }}"
+        },
+        "jobLocation": {
+        "@type": "Place",
+            "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "{{ $job->location }}",
+            "addressLocality": "{{ $job->location }}",
+            "addressRegion": "IDR",
+            "postalCode": "",
+            "addressCountry": "{{ $job->location }}"
+            }
         }
+        }
+</script>
+<script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "url": "{{ url('/') }}",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": {
+          "@type": "EntryPoint",
+          "urlTemplate": "{{ url('/'.'job?search={search_term_string}') }}"
+        },
+        "query-input": "required name=search_term_string"
       }
+    }
+</script>
+<script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [{
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Beranda",
+        "item": "{{ url('/') }}"
+      },{
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Jobs",
+        "item": "{{ url('/').'/job' }}"
+    },{
+      "@type": "ListItem",
+      "position": 3,
+      "name": "{{ $job->category->name }}",
+      "item": "{{ url('/'.'?job=').$job->category->name }}"
+    },{
+        "@type": "ListItem",
+        "position": 4,
+        "name": "{{ $job->title}} - {{ $job->company->name }}"
+      }]
     }
 </script>
 

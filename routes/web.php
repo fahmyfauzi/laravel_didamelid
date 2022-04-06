@@ -47,7 +47,7 @@ Route::get('/', function () {
 });
 Route::get('/job/{job:slug}', [JobController::class, 'show']);
 
-Route::get('/job', [JobController::class, 'index'])->name('job.index');
+Route::get('/job', [JobController::class, 'index']);
 
 Route::get('/company', [CompanyController::class, 'index']);
 Route::get('/company/{company:slug}', [CompanyController::class, 'show']);

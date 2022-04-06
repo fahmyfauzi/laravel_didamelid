@@ -61,7 +61,7 @@
                                         <img class="img-preview img-fluid mb-3 col-lg-5">
                                     </div>
                                     <div class="form-group col-lg-6 col-md-12">
-                                        <label>Image</label>
+                                        <label>Logo Company</label>
                                         <input type="file" id="image" name="logo" class="form-control"
                                             onchange="previewImage()">
                                     </div>
@@ -141,6 +141,16 @@
                                             placeholder="https://www.youtube.com/c/DidamelIndonesia"
                                             value="{{ old('social_youtube') }}">
                                         @error('social_youtube')
+                                        <div class="text-danger">
+                                            {{ $message }}
+                                        </div>
+                                        @enderror
+                                    </div>
+                                    <div class="form-group col-lg-6 col-md-12">
+                                        <label>Website</label>
+                                        <input type="text" name="website" placeholder="https://www.didamel.id"
+                                            value="{{ old('website') }}">
+                                        @error('website')
                                         <div class="text-danger">
                                             {{ $message }}
                                         </div>

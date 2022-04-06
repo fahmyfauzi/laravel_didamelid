@@ -58,7 +58,7 @@
                 <a href="https://wa.me/6282118418130" target="_blank" class="theme-btn btn-style-five">Kirim
                     Pekerjaan</a>
                 @else
-                <a href="https://wa.me/6282118418130" target="_blank" class="heme-btn btn-style-three call-modal">Kirim
+                <a href="https://wa.me/6282118418130" target="_blank" class="heme-btn btn-style-three">Kirim
                     Pekerjaan</a>
 
                 @endif
