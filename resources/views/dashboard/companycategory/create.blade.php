@@ -6,7 +6,7 @@
 <section class="user-dashboard">
     <div class="dashboard-outer">
         <div class="upper-title-box">
-            <h3>Post a New Job!</h3>
+            <h3>Create Company Category!</h3>
             <div class="text">Ready to jump back in?</div>
         </div>
 

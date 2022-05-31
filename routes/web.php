@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\Auth\RegisterController;
 use App\Models\Jobs;
 use App\Models\Company;
 use App\Models\Category;
@@ -52,6 +54,8 @@ Route::get('/job', [JobController::class, 'index']);
 Route::get('/company', [CompanyController::class, 'index']);
 Route::get('/company/{company:slug}', [CompanyController::class, 'show']);
 
+Route::get('/register', [RegisterController::class]);
+Route::get('/login', [LoginController::class]);
 
 Route::middleware('auth')->group(function () {
     Route::get('/dashboard', function () {

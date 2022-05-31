@@ -5,15 +5,16 @@
 <section class="user-dashboard">
     <div class="dashboard-outer">
         <div class="upper-title-box">
-            <h3>Manage Jobs</h3>
+            <h3>Manage Category Jobs</h3>
             <div class="text">Ready to jump back in?</div>
+            @if(session()->has('success'))
+            <div class="alert alert-success" role="alert">
+                {{ session('success') }}
+            </div>
+            @endif
         </div>
 
-        @if(session()->has('success'))
-        <div class="alert alert-success" role="alert">
-            {{ session('success') }}
-        </div>
-        @endif
+
         <div class="form-group col-lg-12 col-md-12 mb-2">
             <a href="{{ route('category.create') }}" class="theme-btn btn-style-one">Add Category</a>
         </div>

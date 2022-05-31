@@ -65,7 +65,7 @@
             <!--Tabs Box-->
             <div class="tab-buttons-wrap">
                 <ul class="tab-buttons -pills-condensed -blue">
-                    <li class="tab-btn active-btn" data-tab="#tab2">Pekerjaan Terbaru</li>
+                    <li class="tab-btn active-btn" style="pointer-events: none;">Pekerjaan Terbaru</li>
                 </ul>
             </div>
 
@@ -84,8 +84,8 @@
                                     <span class="company-logo"><img class="rounded-full"
                                             src="{{ asset('storage/'.$item->company->logo) }}" alt="">
                                     </span>
-                                    <h4><a href="job/{{ $item->slug }}">{{ $item->title }} - {{ $item->company->name
-                                            }}</a></h4>
+                                    <h4><a href="job/{{ $item->slug }}">{{ Str::of($item->title. ' - '.
+                                            $item->company->name)->limit(58 , '...') }} </a></h4>
                                     <ul class="job-info">
                                         <li><a href="job?category={{ $item->category->slug }}"><span
                                                     class="icon flaticon-briefcase"></span>{{ucfirst($item->category->name)}}</a>
@@ -145,7 +145,7 @@
                     <div class="inner-box">
                         <figure class="image"><img src="{{ asset('storage/'.$item->logo) }}" alt=""></figure>
                         <a href="/company/{{ $item->slug }}">
-                            <h4 class="name">{{ $item->name }}</h4>
+                            <h4 class="name">{{ Str::of($item->name)->limit(23,'...') }}</h4>
                         </a>
                         <a href="/company?company-category={{ $item->companycategory->slug }}"><span
                                 class="designation text-dark-3">{{ $item->companycategory->name }}</span>

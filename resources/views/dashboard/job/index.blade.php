@@ -7,15 +7,14 @@
     <div class="upper-title-box">
       <h3>Manage Jobs</h3>
       <div class="text">Ready to jump back in?</div>
+      @if(session()->has('success'))
+      <div class="alert alert-success" role="alert">
+        {{ session('success') }}
+      </div>
+      @endif
     </div>
     <!-- Input -->
-
-    @if(session()->has('success'))
-    <div class="alert alert-success" role="alert">
-      {{ session('success') }}
-    </div>
-    @endif
-    <div class="form-group col-lg-12 col-md-12 mb-2">
+    <div class="form-group col-12 mb-2">
       <a href="{{ route('job.create') }}" class="theme-btn btn-style-three">Add Job</a>
     </div>
     <div class="row">

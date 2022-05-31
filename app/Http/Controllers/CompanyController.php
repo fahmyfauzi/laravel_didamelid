@@ -12,6 +12,7 @@ class CompanyController extends Controller
 {
     public function index()
     {
+        // SEO
         SEOTools::setTitle('Lowongan Pekerjaan ');
         SEOTools::setDescription('Langkah terbaik awal karirmu Temukan lebih dari 10.000 pekerjaan di situs ini Cari pekerjaan Keuangan Multimedia Teknologi Informasi Pemerintahan Kesehatan Otomotif Rekomendasi Pekerjaan Nilai dirimu dan temukan pekerjaan terbaik untukmu Pekerjaan Terbaru Happiness Hero Paxel Tasikmalaya Jasa Logistik Tasikmalaya Full Time Staff IT Plaza Asia Tasikmalaya Fashion Tasikmalaya Rp2.000.000 – Rp3.500.000 / month Full Time […]');
         SEOTools::opengraph()->setUrl(url()->current());

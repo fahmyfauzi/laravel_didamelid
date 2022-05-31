@@ -33,7 +33,6 @@
 
                     <div class="job-detail">
                         @if ($job->image)
-
                         <figure class="image"><img src="{{ asset('storage/'.$job->image) }}" alt="">
                         </figure>
                         @endif

@@ -6,7 +6,7 @@
 <section class="user-dashboard">
     <div class="dashboard-outer">
         <div class="upper-title-box">
-            <h3>Add New Company!</h3>
+            <h3>Update Company!</h3>
             <div class="text">Ready to jump back in?</div>
         </div>
 
@@ -72,7 +72,7 @@
 
                                     <div class="form-group col-lg-6 col-md-12">
                                         <label>Image</label>
-                                        <input type="file" id="image" name="image" class="form-control"
+                                        <input type="file" id="image" name="logo" class="form-control"
                                             onchange="previewImage()">
                                     </div>
 

@@ -60,7 +60,8 @@
 
         <!-- Copyright -->
         <div class="copyright-text">
-            <p>© 2021 Superio. All Right Reserved.</p>
+            &copy;
+            <?php echo date('Y') ?> didamel.id All Right Reserved.
         </div>
 
     </div><!-- End Page Wrapper -->

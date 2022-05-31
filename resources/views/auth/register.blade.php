@@ -18,49 +18,36 @@
                 </div>
 
                 <div class="form-floating">
-                    <<<<<<< HEAD <input type="email" class="form-control @error('email') is-invalid @enderror"
-                        id="email" name="email" placeholder="name@example.com" value="{{ old('email') }}" required
+                    <input type="email" class="form-control @error('email') is-invalid @enderror" id="email"
+                        name="email" placeholder="name@example.com" value="{{ old('email') }}" required
                         autocomplete="email">
-                        =======
-                        <input type="email" class="form-control @error('email') is-invalid @enderror" id="email"
-                            name="email" placeholder="name@example.com" value="{{ old('email') }}" required
-                            autocomplete="email">
-                        >>>>>>> 260a9c744cbf87be20e3a46c3af00d7794c1cfdd
-                        <label for="email">Email address</label>
-                        @error('email')
-                        <div class="alert alert-danger">{{ $message }}</div>
-                        @enderror
+
+                    <label for="email">Email address</label>
+                    @error('email')
+                    <div class="alert alert-danger">{{ $message }}</div>
+                    @enderror
                 </div>
 
                 <div class="form-floating">
-                    <<<<<<< HEAD <input type="password"
-                        class="form-control rounded-bottom @error('password') is-invalid @enderror" id="password"
-                        name="password" placeholder="password" value="{{ old('password') }}" required>
-                        =======
-                        <input type="password"
-                            class="form-control rounded-bottom @error('password') is-invalid @enderror" id="password"
-                            name="password" placeholder="password" value="{{ old('password') }}" required>
-                        >>>>>>> 260a9c744cbf87be20e3a46c3af00d7794c1cfdd
-                        <label for="password">Password</label>
-                        @error('password')
-                        <div class="alert alert-danger">{{ $message }}</div>
-                        @enderror
+                    <input type="password" class="form-control rounded-bottom @error('password') is-invalid @enderror"
+                        id="password" name="password" placeholder="password" value="{{ old('password') }}" required>
+
+                    <label for="password">Password</label>
+                    @error('password')
+                    <div class="alert alert-danger">{{ $message }}</div>
+                    @enderror
                 </div>
                 <div class="form-floating">
-                    <<<<<<< HEAD <input type="password"
+
+                    <input type="password"
                         class="form-control rounded-bottom @error('password_confirmation') is-invalid @enderror"
                         id="password_confirmation" name="password_confirmation" placeholder="password confirm"
                         value="{{ old('password-confirm') }}" required>
-                        =======
-                        <input type="password"
-                            class="form-control rounded-bottom @error('password_confirmation') is-invalid @enderror"
-                            id="password_confirmation" name="password_confirmation" placeholder="password confirm"
-                            value="{{ old('password-confirm') }}" required>
-                        >>>>>>> 260a9c744cbf87be20e3a46c3af00d7794c1cfdd
-                        <label for="password-confirm">Password</label>
-                        @error('password_confirmation')
-                        <div class="alert alert-danger">{{ $message }}</div>
-                        @enderror
+
+                    <label for="password-confirm">Password</label>
+                    @error('password_confirmation')
+                    <div class="alert alert-danger">{{ $message }}</div>
+                    @enderror
                 </div>
 
 
@@ -74,4 +61,5 @@
         </div>
     </div>
 </div>
-<<<<<<< HEAD @endsection=======@endsection>>>>>>> 260a9c744cbf87be20e3a46c3af00d7794c1cfdd
+
+@endsection

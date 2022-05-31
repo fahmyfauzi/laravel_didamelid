@@ -62,9 +62,7 @@
                     <a href="login-popup.html" class="call-modal"><span class="icon-user"></span></a>
                 </div>
 
-                <button id="toggle-user-sidebar"><img src="images/resource/company-6.png" alt="avatar"
-                        class="thumb"></button>
-                <a href="#nav-mobile" class="mobile-nav-toggler navbar-trigger"><span
+                <a id="toggle-user-sidebar" class="mobile-nav-toggler navbar-trigger"><span
                         class="flaticon-menu-1"></span></a>
             </div>
         </div>
