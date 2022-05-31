@@ -8,3 +8,16 @@
 </div>
 
 
+<div>
+    <p>belum fix</p>
+    <ul>
+        <li>Footer</li>
+        <li>search</li>
+        <li>pagination</li>
+        <li>map</li>
+        <li>tag</li>
+        <li>contact us</li>
+        <li>radius search company</li>
+    </ul>
+  
+</div
