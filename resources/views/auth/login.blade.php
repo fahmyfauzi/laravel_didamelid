@@ -9,29 +9,28 @@
                 <h1 class="h2 mb-4 fw-normal text-bold text-center">Please Login</h1>
                 @csrf
 
-                <div class="row text-center justify-content">
+                <div class="row text-center justify-content-evenly ">
                     <div class="form-floating">
                         <input type="email" name="email" class="form-control @error('email') is-invalid @enderror"
                             id="floatingInput" placeholder="name@example.com" value="{{ old('email') }}" required
                             autocomplete="email" autofocus>
                         <label for="floatingInput">Email address</label>
-                        @error('email')
-                        <div class="alert alert-danger">{{ $message }}
-                        </div>
-                        @enderror
+
                     </div>
-                    <div class="form-floating">
+                    <div class="form-floating ">
                         <input type="password" name="password" class="form-control @error('email') is-invalid @enderror"
-                            id="floatingPassword" placeholder="Password" required>
-                        <label for="floatingPassword">Password</label>
-                        @error('password')
-                        <div class="alert alert-danger">{{ $message }}
+                            id="password" placeholder="Password" required>
+                        <label for="password ">Password</label>
+
+                        @error('email')
+                        <div class="alert alert-danger my-2">
+                            {{ $message }}
                         </div>
                         @enderror
                     </div>
 
                 </div>
-                <button type="submit" class="w-100 mt-1 btn btn-primary">
+                <button type="submit" class="w-100 mt-2 btn btn-primary">
                     {{ __('Login') }}
                 </button>
             </form>
