@@ -79,17 +79,6 @@
                                 </ul>
                             </div>
 
-                            <!-- Map Widget -->
-                            <h4 class="widget-title">Job Location</h4>
-                            <div class="widget-content">
-                                <div class="map-outer">
-                                    <div class="map-canvas" data-zoom="12" data-lat="-37.817085" data-lng="144.955631"
-                                        data-type="roadmap" data-hue="#ffc400" data-title="Envato"
-                                        data-icon-path="images/resource/map-marker.png"
-                                        data-content="Melbourne VIC 3000, Australia<br><a href='mailto:info@youremail.com'>info@youremail.com</a>">
-                                    </div>
-                                </div>
-                            </div>
 
                             <!-- Job Skills -->
                             <h4 class="widget-title">Job Skills</h4>

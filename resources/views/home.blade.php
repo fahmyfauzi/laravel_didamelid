@@ -30,8 +30,8 @@
             </div>
             <!-- Job Search Form -->
 
-            <div class="features-icons">
 
+            <div class="features-icons mt-0">
                 @foreach ($categories as $item)
                 <a href="job?category={{ $item->slug }}">
 
@@ -42,13 +42,14 @@
                         </div>
 
                         <div class="title">
-                            {{ $item->name }}
+                            Kategori {{ Str::headline($item->name) }}
                         </div>
                     </div>
                 </a>
                 @endforeach
 
             </div>
+
         </div>
     </div>
 </section>
@@ -57,19 +58,19 @@
 <section class="layout-pt-120 layout-pb-120">
     <div class="auto-container">
         <div class="sec-title text-center">
-            <h2>Rekomendasi Pekerjaan</h2>
+            <h2>Lowongan Pekerjaan Terbaru</h2>
             <div class="text">Nilai dirimu dan temukan pekerjaan terbaik untukmu</div>
         </div>
 
         <div class="default-tabs tabs-box">
             <!--Tabs Box-->
-            <div class="tab-buttons-wrap">
+            {{-- <div class="tab-buttons-wrap">
                 <ul class="tab-buttons -pills-condensed -blue">
                     <li class="tab-btn active-btn" style="pointer-events: none;">Pekerjaan Terbaru</li>
                 </ul>
-            </div>
+            </div> --}}
 
-            <div class="tabs-content pt-50 wow fadeInUp">
+            <div class="tabs-content pt-25 wow fadeInUp">
 
 
                 <!--Tab-->

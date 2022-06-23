@@ -68,7 +68,7 @@
       <div class="content-column col-lg-12">
         <div class="ls-outer">
           <!-- ls Switcher -->
-          <div class="ls-switcher">
+          {{-- <div class="ls-switcher">
             <div class="showing-result">
             </div>
 
@@ -83,7 +83,7 @@
               </select>
 
             </div>
-          </div>
+          </div> --}}
 
           <div class="row">
             <!-- Job Block-two -->
@@ -116,7 +116,7 @@
           <!-- Listing Show More -->
           <!-- Pagination -->
           {{ $jobs->links('vendor.pagination.bootstrap-5') }}
-          <nav class="ls-pagination">
+          {{-- <nav class="ls-pagination">
             <ul>
               <li class="prev"><a href="#"><i class="fa fa-arrow-left"></i></a></li>
               <li><a href="#">1</a></li>
@@ -124,7 +124,7 @@
               <li><a href="#">3</a></li>
               <li class="next"><a href="#"><i class="fa fa-arrow-right"></i></a></li>
             </ul>
-          </nav>
+          </nav> --}}
 
         </div>
       </div>

@@ -30,9 +30,9 @@
                                 <h4 class="widget-title">Tentang Kami</h4>
                                 <div class="widget-content">
                                     <ul class="list">
-                                        <li><a href="#">About Us</a></li>
-                                        <li><a href="#">Terms</a></li>
-                                        <li><a href="#">FAQ</a></li>
+                                        <li><a href="#" onclick="alert('Cooming Soon :) ')">About Us</a></li>
+                                        <li><a href="#" onclick="alert('Cooming Soon :) ')">Terms</a></li>
+                                        <li><a href="#" onclick="alert('Cooming Soon :) ')">FAQ</a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -44,8 +44,17 @@
                                 <div class="widget-content">
                                     <div class="download-btns">
                                         <div class="text">Klik di sini untuk menginstal</div>
-                                        <a href="#"><img src="{{ asset('images/icons/apple-2.png') }}" alt=""></a>
-                                        <a href="#"><img src="{{ asset('images/icons/google-2.png') }}" alt=""></a>
+                                        <button onclick="alert('Cooming Soon :) ')" class="mb-2"><img
+                                                src="{{ asset('images/icons/apple-2.png') }}" alt="">
+                                        </button>
+
+                                        <button onclick="alert('Cooming Soon :) ')">
+                                            <img src="{{ asset('images/icons/google-2.png') }}" alt="">
+                                        </button>
+                                        {{-- <a href="" onclick="alert('Cooming Soon :) ')"><img
+                                                src="{{ asset('images/icons/apple-2.png') }}" alt=""></a> --}}
+                                        {{-- <a href="" onclick="alert('Cooming Soon :) ')"><img
+                                                src="{{ asset('images/icons/google-2.png') }}" alt=""></a> --}}
                                     </div>
                                 </div>
                             </div>
