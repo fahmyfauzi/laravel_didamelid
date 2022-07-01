@@ -58,7 +58,7 @@ Route::get('/register', [RegisterController::class])->name('register');
 
 Route::get('/login', [LoginController::class])->name('login');
 
-Route::middleware('auth')->group(function () {
+Route::middleware(['middleware' => 'auth'])->group(function () {
     Route::get('/dashboard', function () {
         return view('dashboard.index', [
             'company' => Company::all(),
