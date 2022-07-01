@@ -23,9 +23,10 @@ class DatabaseSeeder extends Seeder
         //     ->count(10)
         //     ->create();
 
-        User::create();
+        // User::factory(3)->create();
         $this->call([
 
+            User::class,
             CategorySeeder::class,
             CompanyCategorySeeder::class,
         ]);
