@@ -24,9 +24,15 @@ class DatabaseSeeder extends Seeder
         //     ->create();
 
         // User::factory(3)->create();
+        \App\Models\User::factory()->create([
+            'name' => 'Fahmy Fauzi',
+            'email' => 'fahmyfauzii@gmail.com',
+            // 'email_verified_at' => now(),
+            'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
+        ]);
         $this->call([
 
-            User::class,
+            // User::class,
             CategorySeeder::class,
             CompanyCategorySeeder::class,
         ]);
