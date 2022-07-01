@@ -54,7 +54,7 @@ Route::get('/job', [JobController::class, 'index']);
 Route::get('/company', [CompanyController::class, 'index']);
 Route::get('/company/{company:slug}', [CompanyController::class, 'show']);
 
-Route::get('/register', [RegisterController::class])->register('register');
+Route::get('/register', [RegisterController::class])->name('register');
 
 Route::get('/login', [LoginController::class])->name('login');
 
