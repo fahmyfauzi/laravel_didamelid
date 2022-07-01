@@ -36,10 +36,16 @@ class RegisterController extends Controller
      *
      * @return void
      */
-    public function __construct()
+
+    public function index()
     {
         $this->middleware('guest');
+        return view('auth/register');
     }
+    // public function __construct()
+    // {
+    //     $this->middleware('guest');
+    // }
 
     /**
      * Get a validator for an incoming registration request.

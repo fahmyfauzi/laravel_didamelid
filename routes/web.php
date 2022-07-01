@@ -57,8 +57,8 @@ Route::get('/company/{company:slug}', [CompanyController::class, 'show']);
 // Route::get('/register', [RegisterController::class])->name('register');
 // Route::get('/login', [LoginController::class])->name('login');
 
-Route::get('/register', [RegisterController::class])->name('register');
-Route::get('/login', [LoginController::class])->name('login');
+Route::get('/register', [RegisterController::class, 'index'])->name('register');
+Route::get('/login', [LoginController::class, 'index'])->name('login');
 
 Route::middleware(['middleware' => 'auth'])->group(function () {
     Route::get('/dashboard', function () {
