@@ -18,10 +18,10 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // Company::factory()
-        //     ->has(Jobs::factory()->count(rand(1, 20)))
-        //     ->count(10)
-        //     ->create();
+        Company::factory()
+            ->has(Jobs::factory()->count(rand(1, 20)))
+            ->count(10)
+            ->create();
 
         // User::factory(3)->create();
         \App\Models\User::factory()->create([
