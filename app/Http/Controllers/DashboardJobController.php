@@ -121,10 +121,25 @@ class DashboardJobController extends Controller
             'salary' => 'required',
             'type' => 'required',
             'body' => 'required',
+            'image' => 'image|file|max:2048', // Validation for the image
         ]);
 
         $validatedData['user_id'] = auth()->user()->id;
-        Jobs::where('id', $job->id)->update($validatedData);
+
+        // Update the image if a new one is provided
+        if ($request->file('image')) {
+            // Delete the previous image if exists
+            if ($job->image) {
+                Storage::delete($job->image);
+            }
+
+            // Upload the new image
+            $validatedData['image'] = $request->file('image')->store('image-job');
+        }
+
+        // Update the job with the validated data
+        $job->update($validatedData);
+
         return redirect('/dashboard/job')->with('success', 'Job has been updated!');
     }
 
