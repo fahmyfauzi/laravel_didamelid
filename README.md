@@ -53,7 +53,7 @@ Membuat kembali portal lowongan pekerjaan didamel.id , karena sistem yang ada sa
     
 6. migrasi database
     ```
-    php artisan migrate
+    php artisan migrate --seed
     ```
 7. install package
     ```
@@ -68,8 +68,8 @@ Membuat kembali portal lowongan pekerjaan didamel.id , karena sistem yang ada sa
 
 
 ## usage
-- buka chrome masukan link ```laravel_didamelid.test``` or ``` http://127.0.0.1:8000/ ```
-- akses ```laravel_didamelid.test/login``` or ``` laravel_didamelid.test/register ```
+- buka chrome masukan link ```laravel_didamelid.test``` atau ``` http://127.0.0.1:8000/ ```
+- akses ```laravel_didamelid.test/login``` atau ``` laravel_didamelid.test/register ```
 - login dan coba fitur-fiturnya
 
 ## credits
