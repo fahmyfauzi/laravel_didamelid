@@ -1,23 +1,94 @@
-<h1 align="center">Hi there, I'm Fahmy</h1>
-<div align="center">
-  <a href="https://www.instagram.com/fahmyfauzii/"><button style="background-color: red; color: white">Instagram</button></a>
-  <a href="https://web.facebook.com/fahmy.fauzi.3150/"><button style="background-color: blue; color: white">Facebook</button></a>
-  <a href="https://github.com/fahmyfauzi"><button style="background-color: black; color: white">Github</button></a>
-  <a href="https://twitter.com/FahmyFauzi10"><button style="background-color: #48cae4; color: white">Twitter</button></a>
-  <a href="mailto:fahmyfauzii@gmail.com?subject=from%20github"><button style="background-color: #d00000; color: white">E-mail</button></a>
-</div>
+# Rancang Bangun Aplikasi Pencarian Kerja Berbasis Web
+Membuat kembali portal lowongan pekerjaan didamel.id , karena sistem yang ada saat ini menggunakan wordpress yang membuat website menjadi lambat karena banyaknya plugin yang terpasang. Aplikasi ini dibuat untuk memenuhi nilai mata kuliah yaitu Kerja Praktek.
+
+## features
+- Pencarian berdasarkan title,city dan category
+- Lowongan kerja terbaru
+- Perusahaan unggulan
+- Admin Dashboard
+
+## requirements
+- php 8.0.2
+- database mysql
+- laravel 10.0
+- laragon
+- chrome
+- composer
+
+## installation
+
+1. Clone repositori
+    ```sh
+    git https://github.com/fahmyfauzi/laravel_didamelid.git
+    ```
+2. masuk ke dalam directori
+    ```sh
+    cd laravel_didamelid
+    ```
+3. Instal composer
+    ```sh
+    composer install
+    or
+    composer update
+    ```
+4. Copy file .env.example 
+    ```
+    cp .env.example .env
+    ```
+4. Generate an app encryption key
+
+    ```sh
+    php artisan key:generate
+    ```
+5. Create database on your computer or phpMyAdmin
+6. In the .env file, add database information to allow Laravel to connect to the database
+    ```
+    DB_CONNECTION=mysql
+    DB_HOST=127.0.0.1
+    DB_PORT=3306
+    DB_DATABASE=laravel_didamelid
+    DB_USERNAME=DB_USERNAME
+    DB_PASSWORD=DB_PASSWORD
+    ```
+    
+6. migrasi database
+    ```
+    php artisan migrate
+    ```
+7. install package
+    ```
+    npm install
+    npm run build
+    ```
+    
+8. jalankan project
+    ```sh
+   php artisan serve
+    ```
 
 
-<div>
-    <p>belum fix</p>
-    <ul>
-        <li>Footer</li>
-        <li>search</li>
-        <li>pagination</li>
-        <li>map</li>
-        <li>tag</li>
-        <li>contact us</li>
-        <li>radius search company</li>
-    </ul>
+## usage
+- buka chrome masukan link ```laravel_didamelid.test``` or ``` http://127.0.0.1:8000/ ```
+- akses ```laravel_didamelid.test/login``` or ``` laravel_didamelid.test/register ```
+- login dan coba fitur-fiturnya
+
+## credits
+
+[Fahmy Fauzi ](https://github.com/fahmyfauzi)
+
+## screanshot
+- Halaman Home
+  ![Screenshot (244)](https://github.com/fahmyfauzi/laravel_didamelid/assets/58255031/79421503-06c2-4c8b-87ca-0bdb398d7f00)
+
+- Halaman Pencarian
+  ![Screenshot (245)](https://github.com/fahmyfauzi/laravel_didamelid/assets/58255031/ada95c41-bb83-47c9-9cc4-da56a6f568ae)
+
+- Halaman Detail Job
+  ![bb7dbc58-ce0d-4746-a657-e0ddcf2b0677](https://github.com/fahmyfauzi/laravel_didamelid/assets/58255031/1f6cf4b9-c307-45ff-9af8-37c39d59a571)
+
   
-</div
+- Halaman Dashboard Manage Jobs
+  ![Screenshot (246)](https://github.com/fahmyfauzi/laravel_didamelid/assets/58255031/813032e6-45ec-4b8d-af47-88727949e37a)
+
+- Halaman Dashboard Update
+  ![e963f2f7-da47-4e15-be30-d76e0dbea42d](https://github.com/fahmyfauzi/laravel_didamelid/assets/58255031/4dca0baa-8805-4abc-bc02-7a87bdeb27a6)
