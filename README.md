@@ -1,7 +1,6 @@
 # Rancang Bangun Aplikasi Pencarian Kerja Berbasis Web
-Membuat kembali portal lowongan pekerjaan didamel.id , karena sistem yang ada saat ini menggunakan wordpress yang membuat website menjadi lambat karena banyaknya plugin yang terpasang. Aplikasi ini dibuat untuk memenuhi nilai mata kuliah yaitu Kerja Praktek.
+Membuat kembali portal lowongan pekerjaan didamel.id , karena sistem yang ada saat ini menggunakan wordpress yang membuat website menjadi lambat karena banyaknya plugin yang terpasang. Aplikasi ini dibuat untuk memenuhi nilai mata kuliah yaitu Kerja Praktek, saya sertakan laporan kerja praktik.
 
-**Berikut Laporan Kerja Praktik **
 ✔ [Laporan Kerja Praktik Fahmy.pdf](https://drive.google.com/file/d/10ezCk_ZIxGMb5YLvhD69l-pWKcn2R8kI/view?usp=sharing)
 
 ## features
